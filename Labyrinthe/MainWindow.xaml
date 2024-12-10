@@ -1,0 +1,26 @@
+﻿<Window
+    x:Class="Labyrinthe.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Labyrinthe"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="1600"
+    Height="900"
+    KeyDown="Joueur_KeyDown"
+    KeyUp="Joueur_KeyUp"
+    mc:Ignorable="d">
+    <Canvas x:Name="fondJeu">
+        <Rectangle
+            x:Name="Joueur"
+            Canvas.Left="467"
+            Canvas.Top="705"
+            Width="32"
+            Height="32"
+            Fill="Black"
+            Stroke="Black" />
+
+
+    </Canvas>
+</Window>
