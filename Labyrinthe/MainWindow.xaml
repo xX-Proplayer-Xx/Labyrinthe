@@ -14,12 +14,15 @@
     <Canvas x:Name="fondJeu">
         <Rectangle
             x:Name="Joueur"
-            Canvas.Left="563"
-            Canvas.Top="700"
-            Width="32"
-            Height="32"
-            Fill="Black"
-            Stroke="Black" />
+Canvas.Left="563"
+Canvas.Top="700"
+Width="32"
+Height="32" >
+            
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="\img\LUTTIN\LUTTIN-1.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
 
     </Canvas>

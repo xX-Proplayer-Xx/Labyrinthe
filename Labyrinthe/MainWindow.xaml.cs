@@ -1,13 +1,9 @@
-﻿using System.Text;
+﻿
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Labyrinthe
@@ -18,6 +14,7 @@ namespace Labyrinthe
     
     public partial class MainWindow : Window
     {
+        private int vitesseAnnimation = 1;
         private bool goDroite, goGauche, goHaut, goBas,claque;
         private DispatcherTimer minuterie;
         private int vitesse = 10;
@@ -26,6 +23,7 @@ namespace Labyrinthe
             
             InitializeComponent();
             InitMinuterie();
+            //AnnimationPerso();
         }
         private void InitMinuterie()
         {
@@ -84,7 +82,17 @@ namespace Labyrinthe
         {
 
         } 
-
+        //private void AnnimationPerso()
+        //{
+        //    vitesseAnnimation += 1;
+        //    ImageBrush joueur = new ImageBrush();
+        //    joueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/LUTTIN/LUTTIN-" + vitesseAnnimation + ".png"));
+        //    Joueur.Fill = joueur;
+        //    if (vitesseAnnimation == 8)
+        //    {
+        //        vitesseAnnimation = 1;
+        //    }
+        //}
 
 
 
