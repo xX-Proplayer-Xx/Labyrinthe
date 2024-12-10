@@ -14,8 +14,8 @@
     <Canvas x:Name="fondJeu">
         <Rectangle
             x:Name="Joueur"
-            Canvas.Left="467"
-            Canvas.Top="705"
+            Canvas.Left="563"
+            Canvas.Top="700"
             Width="32"
             Height="32"
             Fill="Black"
