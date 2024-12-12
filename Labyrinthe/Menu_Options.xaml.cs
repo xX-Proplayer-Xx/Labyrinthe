@@ -17,11 +17,16 @@ namespace Labyrinthe
     /// <summary>
     /// Logique d'interaction pour Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Menu_Options : Window
     {
-        public Window1()
+        public Menu_Options()
         {
             InitializeComponent();
         }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

@@ -11,40 +11,25 @@
     mc:Ignorable="d">
     <Canvas>
         <Label
-            x:Name="lab_Son"
-            Canvas.Left="28"
-            Canvas.Top="84"
-            Width="38"
+            x:Name="lab_Mus"
+            Canvas.Left="27"
+            Canvas.Top="107"
+            Width="60"
             Height="35"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Content="Son" />
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Musique" />
         <Slider
-            x:Name="slider_son"
-            Canvas.Left="104"
-            Canvas.Top="92"
+            x:Name="slider_mus"
+            Canvas.Left="111"
+            Canvas.Top="114"
             Width="140"
             Height="20"
             HorizontalAlignment="Left"
             VerticalAlignment="Top" />
-        <Label
-            x:Name="lab_Mus"
-            Canvas.Left="28"
-            Canvas.Top="122"
-            Width="60"
-            Height="35"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Content="Musique" />
-        <Slider
-            x:Name="slider_mus"
-            Canvas.Left="104"
-            Canvas.Top="128"
-            Width="140"
-            Height="20"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center" />
-
+        <Button Content="Ok" Width="100" Height="25"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Click="CloseButton_Click" Canvas.Left="100" Canvas.Top="210"/>
     </Canvas>
 
 </Window>

@@ -2,8 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
 namespace Labyrinthe
@@ -11,7 +10,7 @@ namespace Labyrinthe
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
         private int vitesseAnnimation = 1;
@@ -121,8 +120,18 @@ namespace Labyrinthe
             {
                 goDroite = true;
             }
+            if (e.Key == Key.Escape)
+            {
+                Pause();
+            }
         }
-
+        private void Pause()
+        {
+            if (minuterie.IsEnabled)
+                minuterie.Stop();
+            else
+                minuterie.Start();
+        }
         private void Joueur_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
