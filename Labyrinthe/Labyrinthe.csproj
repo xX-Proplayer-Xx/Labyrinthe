@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\FOND_ECRAN\imageAcceuill.jpg" />
+  </ItemGroup>
+
 </Project>
