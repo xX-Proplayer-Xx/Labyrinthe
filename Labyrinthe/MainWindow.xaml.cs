@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using System.Windows.Media;
 
 namespace Labyrinthe
 {
@@ -25,6 +26,7 @@ namespace Labyrinthe
             InitMinuterie();
             //AnnimationPerso();
         }
+
         private void InitMinuterie()
         {
             minuterie = new DispatcherTimer();

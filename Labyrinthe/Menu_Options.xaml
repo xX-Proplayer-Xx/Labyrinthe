@@ -26,7 +26,7 @@
             Width="140"
             Height="20"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" />
+            VerticalAlignment="Top"  />
         <Button Content="Ok" Width="100" Height="25"
                 HorizontalAlignment="Center" VerticalAlignment="Top"
                 Click="CloseButton_Click" Canvas.Left="100" Canvas.Top="210"/>
