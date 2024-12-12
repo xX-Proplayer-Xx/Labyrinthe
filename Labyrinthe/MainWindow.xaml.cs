@@ -20,7 +20,8 @@ namespace Labyrinthe
         private int vitesse = 10;
         public MainWindow()
         {
-            
+            Menu_Acceuil acceuil = new Menu_Acceuil();
+            acceuil.ShowDialog();
             InitializeComponent();
             InitMinuterie();
             //AnnimationPerso();

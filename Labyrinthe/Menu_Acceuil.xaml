@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="Labyrinthe.Window1"
+    x:Class="Labyrinthe.Menu_Acceuil"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -44,7 +44,7 @@
             Background="White"
             Content="OPTIONS"
             FontFamily="Bahnschrift SemiBold"
-            FontSize="40" />
+            FontSize="40" Click="Options" />
         <Button
             x:Name="bout_option_Copy"
             Canvas.Left="650"
@@ -56,7 +56,7 @@
             Background="White"
             Content="QUITTER"
             FontFamily="Bahnschrift SemiBold"
-            FontSize="40" />
+            FontSize="40" Click="Bouton_Click_Quitter" />
         <Canvas.Background>
             <ImageBrush ImageSource="/img/FOND_ECRAN/imageAcceuill.jpg" />
         </Canvas.Background>

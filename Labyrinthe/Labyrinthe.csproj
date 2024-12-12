@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="g0qsuoib.a0z~" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
   </ItemGroup>
 
