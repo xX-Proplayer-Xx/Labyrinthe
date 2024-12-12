@@ -11,10 +11,12 @@
   <ItemGroup>
     <None Remove="g0qsuoib.a0z~" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
+    <None Remove="Son\musique.mp3" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="img\FOND_ECRAN\imageAcceuill.jpg" />
+    <Resource Include="Son\musique.mp3" />
   </ItemGroup>
 
 </Project>
