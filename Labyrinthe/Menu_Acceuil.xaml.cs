@@ -20,15 +20,25 @@ namespace Labyrinthe
     
     public partial class Menu_Acceuil : Window
     {
-        //private static MediaPlayer musique;
-
+        private static MediaPlayer musique;
         public Menu_Acceuil()
         {
             InitializeComponent();
-            //musique = new MediaPlayer();
-            //musique.Open(new Uri(""));
+            InitMusique();
         }
+        private void InitMusique()
+        {
+            musique = new MediaPlayer();
+            musique.Open(new Uri("C:\\Users\\fatih\\Documents\\SAE dev\\Labyrinthe\\Son\\musique.mp3"));
+            musique.MediaEnded += RelanceMusique;
+            musique.Play();
             
+        }
+        private void RelanceMusique(object? sender, EventArgs e)
+        {
+            musique.Position = TimeSpan.Zero;
+            musique.Play();
+        }
         private void JouerButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

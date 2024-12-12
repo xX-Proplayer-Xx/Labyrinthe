@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Labyrinthe
 {
@@ -14,6 +15,7 @@ namespace Labyrinthe
 
     public partial class MainWindow : Window
     {
+        
         private int vitesseAnnimation = 1;
         private bool goDroite, goGauche, goHaut, goBas,claque;
         private DispatcherTimer minuterie;
