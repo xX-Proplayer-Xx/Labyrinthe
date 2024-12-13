@@ -6,6 +6,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
 
 namespace Labyrinthe
 {
@@ -15,11 +17,31 @@ namespace Labyrinthe
 
     public partial class MainWindow : Window
     {
-        
+        //VITESSE
+        static readonly double VITESSE = 10;
+        static readonly double VITESSERALENTI = 1;
+
+        //Intervale coordonnés cadeaux 
+        static readonly int POSCADEAUX1 = 50;
+        static readonly int POSCADEAUX2 = 1550;
+        static readonly int POSCADEAUY1 = 50;
+        static readonly int POSCADEAUY2 = 850;
+        //Random coordonnés cadeaux 
+        private Random rndLeft = new Random();
+        private Random rndTop = new Random();
+        //Score
+        private int nbCadeaux = 0;
+        //Rectangle 
+        Rectangle gifle = new Rectangle();
+        //Coups
+        private bool gifleActif = false;
+        private bool tempsEntreCoup = true;
+        private int tempsCoup = 3;
+
         private int vitesseAnnimation = 1;
         private bool goDroite, goGauche, goHaut, goBas,claque;
         private DispatcherTimer minuterie;
-        private int vitesse = 10;
+        private double vitesse = 10;
         public MainWindow()
         {
             Menu_Acceuil acceuil = new Menu_Acceuil();
@@ -40,6 +62,9 @@ namespace Labyrinthe
         private void Jeu(object? sender, EventArgs e)
         {
             Deplacement();
+            Collision();
+            CollisionCadeaux();
+            CoupAttaque();
         }
         private void Deplacement()
         {
@@ -77,27 +102,106 @@ namespace Labyrinthe
         }
         private void Attaque()
         {
-            if (claque == true)
+            gifle = new Rectangle
             {
-                 //Faire en sorte que la claque soit dans la direction que le deplacement 
+                Tag = "calque",
+                Height = 64,
+                Width = 64,
+
+
+            };
+            //ImageBrush attaque = new ImageBrush();
+            //attaque.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Image/Attaque.png"));
+            gifle.Fill = Brushes.Red;
+            Canvas.SetTop(gifle, Canvas.GetTop(Joueur) - 16);
+            Canvas.SetLeft(gifle, Canvas.GetLeft(Joueur) - 16);
+            fondJeu.Children.Add(gifle);
+            gifleActif = true;
+            tempsCoup = 4;
+            tempsEntreCoup = false;
+        }
+        private void CoupAttaque()
+        {
+            if (gifleActif)
+            {
+                Rect maxiGifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
+                if (tempsCoup > 0)
+                {
+                    tempsCoup--;
+                    if (tempsCoup <= 0)
+                    {
+                        gifleActif = false;
+                    }
+                }
+                /// si le rectangle est un ennemi
+                /// création d’un rectangle correspondant à l’ennemi
+                /// on vérifie la collision
+                /// appel à la méthode IntersectsWith pour détecter la collision                 
+                //if (coupEpee.IntersectsWith(MonstreHItBox))
+                //{
+                //    coupEpeeActif = false;
+                //    monstres.Remove(monstre); // enlève la présence du monstre
+                //    MyCanvas.Children.Remove(monstre.sprite); // enlève graphiquement
+                //    monstreTue++;
+                //}
+                if (gifleActif == false)
+                {
+                    tempsEntreCoup = true;
+                    fondJeu.Children.Remove(this.gifle);
+                }
             }
         }
-        private void Collision()
+        private void Collision() // Pas mal en vrai mais bug un peu 
         {
+            Rect playerRect = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+            foreach (var element in fondJeu.Children)
+            {
+                if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
+                {
 
-        } 
-        //private void AnnimationPerso()
-        //{
-        //    vitesseAnnimation += 1;
-        //    ImageBrush joueur = new ImageBrush();
-        //    joueur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/LUTTIN/LUTTIN-" + vitesseAnnimation + ".png"));
-        //    Joueur.Fill = joueur;
-        //    if (vitesseAnnimation == 8)
-        //    {
-        //        vitesseAnnimation = 1;
-        //    }
-        //}
+                    Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
+                    if (playerRect.IntersectsWith(mur))
+                    {
+                        vitesse = VITESSERALENTI;
+                        Console.WriteLine("Collision !!!");
 
+                    }
+                    vitesse = VITESSE;
+                }
+            }
+
+        }
+        private void CollisionCadeaux() // Utiliser le tag pour les 3 cadeaux 
+        {
+            Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+            Rect rect2 = new Rect(Canvas.GetLeft(Cadeaux1), Canvas.GetTop(Cadeaux1), Cadeaux1.Width, Cadeaux1.Height);
+            if (rect1.IntersectsWith(rect2))
+            {
+                if (nbCadeaux == 3 && rect1.IntersectsWith(rect2))
+                {
+
+                    //msmCadeaux.Visibility = Visibility.Visible;
+                }
+                else if (nbCadeaux == 3 && !(rect1.IntersectsWith(rect2)))
+                {
+                    //msmCadeaux.Visibility = Visibility.Hidden;
+                }
+
+
+                else
+                {
+                    int posGauche = rndLeft.Next(POSCADEAUX1, POSCADEAUX2);
+                    int posHaut = rndTop.Next(POSCADEAUY1, POSCADEAUY2);
+                    Canvas.SetTop(Cadeaux1, posHaut);
+                    Canvas.SetLeft(Cadeaux1, posGauche);
+                    nbCadeaux++;
+                    Console.WriteLine("Collision Cadeaux");
+                    NbPoint.Content = nbCadeaux;
+                }
+
+            }
+
+        }
 
 
 
