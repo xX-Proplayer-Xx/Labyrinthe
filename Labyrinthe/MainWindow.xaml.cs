@@ -17,6 +17,8 @@ namespace Labyrinthe
 
     public partial class MainWindow : Window
     {
+        //Musique
+        private static MediaPlayer musique;
         //VITESSE
         static readonly double VITESSE = 10;
         static readonly double VITESSERALENTI = 1;
@@ -42,15 +44,30 @@ namespace Labyrinthe
         private bool goDroite, goGauche, goHaut, goBas,claque;
         private DispatcherTimer minuterie;
         private double vitesse = 10;
+
         public MainWindow()
         {
+
             Menu_Acceuil acceuil = new Menu_Acceuil();
             acceuil.ShowDialog();
             InitializeComponent();
             InitMinuterie();
+            InitMusique();
             //AnnimationPerso();
         }
-
+        public static void InitMusique()
+        {
+            musique = new MediaPlayer();
+            musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Son/musique.mp3"));
+            musique.MediaEnded += RelanceMusique;
+            musique.Volume = 0.5;
+            musique.Play();
+        }
+        public static void RelanceMusique(object? sender, EventArgs e)
+        {
+            musique.Position = TimeSpan.Zero;
+            musique.Play();
+        }
         private void InitMinuterie()
         {
             minuterie = new DispatcherTimer();
@@ -235,11 +252,24 @@ namespace Labyrinthe
         }
         private void Pause()
         {
-            if (minuterie.IsEnabled)
-                minuterie.Stop();
-            else
-                minuterie.Start();
+            // Arrêter la minuterie avant d'ouvrir la fenêtre de pause
+            minuterie.Stop();
+
+            // Ouvrir la fenêtre de pause
+            dialogue_Pause pause = new dialogue_Pause();
+            bool? result = pause.ShowDialog();
+
+            // Reprendre ou quitter selon l'action de l'utilisateur
+            if (result == true) // Reprendre
+            {
+                minuterie.Start(); // Redémarrer la minuterie
+            }
+            else if (result == false) // Quitter
+            {
+                Application.Current.Shutdown(); // Fermer l'application
+            }
         }
+
         private void Joueur_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
