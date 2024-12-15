@@ -9,6 +9,7 @@
     Width="400"
     Height="400"
     ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Canvas>
         <Button x:Name="buttRepre" Content="Reprendre" Canvas.Left="150" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" Click="buttRepre_Click">
