@@ -15,7 +15,7 @@
         <Button Content="Ok" Width="100" Height="25"
                 HorizontalAlignment="Center" VerticalAlignment="Top"
                 Click="CloseButton_Click" Canvas.Left="100" Canvas.Top="191"/>
-        <Label Content="Volume Musique" Canvas.Left="20" Canvas.Top="86" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label x:Name="labVolMus" Content="Volume Musique :" Canvas.Left="20" Canvas.Top="86" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Slider Name="VolumeSlider"
                         Minimum="0"
                         Maximum="1"
