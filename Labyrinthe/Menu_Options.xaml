@@ -15,6 +15,11 @@
                 HorizontalAlignment="Center" VerticalAlignment="Top"
                 Click="CloseButton_Click" Canvas.Left="100" Canvas.Top="200"/>
         <Label Content="Volume Musique" Canvas.Left="21" Canvas.Top="117" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Slider Name="VolumeSlider"
+                        Minimum="0"
+                        Maximum="1"
+                        Width="130"
+                        ValueChanged="VolumeSlider_ValueChanged" Canvas.Left="140" Canvas.Top="124" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 
 </Window>

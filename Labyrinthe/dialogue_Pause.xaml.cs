@@ -35,5 +35,11 @@ namespace Labyrinthe
             this.DialogResult = true; 
             this.Close();
         }
+
+        private void buttOption_pause_Click(object sender, RoutedEventArgs e)
+        {
+            var menuOptions = new Menu_Options();
+            menuOptions.ShowDialog();
+        }
     }
 }

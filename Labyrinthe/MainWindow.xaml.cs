@@ -18,7 +18,8 @@ namespace Labyrinthe
     public partial class MainWindow : Window
     {
         //Musique
-        private static MediaPlayer musique;
+        public static MediaPlayer musique;
+
         //VITESSE
         static readonly double VITESSE = 10;
         static readonly double VITESSERALENTI = 1;
@@ -51,17 +52,21 @@ namespace Labyrinthe
             Menu_Acceuil acceuil = new Menu_Acceuil();
             acceuil.ShowDialog();
             InitializeComponent();
+            InitMusique();
             InitMinuterie();
             
             //AnnimationPerso();
         }
         public static void InitMusique()
         {
-            musique = new MediaPlayer();
-            musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Son/musique.mp3"));
-            musique.MediaEnded += RelanceMusique;
-            musique.Volume = 0.5;
-            musique.Play();
+            if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
+            {
+                musique = new MediaPlayer();
+                musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Son/musique.mp3"));
+                musique.MediaEnded += RelanceMusique;
+                musique.Volume = 0.5;
+                musique.Play();
+            }
         }
         public static void RelanceMusique(object? sender, EventArgs e)
         {
