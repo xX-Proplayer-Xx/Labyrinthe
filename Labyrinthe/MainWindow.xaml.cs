@@ -52,7 +52,7 @@ namespace Labyrinthe
             acceuil.ShowDialog();
             InitializeComponent();
             InitMinuterie();
-            InitMusique();
+            
             //AnnimationPerso();
         }
         public static void InitMusique()
