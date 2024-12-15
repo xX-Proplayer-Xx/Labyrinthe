@@ -23,7 +23,6 @@
         <Button
             x:Name="bout_jouer"
             Canvas.Left="650"
-            Canvas.Top="480"
             Width="300"
             Height="100"
             HorizontalAlignment="Center"
@@ -32,31 +31,29 @@
             Click="JouerButton_Click"
             Content="JOUER"
             FontFamily="Bahnschrift SemiBold"
-            FontSize="40" />
+            FontSize="40" RenderTransformOrigin="0.319,0.58" Margin="0,510,0,0" />
         <Button
             x:Name="bout_option"
             Canvas.Left="650"
-            Canvas.Top="591"
             Width="300"
             Height="100"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="White"
             Content="OPTIONS"
             FontFamily="Bahnschrift SemiBold"
-            FontSize="40" Click="Options" />
+            FontSize="40" Click="Options" Margin="0,620,0,0" />
         <Button
             x:Name="bout_option_Copy"
             Canvas.Left="650"
-            Canvas.Top="700"
             Width="300"
             Height="100"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
             Background="White"
             Content="QUITTER"
             FontFamily="Bahnschrift SemiBold"
-            FontSize="40" Click="Bouton_Click_Quitter" />
+            FontSize="40" Click="Bouton_Click_Quitter" Margin="0,730,0,0" />
         <Canvas.Background>
             <ImageBrush ImageSource="/img/FOND_ECRAN/imageAcceuill.jpg" />
         </Canvas.Background>
