@@ -108,7 +108,8 @@ namespace Labyrinthe
             //InitMusique();
             InitMinuterie();
             InitTempsRestant();
-            
+            InitMusique();
+
         }
 
         public static void InitMusique()
@@ -496,15 +497,16 @@ namespace Labyrinthe
         }
         private void Pause()
         {
-            if (minuterie.IsEnabled && tempsRestant.IsEnabled)
+            minuterie.Stop();
+            dialogue_Pause pause = new dialogue_Pause();
+            bool? result = pause.ShowDialog();
+            if (result == true)
             {
-                minuterie.Stop();
-                tempsRestant.Stop();
+                minuterie.Start(); 
             }
-            else
+            else if (result == false) 
             {
-                minuterie.Start();
-                tempsRestant.Start();
+                Application.Current.Shutdown();
             }
         }
 
