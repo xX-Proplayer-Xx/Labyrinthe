@@ -96,11 +96,14 @@ namespace Labyrinthe
         private DispatcherTimer tempsRestant;
         private int secondesRestantes = TEMPS;
         private double vitesse = 10;
+
         public MainWindow()
         {
+
             Menu_Acceuil acceuil = new Menu_Acceuil();
             acceuil.ShowDialog();
             InitializeComponent();
+            InitMusique();
             InitMinuterie();
             InitTempsRestant();
             
@@ -485,6 +488,7 @@ namespace Labyrinthe
                 tempsRestant.Start();
             }
         }
+
         private void Joueur_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)

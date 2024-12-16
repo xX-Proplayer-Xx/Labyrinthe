@@ -17,26 +17,29 @@ namespace Labyrinthe
     /// <summary>
     /// Logique d'interaction pour Window1.xaml
     /// </summary>
-    public partial class Menu_Options : Window
+    public partial class dialogue_Pause : Window
     {
-        public Menu_Options()
+        public dialogue_Pause()
         {
             InitializeComponent();
-            VolumeSlider.Value = MainWindow.musique.Volume;
         }
-        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (MainWindow.musique != null)
-            {
-                MainWindow.musique.Volume = VolumeSlider.Value; // Ajuster le volume en temps réel
-            }
 
-
-        }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void butQuitt_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
 
+        private void buttRepre_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true; 
+            this.Close();
+        }
+
+        private void buttOption_pause_Click(object sender, RoutedEventArgs e)
+        {
+            var menuOptions = new Menu_Options();
+            menuOptions.ShowDialog();
+        }
     }
 }
