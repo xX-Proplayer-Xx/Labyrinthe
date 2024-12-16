@@ -497,11 +497,13 @@ namespace Labyrinthe
         private void Pause()
         {
             minuterie.Stop();
+            tempsRestant.Stop();
             dialogue_Pause pause = new dialogue_Pause();
             bool? result = pause.ShowDialog();
             if (result == true)
             {
-                minuterie.Start(); 
+                minuterie.Start();
+                tempsRestant.Start();
             }
             else if (result == false) 
             {
