@@ -10,6 +10,15 @@
 
   <ItemGroup>
     <None Remove="g0qsuoib.a0z~" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_1.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_2.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_3.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_4.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_5.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_6.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_7.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_8.png" />
+    <None Remove="img\AnnimationPapaNoel\PapaNoel_9.png" />
     <None Remove="img\Cadeaux\Gift.gif" />
     <None Remove="img\Cadeaux\Gift.png" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
@@ -25,7 +34,44 @@
     <None Remove="img\LUTTIN\LUTTIN-6.png" />
     <None Remove="img\LUTTIN\LUTTIN-7.png" />
     <None Remove="img\LUTTIN\LUTTIN-8.png" />
+    <None Remove="img\PapaNoel\PapaNoel.gif" />
+    <None Remove="img\PapaNoel\PapaNoel_Haut.png" />
     <None Remove="LUTTIN-1.png" />
+    <None Remove="PapaNoel_Haut.png" />
+    <None Remove="Sapin1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\AnnimationPapaNoel\PapaNoel_9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\PapaNoel\PapaNoel.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -72,7 +118,12 @@
     <Resource Include="img\LUTTIN\LUTTIN-8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\PapaNoel\PapaNoel_Haut.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="LUTTIN-1.png" />
+    <Resource Include="PapaNoel_Haut.png" />
+    <Resource Include="Sapin1.png" />
   </ItemGroup>
 
 </Project>

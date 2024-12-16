@@ -7,19 +7,71 @@ using System.Windows.Threading;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Media.Media3D;
+using System.Numerics;
+using System.Printing;
+
 
 
 namespace Labyrinthe
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-
+    //RESTE A FAIRE :
+    /// Spawn ennemie (PARTIEL)
+    /// PATHFINDER DES ENNEMIES 
+    /// MODIFICATION DE LA VITTESSE DANS LES BUISSONS (FONCTIONNE!!)
+    /// MESSAGES CADEAUX 
+    /// SON 
+    /// SAPIN
+    /// BACKGROUND
+    /// TIMER + IN CANVAS (fONCTIONNEL)
+    ///GERER LES SORTIES 
     public partial class MainWindow : Window
     {
+        //Position init papa noel
+        private double positionXJoueur = 10;
+        private double positionYJoueur = 842;
+
+        //Annimation PAPA NOEL
+        private int tempsPapaNoel = 48;
+        private string repertoirePapaNoel = "AnnimationPapaNoel";
+        private string nomImagePapaNoel = "PapaNoel_";
+
+        //Constante deplacement image 
+        static readonly int AGNLEHAUT = 0;
+        static readonly int AGNLEDROITE = 90 ;
+        static readonly int AGNLEGAUCHE = -90;
+        static readonly int AGNLEBAS= 180;
+        static readonly int AGNLEHAUTDROITE = 45;
+        static readonly int AGNLEHAUTGAUCHE = -45;
+        static readonly int AGNLEBASDROITE = 135;
+        static readonly int AGNLEBASGAUCHE = -135;
+
+        //Cadeaux
+        private int nbMaxCadeaux = 10;
+        private int nbCadeaux = 0;
+        private int totalCadeaux = 0;
+
+        ///Deplacements 
+        private bool goDroite, goGauche, goHaut, goBas;
+        
+
+        //Temps 
+        static readonly int TEMPS = 180;
+        
+        //SpawnLuttins
+        static readonly int LUTTINX = 800;
+        static readonly int LUTTINY = 300;
+        static readonly int CREATION = 200;
+        private int tempsCreationLutin = CREATION;
+
+        //Liste
+        private List<Luttin> luttins = new List<Luttin>();
+        private List<Rect> gifles = new List<Rect>();
+
         //VITESSE
-        static readonly double VITESSE = 10;
+        static readonly double VITESSE = 5;
         static readonly double VITESSERALENTI = 1;
+        static readonly int VITESSELUTIN = 2;
 
         //Intervale coordonnés cadeaux 
         static readonly int POSCADEAUX1 = 50;
@@ -30,17 +82,19 @@ namespace Labyrinthe
         private Random rndLeft = new Random();
         private Random rndTop = new Random();
         //Score
-        private int nbCadeaux = 0;
+        
         //Rectangle 
         Rectangle gifle = new Rectangle();
         //Coups
         private bool gifleActif = false;
         private bool tempsEntreCoup = true;
         private int tempsCoup = 3;
-
+        
         private int vitesseAnnimation = 1;
-        private bool goDroite, goGauche, goHaut, goBas,claque;
+        private bool claque;
         private DispatcherTimer minuterie;
+        private DispatcherTimer tempsRestant;
+        private int secondesRestantes = TEMPS;
         private double vitesse = 10;
         public MainWindow()
         {
@@ -48,9 +102,32 @@ namespace Labyrinthe
             acceuil.ShowDialog();
             InitializeComponent();
             InitMinuterie();
-            //AnnimationPerso();
+            InitTempsRestant();
+            
         }
+        private void InitTempsRestant()
+        {
+            progressBar.Maximum = TEMPS;    
+            tempsRestant = new DispatcherTimer();
+            tempsRestant.Interval = TimeSpan.FromSeconds(1);
+            tempsRestant.Tick += TempsRestantTick;
+            tempsRestant.Start();
+        }
+        private void TempsRestantTick(object sender, EventArgs e)
+        {
+            if (secondesRestantes > 0)
+            {
+                secondesRestantes--;
+                progressBar.Value = TEMPS - secondesRestantes;
+            }
+            else
+            {
+                tempsRestant.Stop();
+                minuterie.Stop();
 
+                MessageBox.Show("Temps ecoule");
+            }
+        }
         private void InitMinuterie()
         {
             minuterie = new DispatcherTimer();
@@ -61,44 +138,95 @@ namespace Labyrinthe
 
         private void Jeu(object? sender, EventArgs e)
         {
+            Rect joueurRect = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+            Lutin();
             Deplacement();
-            Collision();
+            Collision(joueurRect);
             CollisionCadeaux();
             CoupAttaque();
+            CollisionSapin();
+            NbPoint.Content = nbCadeaux;
+            
+            tempsCreationLutin--;
+            if (tempsCreationLutin <= 0)
+            {
+                ApparitionLuttins();
+                tempsCreationLutin = CREATION;
+                Console.WriteLine("Un lutin a été créé");
+
+            }
         }
         private void Deplacement()
         {
-            if (goDroite == true /*&&*/)
+            Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+            Rect rect2 = new Rect(Canvas.GetLeft(fondJeu), Canvas.GetTop(fondJeu), fondJeu.Width, fondJeu.Height);
+
+            //
+            if (goDroite == true && Canvas.GetLeft(Joueur) + (Joueur.Width *2) < Application.Current.MainWindow.Width)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Droite");
-                Console.ForegroundColor = ConsoleColor.White;
+                DeplacementImage(AGNLEDROITE);
+                //Console.ForegroundColor = ConsoleColor.Green;
+                //Console.WriteLine("Droite");
+                //Console.ForegroundColor = ConsoleColor.White;
                 Canvas.SetLeft(Joueur, Canvas.GetLeft(Joueur) + vitesse);
-            }
-            if (goGauche == true)
-            {
+                positionXJoueur = positionXJoueur + vitesse;
 
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Gauche");
-                Console.ForegroundColor = ConsoleColor.White;
+            }
+            if (goGauche == true && Canvas.GetLeft(Joueur) + (Joueur.Width*2) > 0)
+            {
+                DeplacementImage(AGNLEGAUCHE);
+                //Console.ForegroundColor = ConsoleColor.Blue;
+                //Console.WriteLine("Gauche");
+                //Console.ForegroundColor = ConsoleColor.White;
                 Canvas.SetLeft(Joueur, Canvas.GetLeft(Joueur) - vitesse);
+                positionXJoueur = positionXJoueur - vitesse;
             }
-            if (goHaut == true)
+            if (goHaut == true && Canvas.GetTop(Joueur) + (Joueur.Height*2) > 0)
             {
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Haut");
-                Console.ForegroundColor = ConsoleColor.White;
+                DeplacementImage(AGNLEHAUT);
+                //Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine("Haut");
+                //Console.ForegroundColor = ConsoleColor.White;
                 Canvas.SetTop(Joueur, Canvas.GetTop(Joueur) - vitesse);
+                positionYJoueur = positionYJoueur - vitesse;
             }
-            if (goBas == true)
+            if (goBas == true && Canvas.GetTop(Joueur) + (Joueur.Height*2) < Application.Current.MainWindow.Height)
+            {
+                DeplacementImage(AGNLEBAS);
+                //Console.ForegroundColor = ConsoleColor.Magenta;
+                //Console.WriteLine("Bas");
+                //Console.ForegroundColor = ConsoleColor.White;
+                Canvas.SetTop(Joueur, Canvas.GetTop(Joueur) + vitesse);
+                positionYJoueur = positionYJoueur + vitesse;
+            }
+            //DIAGONALES
+            if (goHaut == true && goDroite == true)
             {
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Bas");
-                Console.ForegroundColor = ConsoleColor.White;
-                Canvas.SetTop(Joueur, Canvas.GetTop(Joueur) + vitesse);
+                DeplacementImage(AGNLEHAUTDROITE);
             }
+            if (goHaut == true && goGauche == true)
+            {
+
+                DeplacementImage(AGNLEHAUTGAUCHE);
+            }
+            if (goBas == true && goDroite == true)
+            {
+
+                DeplacementImage(AGNLEBASDROITE);
+            }
+            if (goBas == true && goGauche == true)
+            {
+
+                DeplacementImage(AGNLEBASGAUCHE);
+            }
+            
+        }
+
+        private void DeplacementImage(int position)
+        {
+            RotateTransform rotateTransform = (RotateTransform)Joueur.RenderTransform;
+            rotateTransform.Angle = position;
         }
         private void Attaque()
         {
@@ -107,8 +235,6 @@ namespace Labyrinthe
                 Tag = "calque",
                 Height = 64,
                 Width = 64,
-
-
             };
             //ImageBrush attaque = new ImageBrush();
             //attaque.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Image/Attaque.png"));
@@ -117,11 +243,12 @@ namespace Labyrinthe
             Canvas.SetLeft(gifle, Canvas.GetLeft(Joueur) - 16);
             fondJeu.Children.Add(gifle);
             gifleActif = true;
-            tempsCoup = 4;
+            tempsCoup = 3;
             tempsEntreCoup = false;
         }
         private void CoupAttaque()
         {
+            fondJeu.Children.Remove(gifle);
             if (gifleActif)
             {
                 Rect maxiGifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
@@ -133,43 +260,38 @@ namespace Labyrinthe
                         gifleActif = false;
                     }
                 }
-                /// si le rectangle est un ennemi
-                /// création d’un rectangle correspondant à l’ennemi
-                /// on vérifie la collision
-                /// appel à la méthode IntersectsWith pour détecter la collision                 
-                //if (coupEpee.IntersectsWith(MonstreHItBox))
-                //{
-                //    coupEpeeActif = false;
-                //    monstres.Remove(monstre); // enlève la présence du monstre
-                //    MyCanvas.Children.Remove(monstre.sprite); // enlève graphiquement
-                //    monstreTue++;
-                //}
                 if (gifleActif == false)
                 {
                     tempsEntreCoup = true;
-                    fondJeu.Children.Remove(this.gifle);
+                    fondJeu.Children.Remove(gifle);
+                    
                 }
+                
             }
         }
-        private void Collision() // Pas mal en vrai mais bug un peu 
+        private void Collision(Rect hitBox)
         {
-            Rect playerRect = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+            bool collision = false;
             foreach (var element in fondJeu.Children)
             {
                 if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                 {
 
                     Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
-                    if (playerRect.IntersectsWith(mur))
+                    if (hitBox.IntersectsWith(mur))
                     {
-                        vitesse = VITESSERALENTI;
-                        Console.WriteLine("Collision !!!");
-
+                        collision = true;
                     }
-                    vitesse = VITESSE;
                 }
             }
-
+            if (collision == true)
+            {
+                vitesse = VITESSERALENTI;
+            }
+            if (collision == false)
+            {
+                vitesse = VITESSE;
+            }
         }
         private void CollisionCadeaux() // Utiliser le tag pour les 3 cadeaux 
         {
@@ -186,8 +308,6 @@ namespace Labyrinthe
                 {
                     //msmCadeaux.Visibility = Visibility.Hidden;
                 }
-
-
                 else
                 {
                     int posGauche = rndLeft.Next(POSCADEAUX1, POSCADEAUX2);
@@ -195,22 +315,141 @@ namespace Labyrinthe
                     Canvas.SetTop(Cadeaux1, posHaut);
                     Canvas.SetLeft(Cadeaux1, posGauche);
                     nbCadeaux++;
+                    totalCadeaux++;
                     Console.WriteLine("Collision Cadeaux");
-                    NbPoint.Content = nbCadeaux;
+                    
                 }
 
             }
 
         }
+        private void CollisionSapin()
+        {
+            Rect papanoel = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+            Rect sapin = new Rect (Canvas.GetLeft(Sapin), Canvas.GetTop(Sapin), Sapin.Width, Sapin.Height);
+            if (papanoel.IntersectsWith(sapin))
+            {
+                
+                if (nbCadeaux > 0)
+                {
+                    ///Modifier l'image du sapin en fonction du nombre de cadeaux apportés
+                    //ImageBrush sapinImage = new ImageBrush();
+                    //sapinImage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/Sapin/Sapin" + totalCadeaux+1 + ".png"));
+                    //Sapin.Fill = sapinImage;
+                    nbCadeaux--;
+                }
+                else {nbCadeaux = 0; }
+            }
+        }
 
+        private void ApparitionLuttins()
+        {
+            int x = 0;
+            int y = 0;
+            Rectangle nouveauLuttin = new Rectangle
+            {
 
+                Tag = "luttin",
+                Height = 32,
+                Width = 32,
+                Fill = Brushes.Red,
+                Stroke = Brushes.Black,
+            };
+            Canvas.SetTop(nouveauLuttin, y);
+            Canvas.SetLeft(nouveauLuttin, LUTTINX);
+            fondJeu.Children.Add(nouveauLuttin);
+            luttins.Add(new Luttin(nouveauLuttin, x, y,32,32, VITESSELUTIN));
 
+        }
+        private void Lutin()
+        {
+            Rect papanoel = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
+
+            for (int i = 0; i < luttins.Count(); i++)
+            {
+
+                Luttin lutin = luttins[i];
+                Rectangle x = lutin.sprite;
+                
+                double posistionXLutin = Canvas.GetLeft(x);
+                double posistionYLutin = Canvas.GetTop(x);
+                double vitesseLutin = VITESSELUTIN;
+                bool collision = false;
+                Rect LutinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                //Collision Lutin/Obstacle
+                foreach (var element in fondJeu.Children)
+                {
+                    if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
+                    {
+
+                        Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
+                        if (LutinHitBox.IntersectsWith(mur))
+                        {
+                            collision = true;
+                        }
+                    }
+                }
+                if (collision == true)
+                {
+                    vitesseLutin = VITESSERALENTI;
+                }
+                if (collision == false)
+                {
+                    vitesseLutin = VITESSE;
+                }
+                //Console.WriteLine($"Lutin Position: X={posistionXLutin}, Y={posistionYLutin} | Joueur Position: X={positionXJoueur}, Y={positionYJoueur}");
+                if (positionXJoueur > posistionXLutin && positionXJoueur != posistionXLutin)
+                {
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) + vitesseLutin);
+                    posistionXLutin = posistionXLutin + vitesseLutin;
+                    //Console.WriteLine("Le lutin se deplace vers la gauche");
+                }
+                else
+                {
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) - vitesseLutin);
+                    posistionXLutin = posistionXLutin - vitesseLutin;
+                    //Console.WriteLine("Le lutin se deplace vers la droite");
+                }
+                if (positionYJoueur > posistionYLutin && positionYJoueur != posistionYLutin)
+                {
+                    Canvas.SetTop(x, Canvas.GetTop(x) + vitesseLutin);
+                    posistionYLutin = posistionYLutin + vitesseLutin;
+                    //Console.WriteLine("Le lutin se deplace vers le bas");
+                }
+                else
+                {
+                    Canvas.SetTop(x, Canvas.GetTop(x) - vitesseLutin);
+                    posistionYLutin = posistionYLutin - vitesseLutin;
+                    //Console.WriteLine("Le lutin se deplace vers le haut");
+                }
+                //Vol de Cadeaux
+                if (LutinHitBox.IntersectsWith(papanoel))
+                {
+                    //Console.WriteLine("Cadeux volé");
+                    nbCadeaux--;
+                    luttins.Remove(lutin);
+                    fondJeu.Children.Remove(lutin.sprite);
+                    if (nbCadeaux < 0)
+                    {
+                        nbCadeaux = 0;
+                    }
+                }
+                //Collision Lutin/Gifle
+                Rect gifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
+                if (gifle.IntersectsWith(LutinHitBox))
+                {
+                    //Console.WriteLine("Lutin giflé");
+                    luttins.Remove(lutin); 
+                    fondJeu.Children.Remove(lutin.sprite);
+                }
+            }
+        }
 
         private void Joueur_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
             {
-                claque = true;
+                Attaque();
             }
             if (e.Key == Key.Z)
             {
@@ -235,10 +474,16 @@ namespace Labyrinthe
         }
         private void Pause()
         {
-            if (minuterie.IsEnabled)
+            if (minuterie.IsEnabled && tempsRestant.IsEnabled)
+            {
                 minuterie.Stop();
+                tempsRestant.Stop();
+            }
             else
+            {
                 minuterie.Start();
+                tempsRestant.Start();
+            }
         }
         private void Joueur_KeyUp(object sender, KeyEventArgs e)
         {
