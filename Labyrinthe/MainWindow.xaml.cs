@@ -27,6 +27,8 @@ namespace Labyrinthe
     ///GERER LES SORTIES 
     public partial class MainWindow : Window
     {
+        //Musique
+        public static MediaPlayer musique;
         //Position init papa noel
         private double positionXJoueur = 10;
         private double positionYJoueur = 842;
@@ -107,6 +109,23 @@ namespace Labyrinthe
             InitMinuterie();
             InitTempsRestant();
             
+        }
+
+        public static void InitMusique()
+        {
+            if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
+            {
+                musique = new MediaPlayer();
+                musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Son/musique.mp3"));
+                musique.MediaEnded += RelanceMusique;
+                musique.Volume = 0.5;
+                musique.Play();
+            }
+        }
+        public static void RelanceMusique(object? sender, EventArgs e)
+        {
+            musique.Position = TimeSpan.Zero;
+            musique.Play();
         }
         private void InitTempsRestant()
         {
