@@ -105,7 +105,7 @@ namespace Labyrinthe
             Menu_Acceuil acceuil = new Menu_Acceuil();
             acceuil.ShowDialog();
             InitializeComponent();
-            //InitMusique();
+            InitMusique();
             InitMinuterie();
             InitTempsRestant();
             InitMusique();
