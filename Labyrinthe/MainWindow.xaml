@@ -96,14 +96,14 @@
 
         <Rectangle
             x:Name="BackAttente"
-            Canvas.Top="-28"
-            Width="1600"
-            Height="932"
-            HorizontalAlignment="Center"
+            Canvas.Top="55"
+            Width="1384"
+            Height="774"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Fill="Black"
             Opacity="0.7"
-            Stroke="Black" />
+            Stroke="Black" Canvas.Left="108" />
         <Label
             Height="100"
             Width="770"
@@ -178,6 +178,14 @@
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <Setter Property="Foreground" Value="Black" />
                         <Setter Property="Background" Value="Red" />
+                    </Style>
+                </ComboBoxItem.Style>
+            </ComboBoxItem>
+            <ComboBoxItem Content="Illimité">
+                <ComboBoxItem.Style>
+                    <Style TargetType="{x:Type ComboBoxItem}">
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="Background" Value="Purple" />
                     </Style>
                 </ComboBoxItem.Style>
             </ComboBoxItem>

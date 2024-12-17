@@ -515,7 +515,7 @@ namespace Labyrinthe
                 vitesseDesLutins = VITESSELUTINNORMALE;
                 tempsCreationLutin = 200;
                 objectifCadeaux = OBJCADEAUXFACILE;
-                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
+                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Bonne chance !");
 
 
             }
@@ -525,7 +525,16 @@ namespace Labyrinthe
                 vitesseDesLutins = VITESSELUTINDIFFICILE;
                 tempsCreationLutin = 100;
                 objectifCadeaux = OBJCADEAUXFACILE;
-                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
+                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Courage à vous !");
+
+
+            }
+            if (selectedDifficulty == "Illimité")
+            {
+                vitesse = 10;
+                vitesseDesLutins = VITESSELUTINNORMALE;
+                tempsCreationLutin = 300;
+                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, N'y passer pas trop de temps XD");
 
 
             }
