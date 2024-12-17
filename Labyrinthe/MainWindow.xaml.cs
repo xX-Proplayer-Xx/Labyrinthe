@@ -255,7 +255,7 @@ namespace Labyrinthe
             EndPanel.Visibility = Visibility.Hidden;
 
             //remet l'image du sapin a celle de base
-            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin1.png");
+            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin1.png");
 
             // Afficher les commandes initiales si nécessaire
             Console.WriteLine("Le jeu a été redémarré !");
@@ -291,7 +291,7 @@ namespace Labyrinthe
             }
             if (1 == cadeauxRamene)
             {
-                CheckWinCondition();
+                ConditionsVictoire();
             }
         }
         private void Deplacement()
@@ -382,11 +382,7 @@ namespace Labyrinthe
             RotateTransform rotateTransform = (RotateTransform)Joueur.RenderTransform;
             rotateTransform.Angle = position;
         }
-        //private void DeplacementImageLutin(int position, Rectangle perso)
-        //{
-        //    RotateTransform rotateTransform = (RotateTransform)perso.RenderTransform;
-        //    rotateTransform.Angle = position;
-        //}
+        
         private void Attaque()
         {
             gifle = new Rectangle
@@ -440,12 +436,12 @@ namespace Labyrinthe
 
                     ImageBrush murImage = new ImageBrush
                     {
-                        ImageSource = new BitmapImage(new Uri("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
+                        ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
                     };
                     murImage.Stretch = Stretch.Fill;
                     rect.Fill = murImage;
-
-                    Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
+                
+                Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
                     
                     if (hitBox.IntersectsWith(mur))
                     {
@@ -506,46 +502,46 @@ namespace Labyrinthe
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             Console.WriteLine("L'image est bien changé");
                             break;
-                        case 2:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin3.png");
-                            imageActuelle = 2;
-                            break;
-                        case 3:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin4.png");
-                            imageActuelle = 3;
-                            break;
-                        case 4:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin5.png");
-                            imageActuelle = 4;
-                            break;
-                        case 5:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin6.png");
-                            imageActuelle = 5;
-                            break;
-                        case 6:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin7.png");
-                            imageActuelle = 6;
-                            break;
-                        case 7:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
-                            imageActuelle = 7;
-                            break;
-                        case 8:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
-                            imageActuelle = 8;
-                            break;
-                        case 9:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin9.png");
-                            imageActuelle = 9;
-                            break;
-                        case 10:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin10.png");
-                            imageActuelle = 10;
-                            break;
+                        //case 2:
+                        //    SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                        //    imageActuelle = 2;
+                        //    break;
+                        //case 3:
+                        //    SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                        //    imageActuelle = 3;
+                        //    break;
+                        //case 4:
+                        //    SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                        //    imageActuelle = 4;
+                        //    break;
+                        //case 5:
+                        //    SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                        //    imageActuelle = 5;
+                        //    break;
+                        //case 6:
+                        //    SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                        //    imageActuelle = 6;
+                        //    break;
+                        //case 7:
+                        //    SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                        //    imageActuelle = 7;
+                        //    break;
+                        //case 8:
+                        //    SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                        //    imageActuelle = 8;
+                        //    break;
+                        //case 9:
+                        //    SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                        //    imageActuelle = 9;
+                        //    break;
+                        //case 10:
+                        //    SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                        //    imageActuelle = 10;
+                        //    break;
                         
                     }
 
@@ -555,7 +551,7 @@ namespace Labyrinthe
             }
         }
 
-        private void CheckWinCondition()
+        private void ConditionsVictoire()
         {
             int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
             int minutes = tempsEcoule / 60;
@@ -670,7 +666,8 @@ namespace Labyrinthe
                     posistionYLutin = posistionYLutin - vitesseLutin;
                     Console.WriteLine("Le lutin se deplace vers le haut");
                 }
-                Diagonale(goGLutin,goDLutin,goBLutin,goHLutin);
+                
+                RotationImageLutin(x, goGLutin, goDLutin, goBLutin, goHLutin);
                 //Vol de Cadeaux
                 if (LutinHitBox.IntersectsWith(papanoel))
                 {
@@ -693,7 +690,50 @@ namespace Labyrinthe
                 }
             }
         }
+        private void RotationImageLutin(Rectangle lutin, bool goGLutin, bool goDLutin, bool goBLutin, bool goHLutin)
+        {
+            double angle = 0;
 
+            if (goGLutin && !goBLutin && !goHLutin) // Gauche
+            {
+                angle = AGNLEGAUCHE;
+            }
+            else if (goDLutin && !goBLutin && !goHLutin) // Droite
+            {
+                angle = AGNLEDROITE;
+            }
+            else if (goBLutin && !goGLutin && !goDLutin) // Bas
+            {
+                angle = AGNLEBAS;
+            }
+            else if (goHLutin && !goGLutin && !goDLutin) // Haut
+            {
+                angle = AGNLEHAUT;
+            }
+            else if (goGLutin && goHLutin) // Diagonale haut-gauche
+            {
+                angle = AGNLEHAUTGAUCHE;
+            }
+            else if (goDLutin && goHLutin) // Diagonale haut-droite
+            {
+                angle = AGNLEHAUTDROITE;
+            }
+            else if (goGLutin && goBLutin) // Diagonale bas-gauche
+            {
+                angle = AGNLEBASGAUCHE;
+            }
+            else if (goDLutin && goBLutin) // Diagonale bas-droite
+            {
+                angle = AGNLEBASDROITE;
+            }
+
+            // Appliquer la rotation au lutin
+            RotateTransform rotation = new RotateTransform(angle);
+            lutin.RenderTransform = rotation;
+
+            // Définir le centre de rotation au milieu de l'image
+            lutin.RenderTransformOrigin = new Point(0.5, 0.5);
+        }
         private void SelectionDifficulte(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -756,7 +796,7 @@ namespace Labyrinthe
         {
             tempsSkinLutin += 1;
             ImageBrush lutinCostume = new ImageBrush();
-            lutinCostume.ImageSource = new BitmapImage(new Uri("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ".png"));
+            lutinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ".png"));
             nomObjet.Fill = lutinCostume;
             
             if (tempsSkinLutin == 8)

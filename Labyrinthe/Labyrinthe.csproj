@@ -16,6 +16,7 @@
     <None Remove="BushUpdate2.png" />
     <None Remove="g0qsuoib.a0z~" />
     <None Remove="Gift.png" />
+    <None Remove="img\Acceuil\lettreChoix.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_1.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_2.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_3.png" />
@@ -52,6 +53,7 @@
     <None Remove="img\Porte\porte.png" />
     <None Remove="Lettre.png" />
     <None Remove="Lettre1.png" />
+    <None Remove="lettreChoix.png" />
     <None Remove="LUTTIN-1.png" />
     <None Remove="PapaNoel_Haut.png" />
     <None Remove="Sapin.png" />
@@ -61,6 +63,7 @@
   <ItemGroup>
     <Resource Include="BushUpdate2.png" />
     <Resource Include="Gift.png" />
+    <Resource Include="img\Acceuil\lettreChoix.png" />
     <Resource Include="img\AnnimationPapaNoel\PapaNoel_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -162,6 +165,7 @@
     <Resource Include="img\Porte\porte.png" />
     <Resource Include="Lettre.png" />
     <Resource Include="Lettre1.png" />
+    <Resource Include="lettreChoix.png" />
     <Resource Include="Sapin1.png" />
   </ItemGroup>
 
