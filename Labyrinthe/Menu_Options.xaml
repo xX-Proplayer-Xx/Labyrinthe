@@ -21,7 +21,7 @@
                 Minimum="0"
                 Maximum="1"
                 Width="130"
-                ValueChanged="VolumeSlider_ValueChanged" Canvas.Left="140" Canvas.Top="90" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                 Canvas.Left="140" Canvas.Top="90" HorizontalAlignment="Center" VerticalAlignment="Top"/>
     </Canvas>
 
 </Window>
