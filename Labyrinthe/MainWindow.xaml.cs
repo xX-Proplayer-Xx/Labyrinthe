@@ -25,7 +25,7 @@ namespace Labyrinthe
     {
         ///DIFFICULTE
         //FACILE
-        static readonly int OBJCADEAUXFACILE = 10;
+        static readonly int OBJCADEAUXFACILE = 1;
         //NORMALE
         static readonly int OBJCADEAUXNORMALE = 15;
         //DIFFICILE
@@ -289,7 +289,7 @@ namespace Labyrinthe
                 Console.WriteLine("Un lutin a été créé");
 
             }
-            if (nbMaxCadeaux == cadeauxRamene)
+            if (1 == cadeauxRamene)
             {
                 CheckWinCondition();
             }
@@ -440,7 +440,7 @@ namespace Labyrinthe
 
                     ImageBrush murImage = new ImageBrush
                     {
-                        ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
+                        ImageSource = new BitmapImage(new Uri("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
                     };
                     murImage.Stretch = Stretch.Fill;
                     rect.Fill = murImage;
@@ -506,44 +506,44 @@ namespace Labyrinthe
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin3.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin3.png");
                             imageActuelle = 2;
                             break;
                         case 3:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin4.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin4.png");
                             imageActuelle = 3;
                             break;
                         case 4:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin5.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin5.png");
                             imageActuelle = 4;
                             break;
                         case 5:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin6.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin6.png");
                             imageActuelle = 5;
                             break;
                         case 6:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin7.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin7.png");
                             imageActuelle = 6;
                             break;
                         case 7:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 7;
                             break;
                         case 8:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 8;
                             break;
                         case 9:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin9.png");
                             imageActuelle = 9;
                             break;
                         case 10:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin11.png");
+                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin10.png");
                             imageActuelle = 10;
                             break;
                         
@@ -756,7 +756,7 @@ namespace Labyrinthe
         {
             tempsSkinLutin += 1;
             ImageBrush lutinCostume = new ImageBrush();
-            lutinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-"+ tempsSkinLutin + ".png"));
+            lutinCostume.ImageSource = new BitmapImage(new Uri("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ".png"));
             nomObjet.Fill = lutinCostume;
             
             if (tempsSkinLutin == 8)
