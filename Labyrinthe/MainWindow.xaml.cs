@@ -65,10 +65,12 @@ namespace Labyrinthe
 
         ///Deplacements 
         private bool goDroite, goGauche, goHaut, goBas;
-
+        private bool goDLutin, goGLutin, goBLutin, goHLutin;
 
         //Temps 
         static readonly int TEMPS = 180;
+        private int tempsSkinLutin = 0;
+        private int tempsSkinPapaNoel = 0;
 
         //SpawnLuttins
         static readonly int LUTTINX = 800;
@@ -298,9 +300,7 @@ namespace Labyrinthe
         private void Deplacement()
         {
             Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
-            Rect rect2 = new Rect(Canvas.GetLeft(fondJeu), Canvas.GetTop(fondJeu), fondJeu.Width, fondJeu.Height);
-
-            //
+            //HAUT,GAUCHE,BAS,DROITE
             if (goDroite == true && Canvas.GetLeft(Joueur) + (Joueur.Width * 2) < Application.Current.MainWindow.Width)
             {
                 DeplacementImage(AGNLEDROITE);
@@ -339,28 +339,46 @@ namespace Labyrinthe
                 positionYJoueur = positionYJoueur + vitesse;
             }
             //DIAGONALES
-            if (goHaut == true && goDroite == true)
+            Diagonale(goGauche, goDroite, goBas, goHaut);
+        }
+        private void Diagonale( bool gauche, bool droite, bool bas, bool haut)
+        {
+            if (haut == true && droite == true)
             {
 
                 DeplacementImage(AGNLEHAUTDROITE);
             }
-            if (goHaut == true && goGauche == true)
+            if (haut == true && gauche == true)
             {
 
                 DeplacementImage(AGNLEHAUTGAUCHE);
             }
-            if (goBas == true && goDroite == true)
+            if (bas == true && droite == true)
             {
 
                 DeplacementImage(AGNLEBASDROITE);
             }
-            if (goBas == true && goGauche == true)
+            if (bas == true && gauche == true)
             {
 
                 DeplacementImage(AGNLEBASGAUCHE);
             }
+        }
+
+
+
+
+
+
+        private void DeplacementLutin()
+        {
 
         }
+
+
+
+
+
 
         private void DeplacementImage(int position)
         {
@@ -553,8 +571,6 @@ namespace Labyrinthe
                 Tag = "luttin",
                 Height = 32,
                 Width = 32,
-                Fill = Brushes.Red,
-                Stroke = Brushes.Black,
             };
             Canvas.SetTop(nouveauLutin, y);
             Canvas.SetLeft(nouveauLutin, LUTTINX);
@@ -583,6 +599,8 @@ namespace Labyrinthe
                 //Collision Lutin/Obstacle
                 foreach (var element in fondJeu.Children)
                 {
+                    LutinImage(x);
+                    
                     if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                     {
 
@@ -604,28 +622,37 @@ namespace Labyrinthe
                 //Console.WriteLine($"Lutin Position: X={posistionXLutin}, Y={posistionYLutin} | Joueur Position: X={positionXJoueur}, Y={positionYJoueur}");
                 if (positionXJoueur > posistionXLutin && positionXJoueur != posistionXLutin)
                 {
+                    DeplacementImage(AGNLEDROITE);
+                    goDLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + vitesseLutin);
                     posistionXLutin = posistionXLutin + vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers la gauche");
+                    Console.WriteLine("Le lutin se deplace vers la droite");
                 }
                 else
                 {
+                    DeplacementImage(AGNLEGAUCHE);
+                    goGLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - vitesseLutin);
                     posistionXLutin = posistionXLutin - vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers la droite");
+                    Console.WriteLine("Le lutin se deplace vers la gauche");
                 }
                 if (positionYJoueur > posistionYLutin && positionYJoueur != posistionYLutin)
                 {
+                    DeplacementImage(AGNLEBAS);
+                    goBLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) + vitesseLutin);
                     posistionYLutin = posistionYLutin + vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers le bas");
+                    Console.WriteLine("Le lutin se deplace vers le bas");
                 }
                 else
                 {
+                    DeplacementImage(AGNLEHAUT);
+                    goHLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) - vitesseLutin);
                     posistionYLutin = posistionYLutin - vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers le haut");
+                    Console.WriteLine("Le lutin se deplace vers le haut");
                 }
+                Diagonale(goGLutin,goDLutin,goBLutin,goHLutin);
                 //Vol de Cadeaux
                 if (LutinHitBox.IntersectsWith(papanoel))
                 {
@@ -696,7 +723,6 @@ namespace Labyrinthe
 
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             tempsRestant.Start();
@@ -707,6 +733,30 @@ namespace Labyrinthe
             LabAttente.Visibility = Visibility.Hidden;
 
         }
+
+        private void LutinImage(Rectangle nomObjet)
+        {
+            tempsSkinLutin += 1;
+            ImageBrush lutinCostume = new ImageBrush();
+            lutinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-"+ tempsSkinLutin + ".png"));
+            nomObjet.Fill = lutinCostume;
+            
+            if (tempsSkinLutin == 8)
+            {
+                tempsSkinLutin = 1;
+            }
+        }
+        //private void PapaNoelSkin()
+        //{
+        //    tempsSkinLutin += 1;
+        //    ImageBrush assassinCostume = new ImageBrush();
+        //    assassinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ").png"));
+        //    Vitrine.Fill = assassinCostume;
+        //    if (tempsSkinLutin == 8)
+        //    {
+        //        tempsSkinLutin = 1;
+        //    }
+        //}
 
         private void Joueur_KeyDown(object sender, KeyEventArgs e)
         {
