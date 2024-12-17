@@ -171,7 +171,7 @@ namespace Labyrinthe
             {
                 tempsRestant.Stop();
                 minuterie.Stop();
-                MessageBox.Show("Temps ecoule, vous avez perdu.");
+                
             }
         }
         private void InitMinuterie()
@@ -582,7 +582,9 @@ namespace Labyrinthe
             }
             else if (result == false)
             {
-                Application.Current.Shutdown();
+                pause.Close();
+                minuterie.Start();
+                tempsRestant.Start();
             }
         }
 

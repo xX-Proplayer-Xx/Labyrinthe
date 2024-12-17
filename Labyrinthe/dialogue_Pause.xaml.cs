@@ -15,7 +15,7 @@ namespace Labyrinthe
         private void butQuitt_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void buttRepre_Click(object sender, RoutedEventArgs e)
