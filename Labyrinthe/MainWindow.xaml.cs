@@ -22,6 +22,17 @@ namespace Labyrinthe
     ///GERER LES SORTIES 
     public partial class MainWindow : Window
     {
+        ///DIFFICULTE
+        //FACILE
+        static readonly int OBJCADEAUXFACILE = 10;
+        //NORMALE
+        static readonly int OBJCADEAUXNORMALE = 15;
+        //DIFFICILE
+        static readonly int OBJCADEAUXDIFFICILE = 20;
+
+        //Condition WIN
+        private int objectifCadeaux = 0;
+
         //Lutin
         private int nbLutin = 0;
 
@@ -107,6 +118,11 @@ namespace Labyrinthe
             InitMinuterie();
             InitTempsRestant();
             InitMusique();
+            if (cadeauxRamene == objectifCadeaux)
+            {
+                //WIN
+            }
+            
             
 
         }
@@ -150,8 +166,7 @@ namespace Labyrinthe
             {
                 tempsRestant.Stop();
                 minuterie.Stop();
-
-                MessageBox.Show("Temps ecoule");
+                MessageBox.Show("Temps ecoule, vous avez perdu.");
             }
         }
         private void InitMinuterie()
@@ -172,6 +187,7 @@ namespace Labyrinthe
             CoupAttaque();
             CollisionSapin();
             NbPoint.Content = nbCadeaux;
+            NbPointDepose.Content = cadeauxRamene;
 
             tempsCreationLutin--;
             if (tempsCreationLutin <= 0)
@@ -328,21 +344,16 @@ namespace Labyrinthe
             {
                 if (nbCadeaux == 3 && rect1.IntersectsWith(rect2))
                 {
-                    MessageBox.Show("Vous ne pouvez pas porter plus de 3 cadeaux à la fois");
-                    //msmCadeaux.Visibility = Visibility.Visible;
-                }
-                else if (nbCadeaux == 3 && !(rect1.IntersectsWith(rect2)))
-                {
-                    //msmCadeaux.Visibility = Visibility.Hidden;
+                    msmCadeaux.Visibility = Visibility.Visible;
                 }
                 else
                 {
+                    msmCadeaux.Visibility = Visibility.Hidden;
                     int posGauche = rndLeft.Next(POSCADEAUX1, POSCADEAUX2);
                     int posHaut = rndTop.Next(POSCADEAUY1, POSCADEAUY2);
                     Canvas.SetTop(Cadeaux1, posHaut);
                     Canvas.SetLeft(Cadeaux1, posGauche);
                     nbCadeaux++;
-                    cadeauxRamene++;
                     Console.WriteLine("Collision Cadeaux");
 
                 }
@@ -364,6 +375,7 @@ namespace Labyrinthe
                     //sapinImage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/Sapin/Sapin" + totalCadeaux+1 + ".png"));
                     //Sapin.Fill = sapinImage;
                     nbCadeaux--;
+                    cadeauxRamene++;
                 }
                 else { nbCadeaux = 0; }
             }

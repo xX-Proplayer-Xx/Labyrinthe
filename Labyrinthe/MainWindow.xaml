@@ -35,7 +35,11 @@
             Height="32"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            Stretch="Fill" />
+            Stretch="Fill"
+            Source="/img/Cadeaux/Gift.png"
+            >
+
+        </Image>
         <Label
             x:Name="NbPointLab"
             Canvas.Top="-2"
@@ -67,13 +71,23 @@
             VerticalAlignment="Top" />
         <Label
             x:Name="msmCadeaux"
-            Canvas.Left="497"
-            Canvas.Top="405"
+            Canvas.Left="517"
+            Canvas.Top="15"
             Background="Red"
-            Content="Vous ne pouvez pas prendre plus de cadeaux"
+            Content="Vous ne pouvez pas prendre plus de 3 cadeaux"
             FontSize="30"
             Foreground="White"
-            Visibility="Hidden" />
+            Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Label
+            x:Name="NbPointDeposeLab"
+            Canvas.Top="40"
+            Content="Cadeaux déposé :"
+            FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Label
+            x:Name="NbPointDepose"
+            Canvas.Left="243"
+            Content="0"
+            FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="40" />
 
 
 
