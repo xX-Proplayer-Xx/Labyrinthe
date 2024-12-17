@@ -43,6 +43,8 @@
     <None Remove="img\LUTTIN\LUTTIN-8.png" />
     <None Remove="img\PapaNoel\PapaNoel.gif" />
     <None Remove="img\PapaNoel\PapaNoel_Haut.png" />
+    <None Remove="Lettre.png" />
+    <None Remove="Lettre1.png" />
     <None Remove="LUTTIN-1.png" />
     <None Remove="PapaNoel_Haut.png" />
     <None Remove="Sapin.png" />
@@ -134,6 +136,8 @@
     <Resource Include="img\PapaNoel\PapaNoel_Haut.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Lettre.png" />
+    <Resource Include="Lettre1.png" />
   </ItemGroup>
 
 </Project>

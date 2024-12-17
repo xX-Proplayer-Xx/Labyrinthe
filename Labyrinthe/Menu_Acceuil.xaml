@@ -55,6 +55,23 @@
             Content="QUITTER"
             FontFamily="Bahnschrift SemiBold"
             FontSize="40" Click="Bouton_Click_Quitter" Margin="0,730,0,0" />
+        <Rectangle Name="RegleJeuImg" Height="642" Canvas.Left="-20"  Canvas.Top="-32" Width="548" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Lettre1.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content="Règles du jeux" Canvas.Left="211" Canvas.Top="192"/>
+        <TextBlock Canvas.Left="138" TextWrapping="Wrap" Text="" Canvas.Top="218" HorizontalAlignment="Left" VerticalAlignment="Center">
+            Vous devrez ramener les cadeaux disséminé <LineBreak/>
+            sur la carte au sapin <LineBreak/>
+            <LineBreak/>
+            Des lutins maléfiques essaierons de vous <LineBreak/>
+            empécher d'atteindre votre but en vous <LineBreak/>
+            volant les cadeaux que vous avez ramasé<LineBreak/>
+            pour ensuite disparaitre avec.<LineBreak/>
+            
+        </TextBlock>
+
         <Canvas.Background>
             <ImageBrush ImageSource="/img/FOND_ECRAN/imageAcceuill.jpg" />
         </Canvas.Background>

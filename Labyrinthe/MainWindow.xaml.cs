@@ -539,7 +539,7 @@ namespace Labyrinthe
             ButJouerAttente.Visibility = Visibility.Hidden;
             difficulteComboBox.Visibility = Visibility.Hidden;
             LabAttente.Visibility = Visibility.Hidden;
-            ButRegles.Visibility = Visibility.Hidden;
+           
         }
 
         private void Joueur_KeyDown(object sender, KeyEventArgs e)
