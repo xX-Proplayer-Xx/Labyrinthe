@@ -414,10 +414,19 @@ namespace Labyrinthe
             bool collision = false;
             foreach (var element in fondJeu.Children)
             {
+
                 if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                 {
 
+                    ImageBrush murImage = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
+                    };
+                    murImage.Stretch = Stretch.Fill;
+                    rect.Fill = murImage;
+
                     Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
+                    
                     if (hitBox.IntersectsWith(mur))
                     {
                         collision = true;
@@ -477,48 +486,48 @@ namespace Labyrinthe
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin3.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin3.png");
                             imageActuelle = 2;
                             break;
                         case 3:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin4.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin4.png");
                             imageActuelle = 3;
                             break;
                         case 4:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin5.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin5.png");
                             imageActuelle = 4;
                             break;
                         case 5:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin6.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin6.png");
                             imageActuelle = 5;
                             break;
                         case 6:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin7.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin7.png");
                             imageActuelle = 6;
                             break;
                         case 7:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 7;
                             break;
                         case 8:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin9.png");
                             imageActuelle = 8;
                             break;
                         case 9:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin10.png");
                             imageActuelle = 9;
                             break;
                         case 10:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin11.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin11.png");
                             imageActuelle = 10;
                             break;
                         case 11:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin12.png");
+                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin12.png");
                             imageActuelle = 11;
                             break;
                     }
@@ -696,7 +705,7 @@ namespace Labyrinthe
             ButJouerAttente.Visibility = Visibility.Hidden;
             difficulteComboBox.Visibility = Visibility.Hidden;
             LabAttente.Visibility = Visibility.Hidden;
-           
+
         }
 
         private void Joueur_KeyDown(object sender, KeyEventArgs e)

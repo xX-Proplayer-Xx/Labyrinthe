@@ -60,10 +60,11 @@
                 <ImageBrush ImageSource="/Lettre1.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Règles du jeux" FontWeight="Bold" Canvas.Left="211" Canvas.Top="192"/>
-        <TextBlock Canvas.Left="131" FontWeight="SemiBold" TextWrapping="Wrap" Text="" Canvas.Top="218" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Label Content="Règles du jeux" FontWeight="Bold" Canvas.Left="131" Canvas.Top="171"/>
+        <TextBlock Canvas.Left="133" FontWeight="SemiBold" TextWrapping="Wrap" Text="" Canvas.Top="202" HorizontalAlignment="Left" VerticalAlignment="Top">
             Vous devrez ramener les cadeaux disséminé <LineBreak/>
-            sur la carte au sapin <LineBreak/>
+            sur la carte au sapin dans un temps <LineBreak/>
+            imparti.<LineBreak/>
             <LineBreak/>
             Des lutins maléfiques essaieront de vous <LineBreak/>
             empêcher d'atteindre votre but en vous <LineBreak/>
@@ -72,7 +73,7 @@
             <LineBreak/>
             Prenez garde, les buissons vous ralentissent<LineBreak/>
             mais si vous êtes assez determiné, vous <LineBreak/>
-            pouvez passer à travers<LineBreak/>
+            pouvez passer à travers.<LineBreak/>
             <LineBreak/>
             Vous pouvez frapper les lutins pour vous <LineBreak/>
             offrir un peux de repis en les renvoyant <LineBreak/>

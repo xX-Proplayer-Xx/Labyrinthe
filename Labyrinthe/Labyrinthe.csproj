@@ -26,6 +26,11 @@
     <None Remove="img\AnnimationPapaNoel\PapaNoel_8.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_9.png" />
     <None Remove="img\Buisson\Buisson.png" />
+    <None Remove="img\Buisson\bush.png" />
+    <None Remove="img\Buisson\BushUpdate.png" />
+    <None Remove="img\Buisson\BushUpdate1.png" />
+    <None Remove="img\Buisson\BushUpdate2.png" />
+    <None Remove="img\Buisson\Sapin.png" />
     <None Remove="img\Cadeaux\Gift.gif" />
     <None Remove="img\Cadeaux\Gift.png" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
@@ -85,6 +90,21 @@
     <Resource Include="img\Buisson\Buisson.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\Buisson\bush.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Buisson\BushUpdate.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Buisson\BushUpdate1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Buisson\BushUpdate2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Buisson\Sapin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="img\FOND_ECRAN\imgOption.jpg" />
     <Resource Include="img\PapaNoel\PapaNoel.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -140,6 +160,7 @@
     </Resource>
     <Resource Include="Lettre.png" />
     <Resource Include="Lettre1.png" />
+    <Resource Include="Sapin1.png" />
   </ItemGroup>
 
 </Project>
