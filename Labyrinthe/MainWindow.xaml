@@ -13,7 +13,28 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Canvas x:Name="fondJeu" Background="#FFB9B9B9">
-        
+        <StackPanel Name="EndPanel" Visibility="Hidden"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Width="296" Canvas.Left="656" Canvas.Top="480" Height="174" Background="Black" Panel.ZIndex="1" >
+            <TextBlock x:Name="TextBlockRes" HorizontalAlignment="Center"
+                       TextWrapping="Wrap" 
+                       Text="" 
+                       Foreground="White" FontSize="20" Margin="0,0,0,20"/>
+            <TextBlock x:Name="TempsEcouleText" HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="White"
+                       Text="Temps Écoulé : 00:00" Margin="0,0,0,20"/>
+            <Button x:Name="RejouerButton"
+                    Content="Rejouer"
+                    Width="150"
+                    Click="RejouerButton_Click" Canvas.Left="73" Canvas.Top="87" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="White" Background="White" Margin="0,0,0,20"/>
+
+            <Button x:Name="MenuButton"
+                    Content="Menu Accueil"
+                    Width="150" Click="MenuButton_Click" Canvas.Left="73" Canvas.Top="126" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="White" Background="White"/>
+
+        </StackPanel>
         <Image
             x:Name="Joueur"
             Canvas.Left="10"

@@ -117,8 +117,7 @@ namespace Labyrinthe
         private DispatcherTimer tempsRestant;
         private int secondesRestantes = TEMPS;
 
-        
-        
+
 
 
         public MainWindow()
@@ -131,18 +130,13 @@ namespace Labyrinthe
             InitMinuterie();
             InitTempsRestant();
             InitMusique();
-            if (cadeauxRamene == objectifCadeaux)
-            {
-                minuterie.Stop();
-                tempsRestant.Stop();
-
-                Console.WriteLine("Vous avez gagné");
-            }
         }
         private void InitBitmap()
         {
 
         }
+
+ 
 
         public static void InitMusique()
         {
@@ -213,6 +207,9 @@ namespace Labyrinthe
 
             TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
 
+            TextBlockRes.Text = "Vous avez perdu !";
+
+
         }
 
         public void RelanceJeu()
@@ -263,6 +260,9 @@ namespace Labyrinthe
 
             // Cacher le panneau de fin
             EndPanel.Visibility = Visibility.Hidden;
+
+            //remet l'image du sapin a celle de base
+            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin1.png");
 
             // Afficher les commandes initiales si nécessaire
             Console.WriteLine("Le jeu a été redémarré !");
@@ -555,11 +555,30 @@ namespace Labyrinthe
                             break;
                     }
 
-                    
+                    CheckWinCondition();
                 }
                 else { nbCadeaux = 0; }
             }
         }
+
+        private void CheckWinCondition()
+        {
+            int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
+            int minutes = tempsEcoule / 60;
+            int secondes = tempsEcoule % 60;
+
+            TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
+
+            if (cadeauxRamene == objectifCadeaux)
+            {
+                tempsRestant.Stop();
+                minuterie.Stop();
+                TextBlockRes.Text = "Vous avez gagné !";
+                EndPanel.Visibility = Visibility.Visible;
+                Console.WriteLine("Vous avez gagné");
+            }
+        }
+
         private void SetImage(string imagePath)
         {
            

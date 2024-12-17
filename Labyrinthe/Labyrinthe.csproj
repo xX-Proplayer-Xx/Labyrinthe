@@ -163,4 +163,10 @@
     <Resource Include="Sapin1.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Son\musique.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
