@@ -12,7 +12,7 @@ namespace Labyrinthe
         public Menu_Acceuil()
         {
             InitializeComponent();
-            //MainWindow.InitMusique();
+            MainWindow.InitMusique();
         }
 
         private void JouerButton_Click(object sender, RoutedEventArgs e)
@@ -29,6 +29,7 @@ namespace Labyrinthe
         {
             var menuOptions = new Menu_Options();
             menuOptions.ShowDialog();
+
         }
 
         

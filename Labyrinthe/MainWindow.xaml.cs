@@ -67,7 +67,7 @@ namespace Labyrinthe
 
 
         //Temps 
-        static readonly int TEMPS = 180;
+        static readonly int TEMPS = 10;
 
         //SpawnLuttins
         static readonly int LUTTINX = 800;
@@ -169,9 +169,9 @@ namespace Labyrinthe
             }
             else
             {
-                tempsRestant.Stop();
-                minuterie.Stop();
-                
+                FinDePartie();
+
+
             }
         }
         private void InitMinuterie()
@@ -180,6 +180,92 @@ namespace Labyrinthe
             minuterie.Interval += TimeSpan.FromMilliseconds(16);
             minuterie.Tick += Jeu;
             
+        }
+
+        private void RejouerButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Réinitialiser et redémarrer le jeu
+            DemarrerJeu();
+
+            // Masquer le panneau de fin de partie
+            EndPanel.Visibility = Visibility.Hidden;
+        }
+        private void FinDePartie()
+        {
+            // Afficher le panneau de fin de partie
+            EndPanel.Visibility = Visibility.Visible;
+
+            tempsRestant.Stop();
+            minuterie.Stop();
+
+            // Calculer et afficher le temps écoulé
+            int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
+            int minutes = tempsEcoule / 60;
+            int secondes = tempsEcoule % 60;
+
+            TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
+
+        }
+
+        public void DemarrerJeu()
+        {
+            // Réinitialisation de l'état global
+            secondesRestantes = TEMPS; // Remettre le temps initial
+            nbCadeaux = 0;
+            cadeauxRamene = 0;
+            NbPoint.Content = nbCadeaux;
+            NbPointDepose.Content = cadeauxRamene;
+
+            // Réinitialiser la position du joueur
+            Canvas.SetLeft(Joueur, 10);
+            Canvas.SetTop(Joueur, 842);
+            positionXJoueur = 10;
+            positionYJoueur = 842;
+
+            // Réinitialiser les lutins
+            foreach (var lutin in luttins)
+            {
+                fondJeu.Children.Remove(lutin.sprite);
+            }
+            luttins.Clear();
+
+            // Réinitialiser les positions des cadeaux
+            int posGauche = rndLeft.Next(POSCADEAUX1, POSCADEAUX2);
+            int posHaut = rndTop.Next(POSCADEAUY1, POSCADEAUY2);
+            Canvas.SetLeft(Cadeaux1, posGauche);
+            Canvas.SetTop(Cadeaux1, posHaut);
+
+            // Réinitialiser timers
+            if (minuterie == null || tempsRestant == null)
+            {
+                InitMinuterie();
+                InitTempsRestant();
+            }
+            else
+            {
+                minuterie.Stop();
+                tempsRestant.Stop();
+                InitMinuterie();
+                InitTempsRestant();
+            }
+
+            // Redémarrer les timers
+            tempsRestant.Start();
+            minuterie.Start();
+
+            // Cacher le panneau de fin
+            EndPanel.Visibility = Visibility.Hidden;
+
+            // Afficher les commandes initiales si nécessaire
+            Console.WriteLine("Le jeu a été redémarré !");
+        
+    }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Acceuil acceuil = new Menu_Acceuil();
+            acceuil.ShowDialog();
+            DemarrerJeu();
         }
 
         private void Jeu(object? sender, EventArgs e)

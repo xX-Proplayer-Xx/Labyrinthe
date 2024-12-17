@@ -29,6 +29,7 @@
     <None Remove="img\Cadeaux\Gift.gif" />
     <None Remove="img\Cadeaux\Gift.png" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
+    <None Remove="img\FOND_ECRAN\imgOption.jpg" />
     <None Remove="img\Lutin\Lutin_Bas\LUTTIN-1.png" />
     <None Remove="img\Lutin\Lutin_Droite\LUTTIN-1.png" />
     <None Remove="img\Lutin\Lutin_Gauche\LUTTIN-1.png" />
@@ -82,6 +83,7 @@
     <Resource Include="img\Buisson\Buisson.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\FOND_ECRAN\imgOption.jpg" />
     <Resource Include="img\PapaNoel\PapaNoel.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
