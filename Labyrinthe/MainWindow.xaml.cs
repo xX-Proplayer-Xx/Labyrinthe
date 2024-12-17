@@ -68,7 +68,7 @@ namespace Labyrinthe
 
 
         //Temps 
-        static readonly int TEMPS = 180;
+        static readonly int TEMPS = 2;
 
         //SpawnLuttins
         static readonly int LUTTINX = 800;
@@ -115,8 +115,7 @@ namespace Labyrinthe
         private DispatcherTimer tempsRestant;
         private int secondesRestantes = TEMPS;
 
-        
-        
+
 
 
         public MainWindow()
@@ -129,18 +128,13 @@ namespace Labyrinthe
             InitMinuterie();
             InitTempsRestant();
             InitMusique();
-            if (cadeauxRamene == objectifCadeaux)
-            {
-                minuterie.Stop();
-                tempsRestant.Stop();
-
-                Console.WriteLine("Vous avez gagné");
-            }
         }
         private void InitBitmap()
         {
 
         }
+
+ 
 
         public static void InitMusique()
         {
@@ -211,6 +205,9 @@ namespace Labyrinthe
 
             TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
 
+            TextBlockRes.Text = "Vous avez perdu !";
+
+
         }
 
         public void RelanceJeu()
@@ -261,6 +258,9 @@ namespace Labyrinthe
 
             // Cacher le panneau de fin
             EndPanel.Visibility = Visibility.Hidden;
+
+            //remet l'image du sapin a celle de base
+            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin1.png");
 
             // Afficher les commandes initiales si nécessaire
             Console.WriteLine("Le jeu a été redémarré !");
@@ -477,57 +477,76 @@ namespace Labyrinthe
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin3.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin3.png");
                             imageActuelle = 2;
                             break;
                         case 3:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin4.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin4.png");
                             imageActuelle = 3;
                             break;
                         case 4:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin5.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin5.png");
                             imageActuelle = 4;
                             break;
                         case 5:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin6.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin6.png");
                             imageActuelle = 5;
                             break;
                         case 6:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin7.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin7.png");
                             imageActuelle = 6;
                             break;
                         case 7:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 7;
                             break;
                         case 8:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 8;
                             break;
                         case 9:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin9.png");
                             imageActuelle = 9;
                             break;
                         case 10:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin11.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin10.png");
                             imageActuelle = 10;
                             break;
                         case 11:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin12.png");
+                            SetImage("C:\\Users\\fatih\\Documents\\SAE DEV\\Labyrinthe\\img\\Sapin\\Sapin11.png");
                             imageActuelle = 11;
                             break;
                     }
 
-                    
+                    CheckWinCondition();
                 }
                 else { nbCadeaux = 0; }
             }
         }
+
+        private void CheckWinCondition()
+        {
+            int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
+            int minutes = tempsEcoule / 60;
+            int secondes = tempsEcoule % 60;
+
+            TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
+
+            if (cadeauxRamene == objectifCadeaux)
+            {
+                tempsRestant.Stop();
+                minuterie.Stop();
+                TextBlockRes.Text = "Vous avez gagné !";
+                EndPanel.Visibility = Visibility.Visible;
+                Console.WriteLine("Vous avez gagné");
+            }
+        }
+
         private void SetImage(string imagePath)
         {
            
