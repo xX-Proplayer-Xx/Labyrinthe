@@ -185,7 +185,7 @@ namespace Labyrinthe
         private void RejouerButton_Click(object sender, RoutedEventArgs e)
         {
             // Réinitialiser et redémarrer le jeu
-            DemarrerJeu();
+            RelanceJeu();
 
             // Masquer le panneau de fin de partie
             EndPanel.Visibility = Visibility.Hidden;
@@ -207,7 +207,7 @@ namespace Labyrinthe
 
         }
 
-        public void DemarrerJeu()
+        public void RelanceJeu()
         {
             // Réinitialisation de l'état global
             secondesRestantes = TEMPS; // Remettre le temps initial
@@ -265,7 +265,7 @@ namespace Labyrinthe
         {
             Menu_Acceuil acceuil = new Menu_Acceuil();
             acceuil.ShowDialog();
-            DemarrerJeu();
+            RelanceJeu();
         }
 
         private void Jeu(object? sender, EventArgs e)
