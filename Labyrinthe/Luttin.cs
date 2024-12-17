@@ -8,7 +8,7 @@ namespace Labyrinthe
         public double x, y, longueur, largeur, vitesse;
         public Rectangle sprite = new Rectangle();
         public int vitesseLutin = VITESSELUTIN;
-        public Luttin(Rectangle sprite, int x, int y, int longueur, int largeur, int vitesse)
+        public Luttin(Rectangle sprite, int x, int y, int longueur, int largeur, double vitesse)
         {
             this.sprite = sprite;
             this.x = x;

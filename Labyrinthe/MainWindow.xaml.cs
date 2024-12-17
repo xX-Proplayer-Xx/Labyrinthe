@@ -82,7 +82,11 @@ namespace Labyrinthe
         //VITESSE
         static readonly double VITESSE = 5;
         static readonly double VITESSERALENTI = 1;
-        static readonly int VITESSELUTIN = 2;
+        static readonly int VITESSELUTINFACILE = 2;
+        static readonly int VITESSELUTINNORMALE = 4;
+        static readonly int VITESSELUTINDIFFICILE = 8;
+        private double vitesse = 10;
+        private double vitesseDesLutins = 2;
 
         //Intervale coordonnés cadeaux 
         static readonly int POSCADEAUX1 = 50;
@@ -106,7 +110,10 @@ namespace Labyrinthe
         private DispatcherTimer minuterie;
         private DispatcherTimer tempsRestant;
         private int secondesRestantes = TEMPS;
-        private double vitesse = 10;
+
+        
+        
+
 
         public MainWindow()
         {
@@ -121,10 +128,8 @@ namespace Labyrinthe
             if (cadeauxRamene == objectifCadeaux)
             {
                 //WIN
+                Console.WriteLine("Vous avez gagné");
             }
-            
-            
-
         }
         private void InitBitmap()
         {
@@ -153,7 +158,7 @@ namespace Labyrinthe
             tempsRestant = new DispatcherTimer();
             tempsRestant.Interval = TimeSpan.FromSeconds(1);
             tempsRestant.Tick += TempsRestantTick;
-            tempsRestant.Start();
+            
         }
         private void TempsRestantTick(object sender, EventArgs e)
         {
@@ -174,7 +179,7 @@ namespace Labyrinthe
             minuterie = new DispatcherTimer();
             minuterie.Interval += TimeSpan.FromMilliseconds(16);
             minuterie.Tick += Jeu;
-            minuterie.Start();
+            
         }
 
         private void Jeu(object? sender, EventArgs e)
@@ -400,7 +405,7 @@ namespace Labyrinthe
             //ImageBrush lutinCostume = new ImageBrush();
             //lutinCostume.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/Lutin/Lutin_Bas/LUTTIN-1.png")); // Remplacez "chemin_vers_image_fantome" par le chemin réel de votre image de fantôme
             //nouveauLutin.Fill = lutinCostume;
-            luttins.Add(new Luttin(nouveauLutin, x, y, 32, 32, VITESSELUTIN));
+            luttins.Add(new Luttin(nouveauLutin, x, y, 32, 32, vitesseDesLutins));
 
         }
         private void Lutin()
@@ -415,7 +420,7 @@ namespace Labyrinthe
 
                 double posistionXLutin = Canvas.GetLeft(x);
                 double posistionYLutin = Canvas.GetTop(x);
-                double vitesseLutin = VITESSELUTIN;
+                double vitesseLutin = vitesseDesLutins;
                 bool collision = false;
                 Rect LutinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
                 //Collision Lutin/Obstacle
@@ -437,7 +442,7 @@ namespace Labyrinthe
                 }
                 if (collision == false)
                 {
-                    vitesseLutin = VITESSE;
+                    vitesseLutin = vitesseDesLutins;
                 }
                 //Console.WriteLine($"Lutin Position: X={posistionXLutin}, Y={posistionYLutin} | Joueur Position: X={positionXJoueur}, Y={positionYJoueur}");
                 if (positionXJoueur > posistionXLutin && positionXJoueur != posistionXLutin)
@@ -485,6 +490,56 @@ namespace Labyrinthe
                     fondJeu.Children.Remove(lutin.sprite);
                 }
             }
+        }
+
+        private void SelectionDifficulte(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string selectedDifficulty = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
+            if (selectedDifficulty == "Choisis")
+            {
+                
+
+            }
+            if (selectedDifficulty == "Facile")
+            {
+                vitesse = 10;
+                vitesseDesLutins = VITESSELUTINFACILE;
+                tempsCreationLutin = 300;
+                objectifCadeaux = OBJCADEAUXFACILE;
+                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
+            }
+            if (selectedDifficulty == "Moyen")
+            {
+                vitesse = 8;
+                vitesseDesLutins = VITESSELUTINNORMALE;
+                tempsCreationLutin = 200;
+                objectifCadeaux = OBJCADEAUXFACILE;
+                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
+
+
+            }
+            if (selectedDifficulty == "Difficile")
+            {
+                vitesse = 6;
+                vitesseDesLutins = VITESSELUTINDIFFICILE;
+                tempsCreationLutin = 100;
+                objectifCadeaux = OBJCADEAUXFACILE;
+                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
+
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            tempsRestant.Start();
+            minuterie.Start();
+            BackAttente.Visibility = Visibility.Hidden;
+            ButJouerAttente.Visibility = Visibility.Hidden;
+            difficulteComboBox.Visibility = Visibility.Hidden;
+            LabAttente.Visibility = Visibility.Hidden;
+            ButRegles.Visibility = Visibility.Hidden;
         }
 
         private void Joueur_KeyDown(object sender, KeyEventArgs e)
