@@ -289,7 +289,7 @@ namespace Labyrinthe
                 Console.WriteLine("Un lutin a été créé");
 
             }
-            if (nbMaxCadeaux == cadeauxRamene)
+            if (1 == cadeauxRamene)
             {
                 CheckWinCondition();
             }
