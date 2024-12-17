@@ -131,13 +131,6 @@ namespace Labyrinthe
             InitTempsRestant();
             InitMusique();
         }
-        private void InitBitmap()
-        {
-
-        }
-
- 
-
         public static void InitMusique()
         {
             if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
@@ -295,6 +288,10 @@ namespace Labyrinthe
                 tempsCreationLutin = CREATION;
                 Console.WriteLine("Un lutin a été créé");
 
+            }
+            if (nbMaxCadeaux == cadeauxRamene)
+            {
+                CheckWinCondition();
             }
         }
         private void Deplacement()
@@ -549,13 +546,10 @@ namespace Labyrinthe
                             SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin11.png");
                             imageActuelle = 10;
                             break;
-                        case 11:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin12.png");
-                            imageActuelle = 11;
-                            break;
+                        
                     }
 
-                    CheckWinCondition();
+                    
                 }
                 else { nbCadeaux = 0; }
             }
