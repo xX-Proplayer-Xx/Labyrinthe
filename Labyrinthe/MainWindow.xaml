@@ -59,7 +59,7 @@
             VerticalAlignment="Center"
             Source="/img/Cadeaux/Gift.png"
             Stretch="Fill" />
-        
+
         <Rectangle
 x:Name="Mur_Copy27"
 Width="64"
@@ -816,7 +816,7 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
     Height="10"
     HorizontalAlignment="Left"
     VerticalAlignment="Center" />
-        
+
         <Label
     x:Name="NbPointLab"
     Canvas.Top="-2"
@@ -825,7 +825,7 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
     Content="Cadeaux :"
     FontSize="30" />
 
-<Label
+        <Label
     x:Name="NbPoint"
     Canvas.Left="134"
     HorizontalAlignment="Left"
@@ -833,7 +833,7 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
     Content="0"
     FontSize="30" />
 
-<Rectangle
+        <Rectangle
     x:Name="Sapin"
     Canvas.Left="800"
     Canvas.Top="400"
@@ -841,11 +841,11 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
     Height="64"
     HorizontalAlignment="Left"
     VerticalAlignment="Top">
-    <Rectangle.Fill>
-        <ImageBrush ImageSource="/Sapin1.png"/>
-    </Rectangle.Fill>
-</Rectangle>
-<Label
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Sapin1.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label
     x:Name="msmCadeaux"
     Canvas.Left="517"
     Canvas.Top="15"
@@ -856,14 +856,14 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
     FontSize="30"
     Foreground="White"
     Visibility="Hidden" />
-<Label
+        <Label
     x:Name="NbPointDeposeLab"
     Canvas.Top="40"
     HorizontalAlignment="Center"
     VerticalAlignment="Top"
     Content="Cadeaux déposé :"
     FontSize="30" />
-<Label
+        <Label
     x:Name="NbPointDepose"
     Canvas.Left="243"
     Canvas.Top="40"
