@@ -117,45 +117,37 @@
 
         <Rectangle
             x:Name="BackAttente"
-            Canvas.Top="-28"
-            Width="1600"
-            Height="932"
-            HorizontalAlignment="Center"
+            Canvas.Top="55"
+            Width="1384"
+            Height="774"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Fill="Black"
             Opacity="0.7"
-            Stroke="Black" />
+            Stroke="Black" Canvas.Left="108" />
         <Label
+            Height="100"
+            Width="770"
             Name="LabAttente"
             Canvas.Left="419"
             Canvas.Top="65"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Veuillez choisir une difficulté"
             FontSize="60"
             Foreground="#FFFBFBFB" />
-        <Button
-            x:Name="ButRegles"
-            Canvas.Left="672"
-            Canvas.Top="190"
-            Width="256"
-            Height="52"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Background="#FF383838"
-            BorderBrush="#FF383838"
-            Content="Règles du jeu"
-            FontSize="30"
-            FontWeight="Bold"
-            Foreground="Red" />
 
-        <Button x:Name="ButJouerAttente" Content="Joueur" FontSize="40" FontWeight="Bold" Canvas.Left="691" Canvas.Top="378" Height="96" Width="218" BorderBrush="#FF383838" Background="#FFCECECE" Foreground="Black" Click="Button_Click"/>
+        <Button x:Name="ButJouerAttente" Content="Joueur" FontSize="40" FontWeight="Bold" Canvas.Left="700" Canvas.Top="375" Height="100" Width="200" BorderBrush="#FF383838" Foreground="Black" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
 
         <ComboBox
             x:Name="difficulteComboBox"
             Canvas.Left="725"
-            Canvas.Top="272"
+            Canvas.Top="258"
             Width="150"
             Height="40"
             HorizontalAlignment="Center"
@@ -207,6 +199,14 @@
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <Setter Property="Foreground" Value="Black" />
                         <Setter Property="Background" Value="Red" />
+                    </Style>
+                </ComboBoxItem.Style>
+            </ComboBoxItem>
+            <ComboBoxItem Content="Illimité">
+                <ComboBoxItem.Style>
+                    <Style TargetType="{x:Type ComboBoxItem}">
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="Background" Value="Purple" />
                     </Style>
                 </ComboBoxItem.Style>
             </ComboBoxItem>
