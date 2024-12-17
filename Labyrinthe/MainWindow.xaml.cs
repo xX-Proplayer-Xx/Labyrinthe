@@ -303,7 +303,7 @@ namespace Labyrinthe
             //HAUT,GAUCHE,BAS,DROITE
             if (goDroite == true && Canvas.GetLeft(Joueur) + (Joueur.Width * 2) < Application.Current.MainWindow.Width)
             {
-                DeplacementImage(AGNLEDROITE);
+                DeplacementImageJoueur(AGNLEDROITE);
                 //Console.ForegroundColor = ConsoleColor.Green;
                 //Console.WriteLine("Droite");
                 //Console.ForegroundColor = ConsoleColor.White;
@@ -313,7 +313,7 @@ namespace Labyrinthe
             }
             if (goGauche == true && Canvas.GetLeft(Joueur) + (Joueur.Width * 2) > 0)
             {
-                DeplacementImage(AGNLEGAUCHE);
+                DeplacementImageJoueur(AGNLEGAUCHE);
                 //Console.ForegroundColor = ConsoleColor.Blue;
                 //Console.WriteLine("Gauche");
                 //Console.ForegroundColor = ConsoleColor.White;
@@ -322,7 +322,7 @@ namespace Labyrinthe
             }
             if (goHaut == true && Canvas.GetTop(Joueur) + (Joueur.Height * 2) > 0)
             {
-                DeplacementImage(AGNLEHAUT);
+                DeplacementImageJoueur(AGNLEHAUT);
                 //Console.ForegroundColor = ConsoleColor.Red;
                 //Console.WriteLine("Haut");
                 //Console.ForegroundColor = ConsoleColor.White;
@@ -331,7 +331,7 @@ namespace Labyrinthe
             }
             if (goBas == true && Canvas.GetTop(Joueur) + (Joueur.Height * 2) < Application.Current.MainWindow.Height)
             {
-                DeplacementImage(AGNLEBAS);
+                DeplacementImageJoueur(AGNLEBAS);
                 //Console.ForegroundColor = ConsoleColor.Magenta;
                 //Console.WriteLine("Bas");
                 //Console.ForegroundColor = ConsoleColor.White;
@@ -346,22 +346,22 @@ namespace Labyrinthe
             if (haut == true && droite == true)
             {
 
-                DeplacementImage(AGNLEHAUTDROITE);
+                DeplacementImageJoueur(AGNLEHAUTDROITE);
             }
             if (haut == true && gauche == true)
             {
 
-                DeplacementImage(AGNLEHAUTGAUCHE);
+                DeplacementImageJoueur(AGNLEHAUTGAUCHE);
             }
             if (bas == true && droite == true)
             {
 
-                DeplacementImage(AGNLEBASDROITE);
+                DeplacementImageJoueur(AGNLEBASDROITE);
             }
             if (bas == true && gauche == true)
             {
 
-                DeplacementImage(AGNLEBASGAUCHE);
+                DeplacementImageJoueur(AGNLEBASGAUCHE);
             }
         }
 
@@ -380,11 +380,16 @@ namespace Labyrinthe
 
 
 
-        private void DeplacementImage(int position)
+        private void DeplacementImageJoueur(int position)
         {
             RotateTransform rotateTransform = (RotateTransform)Joueur.RenderTransform;
             rotateTransform.Angle = position;
         }
+        //private void DeplacementImageLutin(int position, Rectangle perso)
+        //{
+        //    RotateTransform rotateTransform = (RotateTransform)perso.RenderTransform;
+        //    rotateTransform.Angle = position;
+        //}
         private void Attaque()
         {
             gifle = new Rectangle
@@ -603,7 +608,7 @@ namespace Labyrinthe
                     
                     if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                     {
-
+                        
                         Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
                         if (LutinHitBox.IntersectsWith(mur))
                         {
@@ -622,7 +627,7 @@ namespace Labyrinthe
                 //Console.WriteLine($"Lutin Position: X={posistionXLutin}, Y={posistionYLutin} | Joueur Position: X={positionXJoueur}, Y={positionYJoueur}");
                 if (positionXJoueur > posistionXLutin && positionXJoueur != posistionXLutin)
                 {
-                    DeplacementImage(AGNLEDROITE);
+                    //DeplacementImageLutin(AGNLEDROITE, x);
                     goDLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + vitesseLutin);
                     posistionXLutin = posistionXLutin + vitesseLutin;
@@ -630,7 +635,7 @@ namespace Labyrinthe
                 }
                 else
                 {
-                    DeplacementImage(AGNLEGAUCHE);
+                    //DeplacementImageLutin(AGNLEGAUCHE, x);
                     goGLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - vitesseLutin);
                     posistionXLutin = posistionXLutin - vitesseLutin;
@@ -638,7 +643,7 @@ namespace Labyrinthe
                 }
                 if (positionYJoueur > posistionYLutin && positionYJoueur != posistionYLutin)
                 {
-                    DeplacementImage(AGNLEBAS);
+                    //DeplacementImageLutin(AGNLEBAS, x);
                     goBLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) + vitesseLutin);
                     posistionYLutin = posistionYLutin + vitesseLutin;
@@ -646,7 +651,7 @@ namespace Labyrinthe
                 }
                 else
                 {
-                    DeplacementImage(AGNLEHAUT);
+                    //DeplacementImageLutin(AGNLEHAUT, x);
                     goHLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) - vitesseLutin);
                     posistionYLutin = posistionYLutin - vitesseLutin;
