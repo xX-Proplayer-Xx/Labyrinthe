@@ -26,8 +26,7 @@ namespace Labyrinthe
 
         private void buttOption_pause_Click(object sender, RoutedEventArgs e)
         {
-            var menuOptions = new Menu_Options();
-            menuOptions.ShowDialog();
+            Menu_Options menuOptions = new Menu_Options();
         }
     }
 }

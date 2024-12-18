@@ -18,7 +18,7 @@
         </Canvas.Background>
 
         <StackPanel
-            Name="EndPanel"
+            Name="FinPartiePanel"
             Canvas.Left="656"
             Canvas.Top="480"
             Width="296"
@@ -100,7 +100,7 @@
             Canvas.Left="768"
             Width="64"
             Height="64"
-            Source="P:\Annee2 sem1\SAE1.01 2024-2025\Labyrinthe1.02\Labyrinthe\Labyrinthe\Labyrinthe\img\Porte\porte-ouverte.png"
+            Source="P:\SAE 1.01\Labyrinthe\img\Porte\porte-ouverte.png"
             Stretch="Fill"
             Visibility="Hidden" />
 
@@ -1488,7 +1488,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="P:\Annee2 sem1\SAE1.01 2024-2025\Labyrinthe1.02\Labyrinthe\Labyrinthe\Labyrinthe\img\Sapin\Sapin1.png" />
+                <ImageBrush ImageSource="P:\SAE 1.01\Labyrinthe\img\Sapin\Sapin1.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label

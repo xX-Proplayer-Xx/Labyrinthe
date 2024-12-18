@@ -46,6 +46,18 @@
     <None Remove="img\LUTTIN\LUTTIN-8.png" />
     <None Remove="img\PapaNoel\PapaNoel.gif" />
     <None Remove="img\PapaNoel\PapaNoel_Haut.png" />
+    <None Remove="img\Sapin\Sapin1.png" />
+    <None Remove="img\Sapin\Sapin10.png" />
+    <None Remove="img\Sapin\Sapin11.png" />
+    <None Remove="img\Sapin\Sapin12.png" />
+    <None Remove="img\Sapin\Sapin2.png" />
+    <None Remove="img\Sapin\Sapin3.png" />
+    <None Remove="img\Sapin\Sapin4.png" />
+    <None Remove="img\Sapin\Sapin5.png" />
+    <None Remove="img\Sapin\Sapin6.png" />
+    <None Remove="img\Sapin\Sapin7.png" />
+    <None Remove="img\Sapin\Sapin8.png" />
+    <None Remove="img\Sapin\Sapin9.png" />
     <None Remove="Lettre.png" />
     <None Remove="Lettre1.png" />
     <None Remove="lettreChoix.png" />
@@ -149,56 +161,66 @@
     <Resource Include="img\PapaNoel\PapaNoel_Haut.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\Sapin\Sapin1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\Sapin9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Lettre.png" />
     <Resource Include="Lettre1.png" />
     <Resource Include="lettreChoix.png" />
-    <Resource Include="Sons\colisioncadeau.wav" />
-    <Resource Include="Sons\colisionlutin.wav" />
-    <Resource Include="Sons\colisionsapin.wav" />
-    <Resource Include="Sons\defaite.wav" />
+    <Resource Include="Sons\colisioncadeau.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sons\colisionlutin.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sons\colisionsapin.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sons\defaite.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Sons\frappe.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Sons\victoire.wav" />
+    <Resource Include="Sons\victoire.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="img\Sapin\Sapin1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin10.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin11.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin12.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin3.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin4.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin5.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin6.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin7.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin8.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="img\Sapin\Sapin9.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Sons\musique.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

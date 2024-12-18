@@ -14,10 +14,7 @@ namespace Labyrinthe
             }
             private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
-                if (MainWindow.musique != null)
-                {
                     MainWindow.musique.Volume = VolumeSlider.Value; // Ajuster le volume en temps réel
-                }
             }
             private void CloseButton_Click(object sender, RoutedEventArgs e)
             {

@@ -72,7 +72,7 @@ namespace Labyrinthe
         private bool goDLutin, goGLutin, goBLutin, goHLutin;
 
         //Temps 
-        static readonly int TEMPS = 180;
+        static readonly int TEMPS = 500;
         private int tempsSkinLutin = 0;
         private int tempsSkinPapaNoel = 0;
 
@@ -142,7 +142,7 @@ namespace Labyrinthe
             if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
             {
                 musique = new MediaPlayer();
-                musique.Open(new Uri("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\Sons\\musique.mp3"));
+                musique.Open(new Uri("P:\\SAE 1.01\\Labyrinthe\\Sons\\musique.mp3"));
                 musique.MediaEnded += RelanceMusique;
                 musique.Volume = 0.5;
                 musique.Play();
@@ -196,13 +196,13 @@ namespace Labyrinthe
             RelanceJeu();
 
             // Masquer le panneau de fin de partie
-            EndPanel.Visibility = Visibility.Hidden;
+            FinPartiePanel.Visibility = Visibility.Hidden;
         }
         private void FinDePartie()
         {
             sonDefaite.Play();
             // Afficher le panneau de fin de partie
-            EndPanel.Visibility = Visibility.Visible;
+            FinPartiePanel.Visibility = Visibility.Visible;
 
             tempsRestant.Stop();
             minuterie.Stop();
@@ -266,10 +266,10 @@ namespace Labyrinthe
             minuterie.Start();
 
             // Cacher le panneau de fin
-            EndPanel.Visibility = Visibility.Hidden;
+            FinPartiePanel.Visibility = Visibility.Hidden;
 
             //remet l'image du sapin a celle de base
-            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin1.png");
+            SetImage("pack://application:,,,/img/Sapin/Sapin1.png");
 
             // Afficher les commandes initiales si nécessaire
             Console.WriteLine("Le jeu a été redémarré !");
@@ -303,7 +303,7 @@ namespace Labyrinthe
                 Console.WriteLine("Un lutin a été créé");
 
             }
-            if (cadeauxRamene <= nbMaxCadeaux )
+            if (cadeauxRamene >= objectifCadeaux )
             {
                 ConditionsVictoire();
             }
@@ -419,7 +419,7 @@ namespace Labyrinthe
             fondJeu.Children.Remove(gifle);
             if (gifleActif)
             {
-                
+                sonFrappe.Play();
                 Rect maxiGifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
                 if (tempsCoup > 0)
                 {
@@ -428,14 +428,14 @@ namespace Labyrinthe
                     if (tempsCoup <= 0)
                     {
                         gifleActif = false;
-
+                        sonFrappe.Play();
                     }
                 }
                 if (gifleActif == false)
                 {
                     tempsEntreCoup = true;
                     fondJeu.Children.Remove(gifle);
-
+                    sonFrappe.Play();
                 }
 
             }
@@ -452,7 +452,7 @@ namespace Labyrinthe
 
                     ImageBrush murImage = new ImageBrush
                     {
-                        ImageSource = new BitmapImage(new Uri("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
+                        ImageSource = new BitmapImage(new Uri("P:\\SAE 1.01\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
                     };
                     murImage.Stretch = Stretch.Fill;
                     rect.Fill = murImage;
@@ -517,53 +517,53 @@ namespace Labyrinthe
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             sonColisionSapin.Play();
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin3.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin3.png");
                             imageActuelle = 2;
                             sonColisionSapin.Play();
                             break;
                         case 3:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin4.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin4.png");
                             imageActuelle = 3;
                             sonColisionSapin.Play();
                             break;
                         case 4:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin5.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin5.png");
                             imageActuelle = 4;
                             sonColisionSapin.Play();
                             break;
                         case 5:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin6.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin6.png");
                             imageActuelle = 5;
                             sonColisionSapin.Play();
                             break;
                         case 6:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin7.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin7.png");
                             imageActuelle = 6;
                             sonColisionSapin.Play();
                             break;
                         case 7:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 7;
                             sonColisionSapin.Play();
                             break;
                         case 8:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin9.png");
                             imageActuelle = 8;
                             sonColisionSapin.Play();
                             break;
                         case 9:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin10.png");
                             imageActuelle = 9;
                             sonColisionSapin.Play();
                             break;
                         case 10:
-                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin11.png");
+                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin11.png");
                             imageActuelle = 10;
                             sonColisionSapin.Play();
                             break;
@@ -585,12 +585,12 @@ namespace Labyrinthe
 
             TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
 
-            if (cadeauxRamene == objectifCadeaux)
+            if (cadeauxRamene >= objectifCadeaux)
             {
                 tempsRestant.Stop();
                 minuterie.Stop();
                 TextBlockRes.Text = "Vous avez gagné !";
-                EndPanel.Visibility = Visibility.Visible;
+                FinPartiePanel.Visibility = Visibility.Visible;
                 Console.WriteLine("Vous avez gagné");
             }
         }
@@ -599,7 +599,6 @@ namespace Labyrinthe
         {
 
             Sapin.Fill = new ImageBrush(new BitmapImage(new Uri(nomImage)));
-
 
         }
 
@@ -779,23 +778,24 @@ namespace Labyrinthe
                 tempsCreationLutin = 300;
                 objectifCadeaux = OBJCADEAUXFACILE;
                 //    MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
-                //}
+            }
                 if (selectedDifficulty == "Moyen")
                 {
                     vitesse = 8;
                     vitesseDesLutins = VITESSELUTINNORMALE;
                     tempsCreationLutin = 200;
-                    objectifCadeaux = OBJCADEAUXFACILE;
-                    //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Bonne chance !");
+                    objectifCadeaux = OBJCADEAUXNORMALE;
+                Console.WriteLine($"Difficulty set to Medium. Objective: {objectifCadeaux}");
+                //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Bonne chance !");
 
 
-                }
+            }
                 if (selectedDifficulty == "Difficile")
                 {
                     vitesse = 6;
                     vitesseDesLutins = VITESSELUTINDIFFICILE;
                     tempsCreationLutin = 100;
-                    objectifCadeaux = OBJCADEAUXFACILE;
+                    objectifCadeaux = OBJCADEAUXDIFFICILE;
                     //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Courage à vous !");
 
 
@@ -809,8 +809,8 @@ namespace Labyrinthe
 
 
                 }
+
             }
-        }
             private void Button_Click(object sender, RoutedEventArgs e)
             {
                 NbPointDepose.Visibility = Visibility.Visible;
@@ -887,6 +887,7 @@ namespace Labyrinthe
             }
             private void Pause()
             {
+
                sonVictoire.Stop();
                 minuterie.Stop();
                 tempsRestant.Stop();

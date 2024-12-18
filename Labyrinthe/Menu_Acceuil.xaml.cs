@@ -27,7 +27,7 @@ namespace Labyrinthe
 
         private void Options(object sender, RoutedEventArgs e)
         {
-            var menuOptions = new Menu_Options();
+            Menu_Options menuOptions = new Menu_Options();
             menuOptions.ShowDialog();
 
         }
