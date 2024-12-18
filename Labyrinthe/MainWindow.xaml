@@ -877,27 +877,30 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
     FontSize="30" />
         <Rectangle
     x:Name="BackAttente"
-    Canvas.Top="55"
-    Width="1384"
-    Height="774"
+    Canvas.Top="10"
+    Width="896"
+    Height="886"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
-    Fill="Black"
-    Opacity="0.7"
-    Stroke="Black" Canvas.Left="108" />
+     Canvas.Left="353" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/lettreChoix.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Label
-    Height="100"
-    Width="770"
+            FontWeight="bold"
+    Height="58"
+    Width="570"
     Name="LabAttente"
-    Canvas.Left="419"
-    Canvas.Top="65"
+    Canvas.Left="547"
+    Canvas.Top="144"
     HorizontalAlignment="Left"
     VerticalAlignment="Top"
     Content="Veuillez choisir une difficulté"
-    FontSize="60"
-    Foreground="#FFFBFBFB" />
+    FontSize="40"
+    Foreground="Black" />
 
-        <Button x:Name="ButJouerAttente" Content="Joueur" FontSize="40" FontWeight="Bold" Canvas.Left="700" Canvas.Top="375" Height="100" Width="200" BorderBrush="#FF383838" Foreground="Black" Click="Button_Click">
+        <Button x:Name="ButJouerAttente" Content="Joueur" FontSize="40" FontWeight="Bold" Canvas.Left="700" Canvas.Top="375" Height="100" Width="200" Foreground="Black" Click="Button_Click" BorderBrush="#FFD5A44B">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
