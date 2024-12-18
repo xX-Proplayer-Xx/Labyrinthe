@@ -14,28 +14,59 @@
     mc:Ignorable="d">
     <Canvas x:Name="fondJeu">
         <Canvas.Background>
-            <ImageBrush ImageSource="/img/FOND_ECRAN/imageFondJeu.png"/>
+            <ImageBrush ImageSource="/imageFondJeu.png" />
         </Canvas.Background>
-        <StackPanel Name="EndPanel" Visibility="Hidden"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Width="296" Canvas.Left="656" Canvas.Top="480" Height="174" Background="Black" Panel.ZIndex="1" >
-            <TextBlock x:Name="TextBlockRes" HorizontalAlignment="Center"
-                       TextWrapping="Wrap" 
-                       Text="" 
-                       Foreground="White" FontSize="20" Margin="0,0,0,20"/>
-            <TextBlock x:Name="TempsEcouleText" HorizontalAlignment="Center"
-                       FontSize="20"
-                       Foreground="White"
-                       Text="Temps Écoulé : 00:00" Margin="0,0,0,20"/>
-            <Button x:Name="RejouerButton"
-                    Content="Rejouer"
-                    Width="150"
-                    Click="RejouerButton_Click" Canvas.Left="73" Canvas.Top="87" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="White" Background="White" Margin="0,0,0,20"/>
 
-            <Button x:Name="MenuButton"
-                    Content="Menu Accueil"
-                    Width="150" Click="MenuButton_Click" Canvas.Left="73" Canvas.Top="126" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="White" Background="White"/>
+        <StackPanel
+            Name="EndPanel"
+            Canvas.Left="656"
+            Canvas.Top="480"
+            Width="296"
+            Height="174"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Panel.ZIndex="1"
+            Background="Black"
+            Visibility="Hidden">
+            <TextBlock
+                x:Name="TextBlockRes"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Foreground="White"
+                Text=""
+                TextWrapping="Wrap" />
+            <TextBlock
+                x:Name="TempsEcouleText"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Foreground="White"
+                Text="Temps Écoulé : 00:00" />
+            <Button
+                x:Name="RejouerButton"
+                Canvas.Left="73"
+                Canvas.Top="87"
+                Width="150"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="White"
+                BorderBrush="White"
+                Click="RejouerButton_Click"
+                Content="Rejouer" />
+
+            <Button
+                x:Name="MenuButton"
+                Canvas.Left="73"
+                Canvas.Top="126"
+                Width="150"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="White"
+                BorderBrush="White"
+                Click="MenuButton_Click"
+                Content="Menu Accueil" />
 
         </StackPanel>
         <Image
@@ -47,7 +78,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             RenderTransformOrigin="0.5,0.5"
-            Source="img/PapaNoel/PapaNoel.gif">
+            Source="img/PapaNoel/PapaNoel.gif"
+            Visibility="Hidden">
             <Image.RenderTransform>
                 <RotateTransform x:Name="ImageRotation" Angle="0" />
             </Image.RenderTransform>
@@ -61,866 +93,1489 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Source="/img/Cadeaux/Gift.png"
-            Stretch="Fill" />
-        <Image Height="64" Canvas.Left="768" Source="/img/Porte/porte-ouverte.png" Stretch="Fill" Width="64"/>
+            Stretch="Fill"
+            Visibility="Hidden" />
+        <Image
+            x:Name="Porte"
+            Canvas.Left="768"
+            Width="64"
+            Height="64"
+            Source="P:\Annee2 sem1\SAE1.01 2024-2025\Labyrinthe1.02\Labyrinthe\Labyrinthe\Labyrinthe\img\Porte\porte-ouverte.png"
+            Stretch="Fill"
+            Visibility="Hidden" />
 
         <Rectangle
-x:Name="Mur_Copy27"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Left="65" Canvas.Top="816"  HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy28"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Left="65" Canvas.Top="752"  HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy29"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="624" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="1" />
-        <Rectangle
-x:Name="Mur_Copy30"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="624"  HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="65" />
-        <Rectangle
-x:Name="Mur_Copy31"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="624"  Canvas.Left="193" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy32"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Left="129" Canvas.Top="752"  HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy33"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Left="193" Canvas.Top="752"  HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy34"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="560" Canvas.Left="193" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy35"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="496"  Canvas.Left="193" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy36"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="496"  Canvas.Left="257" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy37"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="432" Canvas.Left="257" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy38"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="624" Canvas.Left="321" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy39"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="432"  Canvas.Left="449" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy40"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="624"  Canvas.Left="385" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy41"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="560"  Canvas.Left="385" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy42"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="432" Canvas.Left="385" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy43"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="496" Canvas.Left="65" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy44"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="432" Canvas.Left="65" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy45"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="368"  Canvas.Left="65" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy46"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="368"  Canvas.Left="129" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy47"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="368"  Canvas.Left="257" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy48"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="304"  Canvas.Left="257" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy49"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="240"  Canvas.Left="257" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy50"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="240"  Canvas.Left="257" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy51"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="240" Canvas.Left="193" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy53"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="496"  Canvas.Left="385" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="304" Canvas.Left="321" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy1"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="176"  Canvas.Left="257" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy2"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="112" Canvas.Left="257" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy3"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="112" Canvas.Left="321" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy4"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="240" Canvas.Left="65" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy5"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="432" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="1" />
-        <Rectangle
-x:Name="Mur_Copy6"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="176"  Canvas.Left="65" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy7"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="112" Canvas.Left="65" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy8"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="112"  Canvas.Left="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-x:Name="Mur_Copy9"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="112"  Canvas.Left="193" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-x:Name="Mur_Copy10"
-Width="64"
-Height="64"
-Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy11"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy12"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="577" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy13"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="496" Canvas.Left="641" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy15"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368"  Canvas.Left="641" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy16"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368"  Canvas.Left="896" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy17"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="496"  Canvas.Left="896" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy18"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="960" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy20"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="1088" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy23"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="1215" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy24"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="1343" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy26"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="1471" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy14"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="896" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy54"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432" Canvas.Left="641" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy55"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="385" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy56"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="321" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy57"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="624"  Canvas.Left="449" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy58"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560" Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy59"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="624"  Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy60"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560" Canvas.Left="641" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy62"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="641" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy64"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816"  Canvas.Left="641" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy66"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="385" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy67"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy68"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816"  Canvas.Left="513" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy69"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560" Canvas.Left="769" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy70"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560"  Canvas.Left="833" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy71"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560"  Canvas.Left="896" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy61"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="705" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy65"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="624" Canvas.Left="833" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy72"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy73"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="768" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy74"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="832" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy75"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816"  Canvas.Left="705" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy76"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="449" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy63"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy77"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240"  Canvas.Left="513" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy78"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240" Canvas.Left="577" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy79"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240"  Canvas.Left="641" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy80"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="641" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy81"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240"  Canvas.Left="705" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy82"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy83"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="769" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy84"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="705" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy85"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy86"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="432"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy87"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="496"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy88"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="496"  Canvas.Left="769" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy89"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="496"  Canvas.Left="832" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy93"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy94"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy95"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-16"  Canvas.Left="641" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy96"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-16"  Canvas.Left="705" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy98"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="48"  Canvas.Left="449" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy99"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="48" Canvas.Left="513" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy100"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="449" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy97"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112" Canvas.Left="513" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy101"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="577" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy102"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-16"  Canvas.Left="449" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy103"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="832" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy104"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="832" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy105"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112" Canvas.Left="896" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy106"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="960" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy107"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="960" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy108"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="48"  Canvas.Left="960" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy109"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-16"  Canvas.Left="832" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy110"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="833" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy111"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="896" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy112"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="960" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy113"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="1088" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy114"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="1088" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy115"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="1024" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy116"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112" Canvas.Left="1343" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy117"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176" Canvas.Left="1343" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy118"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="1407" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy119"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="48"  Canvas.Left="1215" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy121"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240"  Canvas.Left="1343" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy122"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="48"  Canvas.Left="1535" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy90"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="769" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy92"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="176"  Canvas.Left="1152" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy123"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240"  Canvas.Left="1152" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy120"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-14"  Canvas.Left="1215" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy124"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-14"  Canvas.Left="1151" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy125"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-14"  Canvas.Left="1088" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy126"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-14"  Canvas.Left="1279" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy127"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="-14"  Canvas.Left="1343" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy128"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="112"  Canvas.Left="1535" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy129"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368"  Canvas.Left="1216" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy130"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368"  Canvas.Left="1279" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy131"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="240"  Canvas.Left="1279" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy22"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368" Canvas.Left="1343" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy91"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368"  Canvas.Left="1088" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy132"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="368" Canvas.Left="1471" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy133"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304" Canvas.Left="1471" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy134"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="304"  Canvas.Left="1535" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy19"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="960" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy21"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="1024" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy25"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="624"  Canvas.Left="1024" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy52"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="624"  Canvas.Left="1088" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy135"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560"  Canvas.Left="1088" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy136"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560"  Canvas.Left="1215" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy137"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560"  Canvas.Left="1279" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy138"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="624"  Canvas.Left="1407" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy139"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="1407" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy140"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="1215" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy141"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="1152" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy142"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="752"  Canvas.Left="1279" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy143"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="1215" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy144"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816" Canvas.Left="960" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy145"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816"  Canvas.Left="1024" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy146"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="688"  Canvas.Left="1471" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <Rectangle
-    x:Name="Mur_Copy147"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="560"  Canvas.Left="1535" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy148"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816"  Canvas.Left="1407" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Rectangle
-    x:Name="Mur_Copy149"
-    Width="64"
-    Height="64"
-    Tag="Mur" Canvas.Top="816"  Canvas.Left="1471" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            x:Name="Mur_Copy27"
+            Canvas.Left="65"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy28"
+            Canvas.Left="65"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy29"
+            Canvas.Left="1"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy30"
+            Canvas.Left="65"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy31"
+            Canvas.Left="193"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy32"
+            Canvas.Left="129"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy33"
+            Canvas.Left="193"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy34"
+            Canvas.Left="193"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy35"
+            Canvas.Left="193"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy36"
+            Canvas.Left="257"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy37"
+            Canvas.Left="257"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy38"
+            Canvas.Left="321"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy39"
+            Canvas.Left="449"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy40"
+            Canvas.Left="385"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy41"
+            Canvas.Left="385"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy42"
+            Canvas.Left="385"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy43"
+            Canvas.Left="65"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy44"
+            Canvas.Left="65"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy45"
+            Canvas.Left="65"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy46"
+            Canvas.Left="129"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy47"
+            Canvas.Left="257"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy48"
+            Canvas.Left="257"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy49"
+            Canvas.Left="257"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy50"
+            Canvas.Left="257"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy51"
+            Canvas.Left="193"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy53"
+            Canvas.Left="385"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy"
+            Canvas.Left="321"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy1"
+            Canvas.Left="257"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy2"
+            Canvas.Left="257"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy3"
+            Canvas.Left="321"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy4"
+            Canvas.Left="65"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy5"
+            Canvas.Left="1"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy6"
+            Canvas.Left="65"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy7"
+            Canvas.Left="65"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy8"
+            Canvas.Left="1"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy9"
+            Canvas.Left="193"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy10"
+            Canvas.Left="65"
+            Canvas.Top="48"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy11"
+            Canvas.Left="513"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy12"
+            Canvas.Left="577"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy13"
+            Canvas.Left="641"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy15"
+            Canvas.Left="641"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy16"
+            Canvas.Left="896"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy17"
+            Canvas.Left="896"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy18"
+            Canvas.Left="960"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy20"
+            Canvas.Left="1088"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy23"
+            Canvas.Left="1215"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy24"
+            Canvas.Left="1343"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy26"
+            Canvas.Left="1471"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy14"
+            Canvas.Left="896"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy54"
+            Canvas.Left="641"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy55"
+            Canvas.Left="385"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy56"
+            Canvas.Left="321"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy57"
+            Canvas.Left="449"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy58"
+            Canvas.Left="513"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy59"
+            Canvas.Left="513"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy60"
+            Canvas.Left="641"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy62"
+            Canvas.Left="641"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy64"
+            Canvas.Left="641"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy66"
+            Canvas.Left="385"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy67"
+            Canvas.Left="513"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy68"
+            Canvas.Left="513"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy69"
+            Canvas.Left="769"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy70"
+            Canvas.Left="833"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy71"
+            Canvas.Left="896"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy61"
+            Canvas.Left="705"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy65"
+            Canvas.Left="833"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy72"
+            Canvas.Left="705"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy73"
+            Canvas.Left="768"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy74"
+            Canvas.Left="832"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy75"
+            Canvas.Left="705"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy76"
+            Canvas.Left="449"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy63"
+            Canvas.Left="513"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy77"
+            Canvas.Left="513"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy78"
+            Canvas.Left="577"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy79"
+            Canvas.Left="641"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy80"
+            Canvas.Left="641"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy81"
+            Canvas.Left="705"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy82"
+            Canvas.Left="705"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy83"
+            Canvas.Left="769"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy84"
+            Canvas.Left="705"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy85"
+            Canvas.Left="705"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy86"
+            Canvas.Left="705"
+            Canvas.Top="432"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy87"
+            Canvas.Left="705"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy88"
+            Canvas.Left="769"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy89"
+            Canvas.Left="832"
+            Canvas.Top="496"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy93"
+            Canvas.Left="705"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy94"
+            Canvas.Left="705"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy95"
+            Canvas.Left="641"
+            Canvas.Top="-16"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy96"
+            Canvas.Left="705"
+            Canvas.Top="-16"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy98"
+            Canvas.Left="449"
+            Canvas.Top="48"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy99"
+            Canvas.Left="513"
+            Canvas.Top="48"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy100"
+            Canvas.Left="449"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy97"
+            Canvas.Left="513"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy101"
+            Canvas.Left="577"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy102"
+            Canvas.Left="449"
+            Canvas.Top="-16"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy103"
+            Canvas.Left="832"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy104"
+            Canvas.Left="832"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy105"
+            Canvas.Left="896"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy106"
+            Canvas.Left="960"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy107"
+            Canvas.Left="960"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy108"
+            Canvas.Left="960"
+            Canvas.Top="48"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy109"
+            Canvas.Left="832"
+            Canvas.Top="-16"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy110"
+            Canvas.Left="833"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy111"
+            Canvas.Left="896"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy112"
+            Canvas.Left="960"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy113"
+            Canvas.Left="1088"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy114"
+            Canvas.Left="1088"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy115"
+            Canvas.Left="1024"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy116"
+            Canvas.Left="1343"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy117"
+            Canvas.Left="1343"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy118"
+            Canvas.Left="1407"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy119"
+            Canvas.Left="1215"
+            Canvas.Top="48"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy121"
+            Canvas.Left="1343"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy122"
+            Canvas.Left="1535"
+            Canvas.Top="48"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy90"
+            Canvas.Left="769"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy92"
+            Canvas.Left="1152"
+            Canvas.Top="176"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy123"
+            Canvas.Left="1152"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy120"
+            Canvas.Left="1215"
+            Canvas.Top="-14"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy124"
+            Canvas.Left="1151"
+            Canvas.Top="-14"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy125"
+            Canvas.Left="1088"
+            Canvas.Top="-14"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy126"
+            Canvas.Left="1279"
+            Canvas.Top="-14"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy127"
+            Canvas.Left="1343"
+            Canvas.Top="-14"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy128"
+            Canvas.Left="1535"
+            Canvas.Top="112"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy129"
+            Canvas.Left="1216"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy130"
+            Canvas.Left="1279"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy131"
+            Canvas.Left="1279"
+            Canvas.Top="240"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy22"
+            Canvas.Left="1343"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy91"
+            Canvas.Left="1088"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy132"
+            Canvas.Left="1471"
+            Canvas.Top="368"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy133"
+            Canvas.Left="1471"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy134"
+            Canvas.Left="1535"
+            Canvas.Top="304"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy19"
+            Canvas.Left="960"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy21"
+            Canvas.Left="1024"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy25"
+            Canvas.Left="1024"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy52"
+            Canvas.Left="1088"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy135"
+            Canvas.Left="1088"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy136"
+            Canvas.Left="1215"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy137"
+            Canvas.Left="1279"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy138"
+            Canvas.Left="1407"
+            Canvas.Top="624"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy139"
+            Canvas.Left="1407"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy140"
+            Canvas.Left="1215"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy141"
+            Canvas.Left="1152"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy142"
+            Canvas.Left="1279"
+            Canvas.Top="752"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy143"
+            Canvas.Left="1215"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy144"
+            Canvas.Left="960"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy145"
+            Canvas.Left="1024"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy146"
+            Canvas.Left="1471"
+            Canvas.Top="688"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy147"
+            Canvas.Left="1535"
+            Canvas.Top="560"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy148"
+            Canvas.Left="1407"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Tag="Mur" />
+        <Rectangle
+            x:Name="Mur_Copy149"
+            Canvas.Left="1471"
+            Canvas.Top="816"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Tag="Mur" />
         <ProgressBar
-    x:Name="progressBar"
-    Width="1600"
-    Height="10"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Center" />
+            x:Name="progressBar"
+            Width="1600"
+            Height="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" />
 
         <Label
-    x:Name="NbPointLab"
-    Canvas.Top="-2"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Top"
-    Content="Cadeaux :"
-    FontSize="30" />
+            x:Name="NbPointLab"
+            Canvas.Top="-2"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Cadeaux :"
+            FontSize="30"
+            Visibility="Hidden" />
 
         <Label
-    x:Name="NbPoint"
-    Canvas.Left="134"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Center"
-    Content="0"
-    FontSize="30" />
+            x:Name="NbPoint"
+            Canvas.Left="134"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="0"
+            FontSize="30"
+            Visibility="Hidden" />
 
         <Rectangle
-    x:Name="Sapin"
-    Canvas.Left="800"
-    Canvas.Top="400"
-    Width="64"
-    Height="64"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Top">
+            x:Name="Sapin"
+            Canvas.Left="800"
+            Canvas.Top="400"
+            Width="64"
+            Height="64"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="/Sapin1.png"/>
+                <ImageBrush ImageSource="P:\Annee2 sem1\SAE1.01 2024-2025\Labyrinthe1.02\Labyrinthe\Labyrinthe\Labyrinthe\img\Sapin\Sapin1.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label
-    x:Name="msmCadeaux"
-    Canvas.Left="517"
-    Canvas.Top="15"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Top"
-    Background="Red"
-    Content="Vous ne pouvez pas prendre plus de 3 cadeaux"
-    FontSize="30"
-    Foreground="White"
-    Visibility="Hidden" />
+            x:Name="msmCadeaux"
+            Canvas.Left="517"
+            Canvas.Top="15"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Background="Red"
+            Content="Vous ne pouvez pas prendre plus de 3 cadeaux"
+            FontSize="30"
+            Foreground="White"
+            Visibility="Hidden" />
         <Label
-    x:Name="NbPointDeposeLab"
-    Canvas.Top="40"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Top"
-    Content="Cadeaux déposé :"
-    FontSize="30" />
+            x:Name="NbPointDeposeLab"
+            Canvas.Top="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Cadeaux déposé :"
+            FontSize="30"
+            Visibility="Hidden" />
         <Label
-    x:Name="NbPointDepose"
-    Canvas.Left="243"
-    Canvas.Top="40"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Center"
-    Content="0"
-    FontSize="30" />
+            x:Name="NbPointDepose"
+            Canvas.Left="243"
+            Canvas.Top="40"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="0"
+            FontSize="30"
+            Visibility="Hidden" />
         <Rectangle
-    x:Name="BackAttente"
-    Canvas.Top="10"
-    Width="896"
-    Height="886"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Top"
-     Canvas.Left="353" >
+            x:Name="BackAttente"
+            Canvas.Left="353"
+            Canvas.Top="10"
+            Width="896"
+            Height="886"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="/lettreChoix.png"/>
+                <ImageBrush ImageSource="/lettreChoix.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label
+            Name="LabAttente"
+            Canvas.Left="547"
+            Canvas.Top="144"
+            Width="570"
+            Height="58"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Veuillez choisir une difficulté"
+            FontSize="40"
             FontWeight="bold"
-    Height="58"
-    Width="570"
-    Name="LabAttente"
-    Canvas.Left="547"
-    Canvas.Top="144"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Top"
-    Content="Veuillez choisir une difficulté"
-    FontSize="40"
-    Foreground="Black" />
+            Foreground="Black" />
 
-        <Button x:Name="ButJouerAttente" Content="Joueur" FontSize="40" FontWeight="Bold" Canvas.Left="700" Canvas.Top="375" Height="100" Width="200" Foreground="Black" Click="Button_Click" BorderBrush="#FFD5A44B">
+        <Button
+            x:Name="ButJouerAttente"
+            Canvas.Left="700"
+            Canvas.Top="375"
+            Width="200"
+            Height="100"
+            BorderBrush="#FFD5A44B"
+            Click="Button_Click"
+            Content="Joueur"
+            FontSize="40"
+            FontWeight="Bold"
+            Foreground="Black">
             <Button.Background>
-                <ImageBrush/>
+                <ImageBrush />
             </Button.Background>
         </Button>
 
 
         <ComboBox
-    x:Name="difficulteComboBox"
-    Canvas.Left="725"
-    Canvas.Top="258"
-    Width="150"
-    Height="40"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Top"
-    BorderBrush="White"
-    FontSize="20"
-    Foreground="Black"
-    SelectedIndex="0"
-    SelectionChanged="SelectionDifficulte"
-    Visibility="Visible">
+            x:Name="difficulteComboBox"
+            Canvas.Left="725"
+            Canvas.Top="258"
+            Width="150"
+            Height="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            BorderBrush="White"
+            FontSize="20"
+            Foreground="Black"
+            SelectedIndex="0"
+            SelectionChanged="SelectionDifficulte"
+            Visibility="Visible">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0" />

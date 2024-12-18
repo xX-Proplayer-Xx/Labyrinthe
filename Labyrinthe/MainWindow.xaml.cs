@@ -24,6 +24,7 @@ namespace Labyrinthe
     ///GERER LES SORTIES 
     public partial class MainWindow : Window
     {
+
         ///DIFFICULTE
         //FACILE
         static readonly int OBJCADEAUXFACILE = 10;
@@ -62,7 +63,7 @@ namespace Labyrinthe
         static readonly int AGNLEBASGAUCHE = -135;
 
         //Cadeaux
-        private int nbMaxCadeaux = 1;
+        private int nbMaxCadeaux = 10;
         private int nbCadeaux = 0;
         private int cadeauxRamene = 0;
 
@@ -134,13 +135,14 @@ namespace Labyrinthe
             InitTempsRestant();
             InitMusique();
             InitSon();
+            
         }
         public static void InitMusique()
         {
             if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
             {
                 musique = new MediaPlayer();
-                musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Sons/musique.mp3"));
+                musique.Open(new Uri("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\Sons\\musique.mp3"));
                 musique.MediaEnded += RelanceMusique;
                 musique.Volume = 0.5;
                 musique.Play();
@@ -166,7 +168,7 @@ namespace Labyrinthe
             tempsRestant = new DispatcherTimer();
             tempsRestant.Interval = TimeSpan.FromSeconds(1);
             tempsRestant.Tick += TempsRestantTick;
-            
+
         }
         private void TempsRestantTick(object sender, EventArgs e)
         {
@@ -185,7 +187,7 @@ namespace Labyrinthe
             minuterie = new DispatcherTimer();
             minuterie.Interval += TimeSpan.FromMilliseconds(16);
             minuterie.Tick += Jeu;
-            
+
         }
 
         private void RejouerButton_Click(object sender, RoutedEventArgs e)
@@ -267,12 +269,12 @@ namespace Labyrinthe
             EndPanel.Visibility = Visibility.Hidden;
 
             //remet l'image du sapin a celle de base
-            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin1.png");
+            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin1.png");
 
             // Afficher les commandes initiales si nécessaire
             Console.WriteLine("Le jeu a été redémarré !");
-        
-    }
+
+        }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
@@ -301,7 +303,7 @@ namespace Labyrinthe
                 Console.WriteLine("Un lutin a été créé");
 
             }
-            if (nbMaxCadeaux == cadeauxRamene)
+            if (cadeauxRamene <= nbMaxCadeaux )
             {
                 ConditionsVictoire();
             }
@@ -351,7 +353,7 @@ namespace Labyrinthe
             //DIAGONALES
             Diagonale(goGauche, goDroite, goBas, goHaut);
         }
-        private void Diagonale( bool gauche, bool droite, bool bas, bool haut)
+        private void Diagonale(bool gauche, bool droite, bool bas, bool haut)
         {
             if (haut == true && droite == true)
             {
@@ -393,7 +395,7 @@ namespace Labyrinthe
             RotateTransform rotateTransform = (RotateTransform)Joueur.RenderTransform;
             rotateTransform.Angle = position;
         }
-        
+
         private void Attaque()
         {
             gifle = new Rectangle
@@ -417,6 +419,7 @@ namespace Labyrinthe
             fondJeu.Children.Remove(gifle);
             if (gifleActif)
             {
+                
                 Rect maxiGifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
                 if (tempsCoup > 0)
                 {
@@ -425,7 +428,7 @@ namespace Labyrinthe
                     if (tempsCoup <= 0)
                     {
                         gifleActif = false;
-                        
+
                     }
                 }
                 if (gifleActif == false)
@@ -449,13 +452,13 @@ namespace Labyrinthe
 
                     ImageBrush murImage = new ImageBrush
                     {
-                        ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
+                        ImageSource = new BitmapImage(new Uri("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
                     };
                     murImage.Stretch = Stretch.Fill;
                     rect.Fill = murImage;
-                
-                Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
-                    
+
+                    Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
+
                     if (hitBox.IntersectsWith(mur))
                     {
                         collision = true;
@@ -471,9 +474,9 @@ namespace Labyrinthe
                 vitesse = VITESSE;
             }
         }
-        private void CollisionCadeaux() 
+        private void CollisionCadeaux()
         {
-            
+
             Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
             Rect rect2 = new Rect(Canvas.GetLeft(Cadeaux1), Canvas.GetTop(Cadeaux1), Cadeaux1.Width, Cadeaux1.Height);
             if (rect1.IntersectsWith(rect2))
@@ -504,73 +507,70 @@ namespace Labyrinthe
             Rect sapin = new Rect(Canvas.GetLeft(Sapin), Canvas.GetTop(Sapin), Sapin.Width, Sapin.Height);
             if (papanoel.IntersectsWith(sapin))
             {
-                
+
                 if (nbCadeaux > 0)
                 {
-                    ///Modifier l'image du sapin en fonction du nombre de cadeaux apportés
-                    //ImageBrush sapinImage = new ImageBrush();
-                    //sapinImage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/Sapin/Sapin" + totalCadeaux+1 + ".png"));
-                    //Sapin.Fill = sapinImage;
+                    
                     nbCadeaux--;
                     cadeauxRamene++;
                     imageActuelle++;
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             sonColisionSapin.Play();
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin3.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin3.png");
                             imageActuelle = 2;
                             sonColisionSapin.Play();
                             break;
                         case 3:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin4.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin4.png");
                             imageActuelle = 3;
                             sonColisionSapin.Play();
                             break;
                         case 4:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin5.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin5.png");
                             imageActuelle = 4;
                             sonColisionSapin.Play();
                             break;
                         case 5:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin6.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin6.png");
                             imageActuelle = 5;
                             sonColisionSapin.Play();
                             break;
                         case 6:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin7.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin7.png");
                             imageActuelle = 6;
                             sonColisionSapin.Play();
                             break;
                         case 7:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 7;
                             sonColisionSapin.Play();
                             break;
                         case 8:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin9.png");
                             imageActuelle = 8;
                             sonColisionSapin.Play();
                             break;
                         case 9:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin10.png");
                             imageActuelle = 9;
                             sonColisionSapin.Play();
                             break;
                         case 10:
-                            SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                            SetImage("P:\\Annee2 sem1\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\Labyrinthe\\Labyrinthe\\img\\Sapin\\Sapin11.png");
                             imageActuelle = 10;
                             sonColisionSapin.Play();
                             break;
-                        
+
                     }
 
-                    
+
                 }
                 else { nbCadeaux = 0; }
             }
@@ -595,10 +595,12 @@ namespace Labyrinthe
             }
         }
 
-        private void SetImage(string imagePath)
+        private void SetImage(string nomImage)
         {
-           
-            Sapin.Fill = new ImageBrush(new BitmapImage(new Uri(imagePath, UriKind.Absolute)));
+
+            Sapin.Fill = new ImageBrush(new BitmapImage(new Uri(nomImage)));
+
+
         }
 
         private void ApparitionLuttins()
@@ -640,10 +642,10 @@ namespace Labyrinthe
                 foreach (var element in fondJeu.Children)
                 {
                     LutinImage(x);
-                    
+
                     if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                     {
-                        
+
                         Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
                         if (LutinHitBox.IntersectsWith(mur))
                         {
@@ -666,7 +668,7 @@ namespace Labyrinthe
                     goDLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + vitesseLutin);
                     posistionXLutin = posistionXLutin + vitesseLutin;
-                    Console.WriteLine("Le lutin se deplace vers la droite");
+                    //Console.WriteLine("Le lutin se deplace vers la droite");
                 }
                 else
                 {
@@ -674,7 +676,7 @@ namespace Labyrinthe
                     goGLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - vitesseLutin);
                     posistionXLutin = posistionXLutin - vitesseLutin;
-                    Console.WriteLine("Le lutin se deplace vers la gauche");
+                    //Console.WriteLine("Le lutin se deplace vers la gauche");
                 }
                 if (positionYJoueur > posistionYLutin && positionYJoueur != posistionYLutin)
                 {
@@ -682,7 +684,7 @@ namespace Labyrinthe
                     goBLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) + vitesseLutin);
                     posistionYLutin = posistionYLutin + vitesseLutin;
-                    Console.WriteLine("Le lutin se deplace vers le bas");
+                    //Console.WriteLine("Le lutin se deplace vers le bas");
                 }
                 else
                 {
@@ -690,9 +692,9 @@ namespace Labyrinthe
                     goHLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) - vitesseLutin);
                     posistionYLutin = posistionYLutin - vitesseLutin;
-                    Console.WriteLine("Le lutin se deplace vers le haut");
+                    //Console.WriteLine("Le lutin se deplace vers le haut");
                 }
-                
+
                 RotationImageLutin(x, goGLutin, goDLutin, goBLutin, goHLutin);
                 //Vol de Cadeaux
                 if (LutinHitBox.IntersectsWith(papanoel))
@@ -767,7 +769,7 @@ namespace Labyrinthe
             string selectedDifficulty = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
             if (selectedDifficulty == "Choisis")
             {
-                
+
 
             }
             if (selectedDifficulty == "Facile")
@@ -776,141 +778,156 @@ namespace Labyrinthe
                 vitesseDesLutins = VITESSELUTINFACILE;
                 tempsCreationLutin = 300;
                 objectifCadeaux = OBJCADEAUXFACILE;
-                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
-            }
-            if (selectedDifficulty == "Moyen")
-            {
-                vitesse = 8;
-                vitesseDesLutins = VITESSELUTINNORMALE;
-                tempsCreationLutin = 200;
-                objectifCadeaux = OBJCADEAUXFACILE;
-                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Bonne chance !");
+                //    MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Ne te fait pas mal surtout !");
+                //}
+                if (selectedDifficulty == "Moyen")
+                {
+                    vitesse = 8;
+                    vitesseDesLutins = VITESSELUTINNORMALE;
+                    tempsCreationLutin = 200;
+                    objectifCadeaux = OBJCADEAUXFACILE;
+                    //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Bonne chance !");
 
 
-            }
-            if (selectedDifficulty == "Difficile")
-            {
-                vitesse = 6;
-                vitesseDesLutins = VITESSELUTINDIFFICILE;
-                tempsCreationLutin = 100;
-                objectifCadeaux = OBJCADEAUXFACILE;
-                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Courage à vous !");
+                }
+                if (selectedDifficulty == "Difficile")
+                {
+                    vitesse = 6;
+                    vitesseDesLutins = VITESSELUTINDIFFICILE;
+                    tempsCreationLutin = 100;
+                    objectifCadeaux = OBJCADEAUXFACILE;
+                    //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, Courage à vous !");
 
 
-            }
-            if (selectedDifficulty == "Illimité")
-            {
-                vitesse = 10;
-                vitesseDesLutins = VITESSELUTINNORMALE;
-                tempsCreationLutin = 300;
-                MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, N'y passer pas trop de temps XD");
+                }
+                if (selectedDifficulty == "Illimité")
+                {
+                    vitesse = 10;
+                    vitesseDesLutins = VITESSELUTINNORMALE;
+                    tempsCreationLutin = 300;
+                    //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, N'y passer pas trop de temps XD");
 
 
+                }
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            tempsRestant.Start();
-            minuterie.Start();
-            BackAttente.Visibility = Visibility.Hidden;
-            ButJouerAttente.Visibility = Visibility.Hidden;
-            difficulteComboBox.Visibility = Visibility.Hidden;
-            LabAttente.Visibility = Visibility.Hidden;
-
-        }
-
-        private void LutinImage(Rectangle nomObjet)
-        {
-            tempsSkinLutin += 1;
-            ImageBrush lutinCostume = new ImageBrush();
-            lutinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ".png"));
-            nomObjet.Fill = lutinCostume;
-            
-            if (tempsSkinLutin == 8)
+            private void Button_Click(object sender, RoutedEventArgs e)
             {
-                tempsSkinLutin = 1;
-            }
-        }
-        //private void PapaNoelSkin()
-        //{
-        //    tempsSkinLutin += 1;
-        //    ImageBrush assassinCostume = new ImageBrush();
-        //    assassinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ").png"));
-        //    Vitrine.Fill = assassinCostume;
-        //    if (tempsSkinLutin == 8)
-        //    {
-        //        tempsSkinLutin = 1;
-        //    }
-        //}
-
-        private void Joueur_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                Attaque();
-            }
-            if (e.Key == Key.Z)
-            {
-                goHaut = true;
-            }
-            if (e.Key == Key.S)
-            {
-                goBas = true;
-            }
-            if (e.Key == Key.Q)
-            {
-                goGauche = true;
-            }
-            if (e.Key == Key.D)
-            {
-                goDroite = true;
-            }
-            if (e.Key == Key.Escape)
-            {
-                Pause();
-            }
-        }
-        private void Pause()
-        {
-            minuterie.Stop();
-            tempsRestant.Stop();
-            dialogue_Pause pause = new dialogue_Pause();
-            bool? result = pause.ShowDialog();
-            if (result == true)
-            {
-                minuterie.Start();
+                NbPointDepose.Visibility = Visibility.Visible;
+                NbPointDeposeLab.Visibility = Visibility.Visible;
+                NbPoint.Visibility = Visibility.Visible;
+                NbPointLab.Visibility = Visibility.Visible;
+                Joueur.Visibility = Visibility.Visible;
+                Porte.Visibility = Visibility.Visible;
+                Cadeaux1.Visibility = Visibility.Visible;
                 tempsRestant.Start();
-            }
-            else if (result == false)
-            {
-                pause.Close();
                 minuterie.Start();
-                tempsRestant.Start();
-            }
-        }
+                BackAttente.Visibility = Visibility.Hidden;
+                ButJouerAttente.Visibility = Visibility.Hidden;
+                difficulteComboBox.Visibility = Visibility.Hidden;
+                LabAttente.Visibility = Visibility.Hidden;
 
-        private void Joueur_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                claque = false;
             }
-            if (e.Key == Key.Z)
+
+            private void LutinImage(Rectangle nomObjet)
             {
-                goHaut = false;
+                tempsSkinLutin += 1;
+                ImageBrush lutinCostume = new ImageBrush();
+                lutinCostume.ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/LUTTIN/LUTTIN-" + tempsSkinLutin + ".png"));
+                nomObjet.Fill = lutinCostume;
+
+                if (tempsSkinLutin == 8)
+                {
+                    tempsSkinLutin = 1;
+                }
             }
-            if (e.Key == Key.S)
+            //private void PapaNoelSkin()
+            //{
+            //    tempsSkinLutin += 1;
+            //    ImageBrush assassinCostume = new ImageBrush();
+            //    assassinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ").png"));
+            //    Vitrine.Fill = assassinCostume;
+            //    if (tempsSkinLutin == 8)
+            //    {
+            //        tempsSkinLutin = 1;
+            //    }
+            //}
+
+            private void Joueur_KeyDown(object sender, KeyEventArgs e)
             {
-                goBas = false;
-            }
-            if (e.Key == Key.Q)
+                if (e.Key == Key.Space)
+                {
+                    Attaque();
+                }
+                if (e.Key == Key.Z)
+                {
+                    goHaut = true;
+                }
+                if (e.Key == Key.S)
+                {
+                    goBas = true;
+                }
+                if (e.Key == Key.Q)
+                {
+                    goGauche = true;
+                }
+                if (e.Key == Key.D)
+                {
+                    goDroite = true;
+                }
+                if (e.Key == Key.Escape)
+                {
+                    Pause();
+                }
+            if (e.Key == Key.J)
             {
-                goGauche = false;
+
+                cadeauxRamene = nbMaxCadeaux;
             }
-            if (e.Key == Key.D)
+            }
+            private void Pause()
             {
-                goDroite = false;
+               sonVictoire.Stop();
+                minuterie.Stop();
+                tempsRestant.Stop();
+                dialogue_Pause pause = new dialogue_Pause();
+                bool? result = pause.ShowDialog();
+                if (result == true)
+                {
+                    minuterie.Start();
+                    tempsRestant.Start();
+                }
+                else if (result == false)
+                {
+                    pause.Close();
+                    minuterie.Start();
+                    tempsRestant.Start();
+                }
             }
-        }
+
+            private void Joueur_KeyUp(object sender, KeyEventArgs e)
+            {
+                if (e.Key == Key.Space)
+                {
+                    claque = false;
+                }
+                if (e.Key == Key.Z)
+                {
+                    goHaut = false;
+                }
+                if (e.Key == Key.S)
+                {
+                    goBas = false;
+                }
+                if (e.Key == Key.Q)
+                {
+                    goGauche = false;
+                }
+                if (e.Key == Key.D)
+                {
+                    goDroite = false;
+                }
+            }
+        
     }
 }

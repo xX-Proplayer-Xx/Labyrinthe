@@ -14,10 +14,9 @@
     <None Remove="BushUpdate.png" />
     <None Remove="BushUpdate1.png" />
     <None Remove="BushUpdate2.png" />
-    <None Remove="fond.png" />
     <None Remove="g0qsuoib.a0z~" />
     <None Remove="Gift.png" />
-    <None Remove="img\Acceuil\lettreChoix.png" />
+    <None Remove="imageFondJeu.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_1.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_2.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_3.png" />
@@ -28,11 +27,7 @@
     <None Remove="img\AnnimationPapaNoel\PapaNoel_8.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_9.png" />
     <None Remove="img\Buisson\Buisson.png" />
-    <None Remove="img\Buisson\bush.png" />
-    <None Remove="img\Buisson\BushUpdate.png" />
-    <None Remove="img\Buisson\BushUpdate1.png" />
     <None Remove="img\Buisson\BushUpdate2.png" />
-    <None Remove="img\Buisson\Sapin.png" />
     <None Remove="img\Cadeaux\Gift.gif" />
     <None Remove="img\Cadeaux\Gift.png" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
@@ -51,12 +46,10 @@
     <None Remove="img\LUTTIN\LUTTIN-8.png" />
     <None Remove="img\PapaNoel\PapaNoel.gif" />
     <None Remove="img\PapaNoel\PapaNoel_Haut.png" />
-    <None Remove="img\Porte\porte.png" />
     <None Remove="Lettre.png" />
     <None Remove="Lettre1.png" />
     <None Remove="lettreChoix.png" />
     <None Remove="LUTTIN-1.png" />
-    <None Remove="map.png" />
     <None Remove="PapaNoel_Haut.png" />
     <None Remove="Sapin.png" />
     <None Remove="Sapin1.png" />
@@ -70,9 +63,8 @@
 
   <ItemGroup>
     <Resource Include="BushUpdate2.png" />
-    <Resource Include="fond.png" />
     <Resource Include="Gift.png" />
-    <Resource Include="img\Acceuil\lettreChoix.png" />
+    <Resource Include="imageFondJeu.png" />
     <Resource Include="img\AnnimationPapaNoel\PapaNoel_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -103,22 +95,7 @@
     <Resource Include="img\Buisson\Buisson.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Buisson\bush.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\Buisson\BushUpdate.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\Buisson\BushUpdate1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\Buisson\BushUpdate2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\Buisson\Sapin.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\FOND_ECRAN\imageFondJeu.png" />
+    <Resource Include="img\Buisson\BushUpdate2.png" />
     <Resource Include="img\FOND_ECRAN\imgOption.jpg" />
     <Resource Include="img\PapaNoel\PapaNoel.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -172,22 +149,56 @@
     <Resource Include="img\PapaNoel\PapaNoel_Haut.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Porte\porte-ouverte.png" />
-    <Resource Include="img\Porte\porte.png" />
     <Resource Include="Lettre.png" />
     <Resource Include="Lettre1.png" />
-    <Resource Include="map.png" />
     <Resource Include="lettreChoix.png" />
-    <Resource Include="Sapin1.png" />
     <Resource Include="Sons\colisioncadeau.wav" />
     <Resource Include="Sons\colisionlutin.wav" />
     <Resource Include="Sons\colisionsapin.wav" />
     <Resource Include="Sons\defaite.wav" />
-    <Resource Include="Sons\frappe.wav" />
+    <Resource Include="Sons\frappe.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Sons\victoire.wav" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="img\Sapin\Sapin1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="img\Sapin\Sapin9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Sons\musique.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
