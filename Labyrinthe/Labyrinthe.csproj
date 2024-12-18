@@ -14,6 +14,7 @@
     <None Remove="BushUpdate.png" />
     <None Remove="BushUpdate1.png" />
     <None Remove="BushUpdate2.png" />
+    <None Remove="fond.png" />
     <None Remove="g0qsuoib.a0z~" />
     <None Remove="Gift.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_1.png" />
@@ -53,13 +54,21 @@
     <None Remove="Lettre.png" />
     <None Remove="Lettre1.png" />
     <None Remove="LUTTIN-1.png" />
+    <None Remove="map.png" />
     <None Remove="PapaNoel_Haut.png" />
     <None Remove="Sapin.png" />
     <None Remove="Sapin1.png" />
+    <None Remove="Sons\colisioncadeau.wav" />
+    <None Remove="Sons\colisionlutin.wav" />
+    <None Remove="Sons\colisionsapin.wav" />
+    <None Remove="Sons\defaite.wav" />
+    <None Remove="Sons\frappe.wav" />
+    <None Remove="Sons\victoire.wav" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="BushUpdate2.png" />
+    <Resource Include="fond.png" />
     <Resource Include="Gift.png" />
     <Resource Include="img\AnnimationPapaNoel\PapaNoel_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -106,6 +115,7 @@
     <Resource Include="img\Buisson\Sapin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\FOND_ECRAN\imageFondJeu.png" />
     <Resource Include="img\FOND_ECRAN\imgOption.jpg" />
     <Resource Include="img\PapaNoel\PapaNoel.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -159,14 +169,22 @@
     <Resource Include="img\PapaNoel\PapaNoel_Haut.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\Porte\porte-ouverte.png" />
     <Resource Include="img\Porte\porte.png" />
     <Resource Include="Lettre.png" />
     <Resource Include="Lettre1.png" />
+    <Resource Include="map.png" />
     <Resource Include="Sapin1.png" />
+    <Resource Include="Sons\colisioncadeau.wav" />
+    <Resource Include="Sons\colisionlutin.wav" />
+    <Resource Include="Sons\colisionsapin.wav" />
+    <Resource Include="Sons\defaite.wav" />
+    <Resource Include="Sons\frappe.wav" />
+    <Resource Include="Sons\victoire.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Son\musique.mp3">
+    <None Update="Sons\musique.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

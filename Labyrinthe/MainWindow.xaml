@@ -12,7 +12,10 @@
     KeyUp="Joueur_KeyUp"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Canvas x:Name="fondJeu" Background="#FFB9B9B9">
+    <Canvas x:Name="fondJeu">
+        <Canvas.Background>
+            <ImageBrush ImageSource="/img/FOND_ECRAN/imageFondJeu.png"/>
+        </Canvas.Background>
         <StackPanel Name="EndPanel" Visibility="Hidden"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
@@ -59,6 +62,7 @@
             VerticalAlignment="Center"
             Source="/img/Cadeaux/Gift.png"
             Stretch="Fill" />
+        <Image Height="64" Canvas.Left="768" Source="/img/Porte/porte-ouverte.png" Stretch="Fill" Width="64"/>
 
         <Rectangle
 x:Name="Mur_Copy27"
@@ -967,6 +971,7 @@ Tag="Mur" Canvas.Top="48"  Canvas.Left="65" HorizontalAlignment="Left" VerticalA
                 </ComboBoxItem.Style>
             </ComboBoxItem>
         </ComboBox>
+
 
     </Canvas>
 </Window>

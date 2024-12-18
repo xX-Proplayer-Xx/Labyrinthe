@@ -1,4 +1,5 @@
 ﻿
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -25,7 +26,7 @@ namespace Labyrinthe
     {
         ///DIFFICULTE
         //FACILE
-        static readonly int OBJCADEAUXFACILE = 1;
+        static readonly int OBJCADEAUXFACILE = 10;
         //NORMALE
         static readonly int OBJCADEAUXNORMALE = 15;
         //DIFFICILE
@@ -39,6 +40,8 @@ namespace Labyrinthe
 
         //Musique
         public static MediaPlayer musique;
+        //Sons
+        private static SoundPlayer sonDefaite, sonVictoire, sonColisionCadeau, sonFrappe, sonColisionSapin, sonColisionLutin;
         //Position init papa noel
         private double positionXJoueur = 10;
         private double positionYJoueur = 842;
@@ -59,7 +62,7 @@ namespace Labyrinthe
         static readonly int AGNLEBASGAUCHE = -135;
 
         //Cadeaux
-        private int nbMaxCadeaux = 10;
+        private int nbMaxCadeaux = 1;
         private int nbCadeaux = 0;
         private int cadeauxRamene = 0;
 
@@ -130,13 +133,14 @@ namespace Labyrinthe
             InitMinuterie();
             InitTempsRestant();
             InitMusique();
+            InitSon();
         }
         public static void InitMusique()
         {
             if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
             {
                 musique = new MediaPlayer();
-                musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Son/musique.mp3"));
+                musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Sons/musique.mp3"));
                 musique.MediaEnded += RelanceMusique;
                 musique.Volume = 0.5;
                 musique.Play();
@@ -146,6 +150,15 @@ namespace Labyrinthe
         {
             musique.Position = TimeSpan.Zero;
             musique.Play();
+        }
+        private void InitSon()
+        {
+            sonDefaite = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/defaite.wav")).Stream);
+            sonVictoire = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/victoire.wav")).Stream);
+            sonColisionCadeau = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisioncadeau.wav")).Stream);
+            sonFrappe = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/frappe.wav")).Stream);
+            sonColisionSapin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionsapin.wav")).Stream);
+            sonColisionLutin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionLutin.wav")).Stream);
         }
         private void InitTempsRestant()
         {
@@ -165,8 +178,6 @@ namespace Labyrinthe
             else
             {
                 FinDePartie();
-
-
             }
         }
         private void InitMinuterie()
@@ -187,6 +198,7 @@ namespace Labyrinthe
         }
         private void FinDePartie()
         {
+            sonDefaite.Play();
             // Afficher le panneau de fin de partie
             EndPanel.Visibility = Visibility.Visible;
 
@@ -289,11 +301,13 @@ namespace Labyrinthe
                 Console.WriteLine("Un lutin a été créé");
 
             }
-            if (1 == cadeauxRamene)
+            if (nbMaxCadeaux == cadeauxRamene)
             {
                 CheckWinCondition();
+
             }
         }
+
         private void Deplacement()
         {
             Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
@@ -375,8 +389,6 @@ namespace Labyrinthe
 
 
 
-
-
         private void DeplacementImageJoueur(int position)
         {
             RotateTransform rotateTransform = (RotateTransform)Joueur.RenderTransform;
@@ -413,10 +425,12 @@ namespace Labyrinthe
                 Rect maxiGifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
                 if (tempsCoup > 0)
                 {
+                    sonFrappe.Play();
                     tempsCoup--;
                     if (tempsCoup <= 0)
                     {
                         gifleActif = false;
+                        
                     }
                 }
                 if (gifleActif == false)
@@ -464,6 +478,7 @@ namespace Labyrinthe
         }
         private void CollisionCadeaux() 
         {
+            
             Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
             Rect rect2 = new Rect(Canvas.GetLeft(Cadeaux1), Canvas.GetTop(Cadeaux1), Cadeaux1.Width, Cadeaux1.Height);
             if (rect1.IntersectsWith(rect2))
@@ -480,6 +495,7 @@ namespace Labyrinthe
                     Canvas.SetTop(Cadeaux1, posHaut);
                     Canvas.SetLeft(Cadeaux1, posGauche);
                     nbCadeaux++;
+                    sonColisionCadeau.Play();
                     Console.WriteLine("Collision Cadeaux");
 
                 }
@@ -493,7 +509,7 @@ namespace Labyrinthe
             Rect sapin = new Rect(Canvas.GetLeft(Sapin), Canvas.GetTop(Sapin), Sapin.Width, Sapin.Height);
             if (papanoel.IntersectsWith(sapin))
             {
-
+                
                 if (nbCadeaux > 0)
                 {
                     ///Modifier l'image du sapin en fonction du nombre de cadeaux apportés
@@ -508,43 +524,53 @@ namespace Labyrinthe
                         case 1:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
+                            sonColisionSapin.Play();
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin3.png");
                             imageActuelle = 2;
+                            sonColisionSapin.Play();
                             break;
                         case 3:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin4.png");
                             imageActuelle = 3;
+                            sonColisionSapin.Play();
                             break;
                         case 4:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin5.png");
                             imageActuelle = 4;
+                            sonColisionSapin.Play();
                             break;
                         case 5:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin6.png");
                             imageActuelle = 5;
+                            sonColisionSapin.Play();
                             break;
                         case 6:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin7.png");
                             imageActuelle = 6;
+                            sonColisionSapin.Play();
                             break;
                         case 7:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 7;
+                            sonColisionSapin.Play();
                             break;
                         case 8:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin8.png");
                             imageActuelle = 8;
+                            sonColisionSapin.Play();
                             break;
                         case 9:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin9.png");
                             imageActuelle = 9;
+                            sonColisionSapin.Play();
                             break;
                         case 10:
                             SetImage("C:\\Users\\fatih\\Desktop\\Nouveau dossier\\Labyrinthe\\img\\Sapin\\Sapin10.png");
                             imageActuelle = 10;
+                            sonColisionSapin.Play();
                             break;
                         
                     }
@@ -554,9 +580,9 @@ namespace Labyrinthe
                 else { nbCadeaux = 0; }
             }
         }
-
         private void CheckWinCondition()
         {
+            sonVictoire.Play();
             int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
             int minutes = tempsEcoule / 60;
             int secondes = tempsEcoule % 60;
@@ -675,6 +701,7 @@ namespace Labyrinthe
                 if (LutinHitBox.IntersectsWith(papanoel))
                 {
                     //Console.WriteLine("Cadeux volé");
+                    sonColisionLutin.Play();
                     nbCadeaux--;
                     luttins.Remove(lutin);
                     fondJeu.Children.Remove(lutin.sprite);
