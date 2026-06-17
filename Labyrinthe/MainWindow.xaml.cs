@@ -42,7 +42,7 @@ namespace Labyrinthe
         //Musique
         public static MediaPlayer musique;
         //Sons
-        private static SoundPlayer sonDefaite, sonVictoire, sonColisionCadeau, sonFrappe, sonColisionSapin, sonColisionLutin;
+        private static SoundPlayer sonDefaite, sonVictoire, sonColisionCadeau, sonFrappe, sonColisionSapin, sonColisionLutin, sonPorteOuverte, sonPorteFermeture;
         //Position init papa noel
         private double positionXJoueur = 10;
         private double positionYJoueur = 810;
@@ -156,6 +156,8 @@ namespace Labyrinthe
             sonFrappe = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/frappe.wav")).Stream);
             sonColisionSapin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionsapin.wav")).Stream);
             sonColisionLutin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionlutin.wav")).Stream);
+            sonPorteOuverte = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/porte_ouverture.wav")).Stream);
+            sonPorteFermeture = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/porte_fermeture.wav")).Stream);
         }
         private void InitTempsRestant()
         {
@@ -649,6 +651,7 @@ namespace Labyrinthe
             Canvas.SetTop(nouveauLutin, y);
             Canvas.SetLeft(nouveauLutin, LUTTINX);
             fondJeu.Children.Add(nouveauLutin);
+            Panel.SetZIndex(nouveauLutin, -1); // sous les buissons, comme le joueur
             //ImageBrush lutinCostume = new ImageBrush();
             //lutinCostume.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/LutinDirections/Lutin_Bas/LUTTIN-1.png")); // Remplacez "chemin_vers_image_fantome" par le chemin réel de votre image de fantôme
             //nouveauLutin.Fill = lutinCostume;
@@ -656,6 +659,7 @@ namespace Labyrinthe
 
             // La porte s'ouvre quand un lutin en sort
             Porte.Source = new BitmapImage(new Uri("pack://application:,,,/img/Porte/porteOuverte.png"));
+            sonPorteOuverte.Play();
             tempsPorteOuverte = DUREEPORTEOUVERTE;
         }
         private void Lutin()
@@ -918,6 +922,7 @@ namespace Labyrinthe
                     if (tempsPorteOuverte == 0)
                     {
                         Porte.Source = new BitmapImage(new Uri("pack://application:,,,/img/Porte/porteFermee.png"));
+                        sonPorteFermeture.Play();
                     }
                 }
             }

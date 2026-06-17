@@ -57,6 +57,8 @@
     <None Remove="Sons\defaite.wav" />
     <None Remove="Sons\frappe.wav" />
     <None Remove="Sons\victoire.wav" />
+    <None Remove="Sons\porte_ouverture.wav" />
+    <None Remove="Sons\porte_fermeture.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -202,6 +204,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Sons\victoire.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sons\porte_ouverture.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Sons\porte_fermeture.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
