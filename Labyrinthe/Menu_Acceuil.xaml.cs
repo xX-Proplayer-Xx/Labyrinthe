@@ -32,6 +32,13 @@ namespace Labyrinthe
 
         }
 
-        
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Si on ferme l'accueil avec la croix (pas via "Jouer"), on quitte l'application
+            if (this.DialogResult != true)
+            {
+                Application.Current.Shutdown();
+            }
+        }
     }
 }
