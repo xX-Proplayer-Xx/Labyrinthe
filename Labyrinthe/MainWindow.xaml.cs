@@ -35,6 +35,9 @@ namespace Labyrinthe
 
         //Condition WIN
         private int objectifCadeaux = 0;
+        //Mode Illimité : pas d'objectif, on bat son record de cadeaux (record gardé le temps de la session)
+        private bool modeIllimite = false;
+        private int meilleurScore = 0;
 
         //Lutin
         private int nbLutin = 0;
@@ -45,11 +48,11 @@ namespace Labyrinthe
         private static SoundPlayer sonDefaite, sonVictoire, sonColisionCadeau, sonFrappe, sonColisionSapin, sonColisionLutin;
         //Position init papa noel
         private double positionXJoueur = 10;
-        private double positionYJoueur = 842;
+        private double positionYJoueur = 810;
 
         //Annimation PAPA NOEL
         private int tempsPapaNoel = 48;
-        private string repertoirePapaNoel = "AnnimationPapaNoel";
+        private string repertoirePapaNoel = "AnimationPapaNoel";
         private string nomImagePapaNoel = "PapaNoel_";
 
         //Constante deplacement image 
@@ -82,6 +85,10 @@ namespace Labyrinthe
         static readonly int CREATION = 200;
         private int tempsCreationLutin = CREATION;
 
+        //Porte (s'ouvre quand un lutin en sort puis se referme)
+        static readonly int DUREEPORTEOUVERTE = 30;
+        private int tempsPorteOuverte = 0;
+
         //Liste
         private List<Luttin> luttins = new List<Luttin>();
         private List<Rect> gifles = new List<Rect>();
@@ -93,26 +100,26 @@ namespace Labyrinthe
         static readonly int VITESSELUTINNORMALE = 4;
         static readonly int VITESSELUTINDIFFICILE = 8;
         private double vitesse = 10;
+        private double vitesseNormale = VITESSE; // vitesse de base du joueur selon la difficulté
         private double vitesseDesLutins = 2;
 
         //Intervale coordonnés cadeaux 
         static readonly int POSCADEAUX1 = 50;
         static readonly int POSCADEAUX2 = 1550;
-        static readonly int POSCADEAUY1 = 50;
-        static readonly int POSCADEAUY2 = 850;
+        static readonly int POSCADEAUY1 = 18;
+        static readonly int POSCADEAUY2 = 816;
         //Random coordonnés cadeaux 
         private Random rndLeft = new Random();
         private Random rndTop = new Random();
         //Score
 
-        //Image
-        private int imageActuelle = 0;
 
         //Rectangle 
         Rectangle gifle = new Rectangle();
         //Coups
         private bool gifleActif = false;
-        private bool tempsEntreCoup = true;
+        static readonly int RECHARGECOUP = 30; // recharge de la frappe (en frames, ~0.5s)
+        private int tempsEntreCoup = 0;        // recharge restante (0 = frappe prête)
         private int tempsCoup = 5;
 
         private int vitesseAnnimation = 1;
@@ -201,23 +208,40 @@ namespace Labyrinthe
         }
         private void FinDePartie()
         {
-            sonDefaite.Play();
             // Afficher le panneau de fin de partie
             FinPartiePanel.Visibility = Visibility.Visible;
 
             tempsRestant.Stop();
             minuterie.Stop();
 
-            // Calculer et afficher le temps écoulé
-            int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
-            int minutes = tempsEcoule / 60;
-            int secondes = tempsEcoule % 60;
+            if (modeIllimite)
+            {
+                // Mode Illimité : on compare le score (cadeaux déposés) au record de la session
+                if (cadeauxRamene > meilleurScore)
+                {
+                    meilleurScore = cadeauxRamene;
+                    TextBlockRes.Text = "Nouveau record !";
+                    sonVictoire.Play();
+                }
+                else
+                {
+                    TextBlockRes.Text = "Temps écoulé !";
+                    sonDefaite.Play();
+                }
+                TempsEcouleText.Text = $"Score : {cadeauxRamene}   -   Record : {meilleurScore}";
+            }
+            else
+            {
+                sonDefaite.Play();
 
-            TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
+                // Calculer et afficher le temps écoulé
+                int tempsEcoule = TEMPS - secondesRestantes; // Temps total moins le temps restant
+                int minutes = tempsEcoule / 60;
+                int secondes = tempsEcoule % 60;
 
-            TextBlockRes.Text = "Vous avez perdu !";
-
-
+                TempsEcouleText.Text = $"Temps Écoulé : {minutes:00}:{secondes:00}";
+                TextBlockRes.Text = "Vous avez perdu !";
+            }
         }
 
         public void RelanceJeu()
@@ -231,9 +255,14 @@ namespace Labyrinthe
 
             // Réinitialiser la position du joueur
             Canvas.SetLeft(Joueur, 10);
-            Canvas.SetTop(Joueur, 842);
+            Canvas.SetTop(Joueur, 810);
             positionXJoueur = 10;
-            positionYJoueur = 842;
+            positionYJoueur = 810;
+            // On relâche les touches (sinon le joueur peut repartir tout seul au redémarrage)
+            goHaut = false;
+            goBas = false;
+            goGauche = false;
+            goDroite = false;
 
             // Réinitialiser les lutins
             foreach (var lutin in luttins)
@@ -270,18 +299,66 @@ namespace Labyrinthe
             FinPartiePanel.Visibility = Visibility.Hidden;
 
             //remet l'image du sapin a celle de base
-            SetImage("pack://application:,,,/img/Sapin/Sapin1.png");
+            SetImage("pack://application:,,,/img/Sapin/sapin1.png");
 
             // Afficher les commandes initiales si nécessaire
             Console.WriteLine("Le jeu a été redémarré !");
 
         }
 
+        // Revient à l'écran de choix de difficulté (au retour vers l'accueil)
+        private void RetourSelectionDifficulte()
+        {
+            minuterie.Stop();
+            tempsRestant.Stop();
+
+            // Remise à zéro de la partie
+            secondesRestantes = TEMPS;
+            nbCadeaux = 0;
+            cadeauxRamene = 0;
+            objectifCadeaux = 0;
+            NbPoint.Content = nbCadeaux;
+            NbPointDepose.Content = cadeauxRamene;
+            Canvas.SetLeft(Joueur, 10);
+            Canvas.SetTop(Joueur, 810);
+            positionXJoueur = 10;
+            positionYJoueur = 810;
+            // On relâche les touches (sinon le joueur peut repartir tout seul au redémarrage)
+            goHaut = false;
+            goBas = false;
+            goGauche = false;
+            goDroite = false;
+            foreach (var lutin in luttins)
+            {
+                fondJeu.Children.Remove(lutin.sprite);
+            }
+            luttins.Clear();
+            SetImage("pack://application:,,,/img/Sapin/sapin1.png");
+
+            // On cache la partie et le panneau de fin
+            FinPartiePanel.Visibility = Visibility.Hidden;
+            Joueur.Visibility = Visibility.Hidden;
+            Porte.Visibility = Visibility.Hidden;
+            Cadeaux1.Visibility = Visibility.Hidden;
+            NbPoint.Visibility = Visibility.Hidden;
+            NbPointLab.Visibility = Visibility.Hidden;
+            NbPointDepose.Visibility = Visibility.Hidden;
+            NbPointDeposeLab.Visibility = Visibility.Hidden;
+            labFrappe.Visibility = Visibility.Hidden;
+
+            // On réaffiche l'écran de choix de difficulté
+            difficulteComboBox.SelectedIndex = 0;
+            BackAttente.Visibility = Visibility.Visible;
+            LabAttente.Visibility = Visibility.Visible;
+            ButJouerAttente.Visibility = Visibility.Visible;
+            difficulteComboBox.Visibility = Visibility.Visible;
+        }
+
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             Menu_Acceuil acceuil = new Menu_Acceuil();
             acceuil.ShowDialog();
-            RelanceJeu();
+            RetourSelectionDifficulte();
         }
 
         private void Jeu(object? sender, EventArgs e)
@@ -289,6 +366,8 @@ namespace Labyrinthe
             Rect joueurRect = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
             Lutin();
             Deplacement();
+            AnimationJoueur();
+            AnimationPorte();
             Collision(joueurRect);
             CollisionCadeaux();
             CoupAttaque();
@@ -304,7 +383,7 @@ namespace Labyrinthe
                 Console.WriteLine("Un lutin a été créé");
 
             }
-            if (cadeauxRamene >= objectifCadeaux )
+            if (objectifCadeaux > 0 && cadeauxRamene >= objectifCadeaux)
             {
                 ConditionsVictoire();
             }
@@ -314,7 +393,7 @@ namespace Labyrinthe
         {
             Rect rect1 = new Rect(Canvas.GetLeft(Joueur), Canvas.GetTop(Joueur), Joueur.Width, Joueur.Height);
             //HAUT,GAUCHE,BAS,DROITE
-            if (goDroite == true && Canvas.GetLeft(Joueur) + (Joueur.Width * 2) < Application.Current.MainWindow.Width)
+            if (goDroite == true && Canvas.GetLeft(Joueur) + Joueur.Width < fondJeu.Width)
             {
                 DeplacementImageJoueur(AGNLEDROITE);
                 //Console.ForegroundColor = ConsoleColor.Green;
@@ -324,7 +403,7 @@ namespace Labyrinthe
                 positionXJoueur = positionXJoueur + vitesse;
 
             }
-            if (goGauche == true && Canvas.GetLeft(Joueur) + (Joueur.Width * 2) > 0)
+            if (goGauche == true && Canvas.GetLeft(Joueur) > 0)
             {
                 DeplacementImageJoueur(AGNLEGAUCHE);
                 //Console.ForegroundColor = ConsoleColor.Blue;
@@ -333,7 +412,7 @@ namespace Labyrinthe
                 Canvas.SetLeft(Joueur, Canvas.GetLeft(Joueur) - vitesse);
                 positionXJoueur = positionXJoueur - vitesse;
             }
-            if (goHaut == true && Canvas.GetTop(Joueur) + (Joueur.Height * 2) > 0)
+            if (goHaut == true && Canvas.GetTop(Joueur) > 16)
             {
                 DeplacementImageJoueur(AGNLEHAUT);
                 //Console.ForegroundColor = ConsoleColor.Red;
@@ -342,7 +421,7 @@ namespace Labyrinthe
                 Canvas.SetTop(Joueur, Canvas.GetTop(Joueur) - vitesse);
                 positionYJoueur = positionYJoueur - vitesse;
             }
-            if (goBas == true && Canvas.GetTop(Joueur) + (Joueur.Height * 2) < Application.Current.MainWindow.Height)
+            if (goBas == true && Canvas.GetTop(Joueur) + Joueur.Height < fondJeu.Height)
             {
                 DeplacementImageJoueur(AGNLEBAS);
                 //Console.ForegroundColor = ConsoleColor.Magenta;
@@ -399,6 +478,10 @@ namespace Labyrinthe
 
         private void Attaque()
         {
+            if (tempsEntreCoup > 0) // encore en recharge : on ne frappe pas
+            {
+                return;
+            }
             gifle = new Rectangle
             {
                 Tag = "calque",
@@ -413,35 +496,44 @@ namespace Labyrinthe
             fondJeu.Children.Add(gifle);
             gifleActif = true;
             tempsCoup = 3;
-            tempsEntreCoup = false;
+            sonFrappe.Play();              // le son ne joue qu'une fois, au moment de la frappe
+            tempsEntreCoup = RECHARGECOUP; // lance la recharge
         }
         private void CoupAttaque()
         {
-            fondJeu.Children.Remove(gifle);
+            // Recharge de la frappe
+            if (tempsEntreCoup > 0)
+            {
+                tempsEntreCoup--;
+            }
+            // Durée de la gifle à l'écran (quelques frames), puis on l'enlève
             if (gifleActif)
             {
-                sonFrappe.Play();
-                Rect maxiGifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
-                if (tempsCoup > 0)
+                tempsCoup--;
+                if (tempsCoup <= 0)
                 {
-                    sonFrappe.Play();
-                    tempsCoup--;
-                    if (tempsCoup <= 0)
-                    {
-                        gifleActif = false;
-                        sonFrappe.Play();
-                    }
-                }
-                if (gifleActif == false)
-                {
-                    tempsEntreCoup = true;
+                    gifleActif = false;
                     fondJeu.Children.Remove(gifle);
-                    sonFrappe.Play();
                 }
-
             }
+            // Indicateur : la frappe est prête quand la recharge est finie
+            labFrappe.Visibility = (tempsEntreCoup <= 0) ? Visibility.Visible : Visibility.Hidden;
         }
 
+        private void InitMurs()
+        {
+            // L'image des buissons est appliquée une seule fois (avant c'était refait à chaque frame dans Collision)
+            ImageBrush buisson = new ImageBrush();
+            buisson.ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/Buisson/buisson.png"));
+            buisson.Stretch = Stretch.Fill;
+            foreach (var element in fondJeu.Children)
+            {
+                if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
+                {
+                    rect.Fill = buisson;
+                }
+            }
+        }
         private void Collision(Rect hitBox)
         {
             bool collision = false;
@@ -450,14 +542,6 @@ namespace Labyrinthe
 
                 if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                 {
-
-                    ImageBrush murImage = new ImageBrush
-                    {
-                        ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/Buisson/BushUpdate2.png"))
-                    };
-                    murImage.Stretch = Stretch.Fill;
-                    rect.Fill = murImage;
-
                     Rect mur = new Rect(Canvas.GetLeft(rect), Canvas.GetTop(rect), rect.Width, rect.Height);
 
                     if (hitBox.IntersectsWith(mur))
@@ -472,7 +556,7 @@ namespace Labyrinthe
             }
             if (collision == false)
             {
-                vitesse = VITESSE;
+                vitesse = vitesseNormale;
             }
         }
         private void CollisionCadeaux()
@@ -514,62 +598,23 @@ namespace Labyrinthe
                     
                     nbCadeaux--;
                     cadeauxRamene++;
-                    imageActuelle++;
-                    switch (imageActuelle)
-                    {
-                        case 1:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin2.png");
-                            imageActuelle = 1; // Passe à l'image suivante
-                            sonColisionSapin.Play();
-                            Console.WriteLine("L'image est bien changé");
-                            break;
-                        case 2:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin3.png");
-                            imageActuelle = 2;
-                            sonColisionSapin.Play();
-                            break;
-                        case 3:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin4.png");
-                            imageActuelle = 3;
-                            sonColisionSapin.Play();
-                            break;
-                        case 4:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin5.png");
-                            imageActuelle = 4;
-                            sonColisionSapin.Play();
-                            break;
-                        case 5:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin6.png");
-                            imageActuelle = 5;
-                            sonColisionSapin.Play();
-                            break;
-                        case 6:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin7.png");
-                            imageActuelle = 6;
-                            sonColisionSapin.Play();
-                            break;
-                        case 7:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin8.png");
-                            imageActuelle = 7;
-                            sonColisionSapin.Play();
-                            break;
-                        case 8:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin9.png");
-                            imageActuelle = 8;
-                            sonColisionSapin.Play();
-                            break;
-                        case 9:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin10.png");
-                            imageActuelle = 9;
-                            sonColisionSapin.Play();
-                            break;
-                        case 10:
-                            SetImage("pack://application:,,,/img/Sapin/Sapin11.png");
-                            imageActuelle = 10;
-                            sonColisionSapin.Play();
-                            break;
+                    sonColisionSapin.Play();
 
+                    // Le sapin se remplit proportionnellement à l'objectif (niveau 0 à 10)
+                    int niveauSapin;
+                    if (objectifCadeaux > 0)
+                    {
+                        niveauSapin = (cadeauxRamene * 10) / objectifCadeaux;
                     }
+                    else
+                    {
+                        niveauSapin = cadeauxRamene; // mode Illimité : 1 image par dépôt
+                    }
+                    if (niveauSapin > 10)
+                    {
+                        niveauSapin = 10;
+                    }
+                    SetImage("pack://application:,,,/img/Sapin/sapin" + (niveauSapin + 1) + ".png");
 
 
                 }
@@ -606,7 +651,7 @@ namespace Labyrinthe
         private void ApparitionLuttins()
         {
             int x = 0;
-            int y = 0;
+            int y = 16;
             Rectangle nouveauLutin = new Rectangle
             {
 
@@ -618,10 +663,13 @@ namespace Labyrinthe
             Canvas.SetLeft(nouveauLutin, LUTTINX);
             fondJeu.Children.Add(nouveauLutin);
             //ImageBrush lutinCostume = new ImageBrush();
-            //lutinCostume.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/Lutin/Lutin_Bas/LUTTIN-1.png")); // Remplacez "chemin_vers_image_fantome" par le chemin réel de votre image de fantôme
+            //lutinCostume.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/LutinDirections/Lutin_Bas/LUTTIN-1.png")); // Remplacez "chemin_vers_image_fantome" par le chemin réel de votre image de fantôme
             //nouveauLutin.Fill = lutinCostume;
             luttins.Add(new Luttin(nouveauLutin, x, y, 32, 32, vitesseDesLutins));
 
+            // La porte s'ouvre quand un lutin en sort
+            Porte.Source = new BitmapImage(new Uri("pack://application:,,,/img/Porte/porteOuverte.png"));
+            tempsPorteOuverte = DUREEPORTEOUVERTE;
         }
         private void Lutin()
         {
@@ -638,11 +686,16 @@ namespace Labyrinthe
                 double vitesseLutin = vitesseDesLutins;
                 bool collision = false;
                 Rect LutinHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                //Reinitialisation des directions du lutin (sinon l'orientation reste bloquée)
+                goDLutin = false;
+                goGLutin = false;
+                goBLutin = false;
+                goHLutin = false;
+                //Animation du lutin : une seule fois par frame (et pas dans la boucle des murs)
+                LutinImage(x);
                 //Collision Lutin/Obstacle
                 foreach (var element in fondJeu.Children)
                 {
-                    LutinImage(x);
-
                     if (element is Rectangle rect && rect.Tag?.ToString() == "Mur")
                     {
 
@@ -662,38 +715,40 @@ namespace Labyrinthe
                     vitesseLutin = vitesseDesLutins;
                 }
                 //Console.WriteLine($"Lutin Position: X={posistionXLutin}, Y={posistionYLutin} | Joueur Position: X={positionXJoueur}, Y={positionYJoueur}");
-                if (positionXJoueur > posistionXLutin && positionXJoueur != posistionXLutin)
+                // Zone morte = la distance parcourue en un tick. Si le lutin est deja
+                // aligne avec le joueur sur un axe (a moins d'un pas), on ne bouge pas et
+                // on ne met pas de direction sur cet axe : ca evite qu'il oscille et que
+                // son image tourne sans arret gauche/droite.
+                if (positionXJoueur - posistionXLutin > vitesseLutin)
                 {
-                    //DeplacementImageLutin(AGNLEDROITE, x);
                     goDLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) + vitesseLutin);
                     posistionXLutin = posistionXLutin + vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers la droite");
                 }
-                else
+                else if (positionXJoueur - posistionXLutin < -vitesseLutin)
                 {
-                    //DeplacementImageLutin(AGNLEGAUCHE, x);
                     goGLutin = true;
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - vitesseLutin);
                     posistionXLutin = posistionXLutin - vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers la gauche");
                 }
-                if (positionYJoueur > posistionYLutin && positionYJoueur != posistionYLutin)
+                if (positionYJoueur - posistionYLutin > vitesseLutin)
                 {
-                    //DeplacementImageLutin(AGNLEBAS, x);
                     goBLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) + vitesseLutin);
                     posistionYLutin = posistionYLutin + vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers le bas");
                 }
-                else
+                else if (positionYJoueur - posistionYLutin < -vitesseLutin)
                 {
-                    //DeplacementImageLutin(AGNLEHAUT, x);
                     goHLutin = true;
                     Canvas.SetTop(x, Canvas.GetTop(x) - vitesseLutin);
                     posistionYLutin = posistionYLutin - vitesseLutin;
-                    //Console.WriteLine("Le lutin se deplace vers le haut");
                 }
+
+                // On garde le lutin dans la map
+                if (Canvas.GetLeft(x) < 0) Canvas.SetLeft(x, 0);
+                if (Canvas.GetLeft(x) > fondJeu.Width - x.Width) Canvas.SetLeft(x, fondJeu.Width - x.Width);
+                if (Canvas.GetTop(x) < 0) Canvas.SetTop(x, 0);
+                if (Canvas.GetTop(x) > fondJeu.Height - x.Height) Canvas.SetTop(x, fondJeu.Height - x.Height);
 
                 RotationImageLutin(x, goGLutin, goDLutin, goBLutin, goHLutin);
                 //Vol de Cadeaux
@@ -711,7 +766,7 @@ namespace Labyrinthe
                 }
                 //Collision Lutin/Gifle
                 Rect gifle = new Rect(Canvas.GetLeft(this.gifle), Canvas.GetTop(this.gifle), this.gifle.Width, this.gifle.Height);
-                if (gifle.IntersectsWith(LutinHitBox))
+                if (gifleActif && gifle.IntersectsWith(LutinHitBox))
                 {
                     //Console.WriteLine("Lutin giflé");
                     luttins.Remove(lutin);
@@ -767,6 +822,7 @@ namespace Labyrinthe
         {
             ComboBox comboBox = (ComboBox)sender;
             string selectedDifficulty = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
+            modeIllimite = false;
             if (selectedDifficulty == "Choisis")
             {
 
@@ -774,7 +830,7 @@ namespace Labyrinthe
             }
             if (selectedDifficulty == "Facile")
             {
-                vitesse = 10;
+                vitesseNormale = 10;
                 vitesseDesLutins = VITESSELUTINFACILE;
                 tempsCreationLutin = 300;
                 objectifCadeaux = OBJCADEAUXFACILE;
@@ -782,7 +838,7 @@ namespace Labyrinthe
             }
                 if (selectedDifficulty == "Moyen")
                 {
-                    vitesse = 8;
+                    vitesseNormale = 8;
                     vitesseDesLutins = VITESSELUTINNORMALE;
                     tempsCreationLutin = 200;
                     objectifCadeaux = OBJCADEAUXNORMALE;
@@ -793,7 +849,7 @@ namespace Labyrinthe
             }
                 if (selectedDifficulty == "Difficile")
                 {
-                    vitesse = 6;
+                    vitesseNormale = 6;
                     vitesseDesLutins = VITESSELUTINDIFFICILE;
                     tempsCreationLutin = 100;
                     objectifCadeaux = OBJCADEAUXDIFFICILE;
@@ -803,9 +859,11 @@ namespace Labyrinthe
                 }
                 if (selectedDifficulty == "Illimité")
                 {
-                    vitesse = 10;
+                    vitesseNormale = 10;
                     vitesseDesLutins = VITESSELUTINNORMALE;
                     tempsCreationLutin = 300;
+                    objectifCadeaux = 0;   // pas d'objectif : on joue pour le record
+                    modeIllimite = true;
                     //MessageBox.Show($"Difficulté sélectionnée : {selectedDifficulty}, N'y passer pas trop de temps XD");
 
 
@@ -814,6 +872,14 @@ namespace Labyrinthe
             }
             private void Button_Click(object sender, RoutedEventArgs e)
             {
+                // On exige une difficulté : sinon objectifCadeaux reste à 0 et la partie est gagnée d'entrée
+                if (difficulteComboBox.SelectedItem == null ||
+                    ((ComboBoxItem)difficulteComboBox.SelectedItem).Content.ToString() == "Choisis")
+                {
+                    MessageBox.Show("Veuillez choisir une difficulté avant de jouer !");
+                    return;
+                }
+                InitMurs(); // applique l'image des buissons une fois, au lancement de la partie
                 NbPointDepose.Visibility = Visibility.Visible;
                 NbPointDeposeLab.Visibility = Visibility.Visible;
                 NbPoint.Visibility = Visibility.Visible;
@@ -834,25 +900,40 @@ namespace Labyrinthe
             {
                 tempsSkinLutin += 1;
                 ImageBrush lutinCostume = new ImageBrush();
-                lutinCostume.ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/LUTTIN/LUTTIN-" + tempsSkinLutin + ".png"));
+                lutinCostume.ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/Lutin/lutin" + tempsSkinLutin + ".png"));
                 nomObjet.Fill = lutinCostume;
 
                 if (tempsSkinLutin == 8)
                 {
-                    tempsSkinLutin = 1;
+                    tempsSkinLutin = 0;
                 }
             }
-            //private void PapaNoelSkin()
-            //{
-            //    tempsSkinLutin += 1;
-            //    ImageBrush assassinCostume = new ImageBrush();
-            //    assassinCostume.ImageSource = new BitmapImage(new Uri("C:\\IUT\\SAE1.01 2024-2025\\Labyrinthe1.02\\Labyrinthe\\img\\LUTTIN\\LUTTIN-" + tempsSkinLutin + ").png"));
-            //    Vitrine.Fill = assassinCostume;
-            //    if (tempsSkinLutin == 8)
-            //    {
-            //        tempsSkinLutin = 1;
-            //    }
-            //}
+            private void AnimationJoueur()
+            {
+                // Le Père Noël s'anime seulement quand il se déplace
+                if (goDroite || goGauche || goHaut || goBas)
+                {
+                    tempsSkinPapaNoel += 1;
+                    Joueur.Source = new BitmapImage(new Uri("pack://application:,,,/img/AnimationPapaNoel/papaNoel" + tempsSkinPapaNoel + ".png"));
+                    if (tempsSkinPapaNoel == 9)
+                    {
+                        tempsSkinPapaNoel = 0;
+                    }
+                }
+            }
+
+            private void AnimationPorte()
+            {
+                // Referme la porte peu de temps après qu'un lutin soit sorti
+                if (tempsPorteOuverte > 0)
+                {
+                    tempsPorteOuverte--;
+                    if (tempsPorteOuverte == 0)
+                    {
+                        Porte.Source = new BitmapImage(new Uri("pack://application:,,,/img/Porte/porteFermee.png"));
+                    }
+                }
+            }
 
             private void Joueur_KeyDown(object sender, KeyEventArgs e)
             {
@@ -893,15 +974,17 @@ namespace Labyrinthe
                 minuterie.Stop();
                 tempsRestant.Stop();
                 dialogue_Pause pause = new dialogue_Pause();
-                bool? result = pause.ShowDialog();
-                if (result == true)
+                pause.ShowDialog();
+                if (pause.RetourAccueil)
                 {
-                    minuterie.Start();
-                    tempsRestant.Start();
+                    // Retour au menu d'accueil, puis écran de choix de difficulté
+                    Menu_Acceuil acceuil = new Menu_Acceuil();
+                    acceuil.ShowDialog();
+                    RetourSelectionDifficulte();
                 }
-                else if (result == false)
+                else
                 {
-                    pause.Close();
+                    // Reprendre (ou fenêtre fermée) : on relance les compteurs
                     minuterie.Start();
                     tempsRestant.Start();
                 }

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,46 +9,48 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="img\Acceuil\Lettre1.png" />
-    <None Remove="img\Acceuil\lettreChoix.png" />
-    <None Remove="img\FOND_ECRAN\imageFondJeu.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_1.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_2.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_3.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_4.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_5.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_6.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_7.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_8.png" />
-    <None Remove="img\AnnimationPapaNoel\PapaNoel_9.png" />
-    <None Remove="img\Buisson\BushUpdate2.png" />
-    <None Remove="img\Cadeaux\Gift.png" />
-    <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
-    <None Remove="img\FOND_ECRAN\imgOption.jpg" />
-    <None Remove="img\Lutin\Lutin_Bas\LUTTIN-1.png" />
-    <None Remove="img\Lutin\Lutin_Droite\LUTTIN-1.png" />
-    <None Remove="img\Lutin\Lutin_Gauche\LUTTIN-1.png" />
-    <None Remove="img\Lutin\Lutin_Haut\LUTTIN-1.png" />
-    <None Remove="img\LUTTIN\LUTTIN-1.png" />
-    <None Remove="img\LUTTIN\LUTTIN-2.png" />
-    <None Remove="img\LUTTIN\LUTTIN-3.png" />
-    <None Remove="img\LUTTIN\LUTTIN-4.png" />
-    <None Remove="img\LUTTIN\LUTTIN-5.png" />
-    <None Remove="img\LUTTIN\LUTTIN-6.png" />
-    <None Remove="img\LUTTIN\LUTTIN-7.png" />
-    <None Remove="img\LUTTIN\LUTTIN-8.png" />
-    <None Remove="img\PapaNoel\PapaNoel.gif" />
-    <None Remove="img\Sapin\Sapin1.png" />
-    <None Remove="img\Sapin\Sapin10.png" />
-    <None Remove="img\Sapin\Sapin11.png" />
-    <None Remove="img\Sapin\Sapin2.png" />
-    <None Remove="img\Sapin\Sapin3.png" />
-    <None Remove="img\Sapin\Sapin4.png" />
-    <None Remove="img\Sapin\Sapin5.png" />
-    <None Remove="img\Sapin\Sapin6.png" />
-    <None Remove="img\Sapin\Sapin7.png" />
-    <None Remove="img\Sapin\Sapin8.png" />
-    <None Remove="img\Sapin\Sapin9.png" />
+    <None Remove="img\Accueil\lettreMenu.png" />
+    <None Remove="img\Accueil\lettreChoix.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel1.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel2.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel3.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel4.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel5.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel6.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel7.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel8.png" />
+    <None Remove="img\AnimationPapaNoel\papaNoel9.png" />
+    <None Remove="img\Buisson\buisson.png" />
+    <None Remove="img\Cadeaux\cadeau.png" />
+    <None Remove="img\Fonds\fondAccueil.jpg" />
+    <None Remove="img\Fonds\fondJeu.png" />
+    <None Remove="img\Fonds\fondOptions.jpg" />
+    <None Remove="img\Lutin\lutin1.png" />
+    <None Remove="img\Lutin\lutin2.png" />
+    <None Remove="img\Lutin\lutin3.png" />
+    <None Remove="img\Lutin\lutin4.png" />
+    <None Remove="img\Lutin\lutin5.png" />
+    <None Remove="img\Lutin\lutin6.png" />
+    <None Remove="img\Lutin\lutin7.png" />
+    <None Remove="img\Lutin\lutin8.png" />
+    <None Remove="img\LutinDirections\Lutin_Bas\LUTTIN-1.png" />
+    <None Remove="img\LutinDirections\Lutin_Droite\LUTTIN-1.png" />
+    <None Remove="img\LutinDirections\Lutin_Gauche\LUTTIN-1.png" />
+    <None Remove="img\LutinDirections\Lutin_Haut\LUTTIN-1.png" />
+    <None Remove="img\PapaNoel\papaNoel.gif" />
+    <None Remove="img\Porte\porteFermee.png" />
+    <None Remove="img\Porte\porteOuverte.png" />
+    <None Remove="img\Sapin\sapin1.png" />
+    <None Remove="img\Sapin\sapin2.png" />
+    <None Remove="img\Sapin\sapin3.png" />
+    <None Remove="img\Sapin\sapin4.png" />
+    <None Remove="img\Sapin\sapin5.png" />
+    <None Remove="img\Sapin\sapin6.png" />
+    <None Remove="img\Sapin\sapin7.png" />
+    <None Remove="img\Sapin\sapin8.png" />
+    <None Remove="img\Sapin\sapin9.png" />
+    <None Remove="img\Sapin\sapin10.png" />
+    <None Remove="img\Sapin\sapin11.png" />
     <None Remove="Sons\colisioncadeau.wav" />
     <None Remove="Sons\colisionlutin.wav" />
     <None Remove="Sons\colisionsapin.wav" />
@@ -58,120 +60,132 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="img\FOND_ECRAN\imageFondJeu.png" />
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_1.png">
+    <Resource Include="img\Accueil\lettreMenu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_2.png">
+    <Resource Include="img\Accueil\lettreChoix.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_3.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_4.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_5.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_6.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_7.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel5.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_8.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\AnnimationPapaNoel\PapaNoel_9.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Buisson\BushUpdate2.png" />
-    <Resource Include="img\FOND_ECRAN\imgOption.jpg" />
-    <Resource Include="img\PapaNoel\PapaNoel.gif">
+    <Resource Include="img\AnimationPapaNoel\papaNoel8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="img\Cadeaux\Gift.png">
+    <Resource Include="img\AnimationPapaNoel\papaNoel9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\FOND_ECRAN\imageAcceuill.jpg" />
-    <Resource Include="img\Lutin\Lutin_Bas\LUTTIN-1.png">
+    <Resource Include="img\Buisson\buisson.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Lutin\Lutin_Droite\LUTTIN-1.png">
+    <Resource Include="img\Cadeaux\cadeau.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Lutin\Lutin_Gauche\LUTTIN-1.png">
+    <Resource Include="img\Fonds\fondAccueil.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Lutin\Lutin_Haut\LUTTIN-1.png">
+    <Resource Include="img\Fonds\fondJeu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-1.png">
+    <Resource Include="img\Fonds\fondOptions.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-2.png">
+    <Resource Include="img\Lutin\lutin1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-3.png">
+    <Resource Include="img\Lutin\lutin2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-4.png">
+    <Resource Include="img\Lutin\lutin3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-5.png">
+    <Resource Include="img\Lutin\lutin4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-6.png">
+    <Resource Include="img\Lutin\lutin5.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-7.png">
+    <Resource Include="img\Lutin\lutin6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\LUTTIN\LUTTIN-8.png">
+    <Resource Include="img\Lutin\lutin7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Porte\porte-ouverte.png">
+    <Resource Include="img\Lutin\lutin8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin1.png">
+    <Resource Include="img\LutinDirections\Lutin_Bas\LUTTIN-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin10.png">
+    <Resource Include="img\LutinDirections\Lutin_Droite\LUTTIN-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin11.png">
+    <Resource Include="img\LutinDirections\Lutin_Gauche\LUTTIN-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin2.png">
+    <Resource Include="img\LutinDirections\Lutin_Haut\LUTTIN-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin3.png">
+    <Resource Include="img\PapaNoel\papaNoel.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin4.png">
+    <Resource Include="img\Porte\porteFermee.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin5.png">
+    <Resource Include="img\Porte\porteOuverte.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin6.png">
+    <Resource Include="img\Sapin\sapin1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin7.png">
+    <Resource Include="img\Sapin\sapin2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin8.png">
+    <Resource Include="img\Sapin\sapin3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Sapin\Sapin9.png">
+    <Resource Include="img\Sapin\sapin4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Acceuil\Lettre1.png" />
-    <Resource Include="img\Acceuil\lettreChoix.png" />
+    <Resource Include="img\Sapin\sapin5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\sapin6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\sapin7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\sapin8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\sapin9.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\sapin10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Sapin\sapin11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Sons\colisioncadeau.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

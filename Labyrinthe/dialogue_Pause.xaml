@@ -13,14 +13,19 @@
     mc:Ignorable="d">
     <Canvas>
         <Canvas.Background>
-            <ImageBrush ImageSource="/img/FOND_ECRAN/imgOption.jpg"/>
+            <ImageBrush ImageSource="/img/Fonds/fondOptions.jpg"/>
         </Canvas.Background>
         <Button x:Name="buttRepre" Content="Reprendre" Canvas.Left="150" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" Click="buttRepre_Click" Background="Black" BorderBrush="Red" Foreground="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="butQuitt" Content="Quitter" Canvas.Left="150" Width="100" Height="50" Click="butQuitt_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,230,0,0" Background="Black" BorderBrush="Red" Foreground="White">
+        <Button x:Name="buttAccueil" Content="Accueil" Canvas.Left="150" Width="100" Height="50" Click="buttAccueil_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,230,0,0" Background="Black" BorderBrush="Red" Foreground="White">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="butQuitt" Content="Quitter" Canvas.Left="150" Width="100" Height="50" Click="butQuitt_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,300,0,0" Background="Black" BorderBrush="Red" Foreground="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

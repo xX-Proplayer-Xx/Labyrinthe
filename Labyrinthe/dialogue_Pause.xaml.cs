@@ -7,6 +7,10 @@ namespace Labyrinthe
     /// </summary>
     public partial class dialogue_Pause : Window
     {
+        // Mis à true si le joueur a cliqué sur "Accueil" : MainWindow le lit pour
+        // rouvrir le menu d'accueil au lieu de reprendre la partie.
+        public bool RetourAccueil { get; private set; }
+
         public dialogue_Pause()
         {
             InitializeComponent();
@@ -27,6 +31,14 @@ namespace Labyrinthe
         private void buttOption_pause_Click(object sender, RoutedEventArgs e)
         {
             Menu_Options menuOptions = new Menu_Options();
+            menuOptions.ShowDialog();
+        }
+
+        private void buttAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            RetourAccueil = true;
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }

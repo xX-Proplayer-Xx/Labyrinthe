@@ -13,7 +13,7 @@
     mc:Ignorable="d">
     <Canvas>
         <Canvas.Background>
-            <ImageBrush ImageSource="/img/FOND_ECRAN/imgOption.jpg"/>
+            <ImageBrush ImageSource="/img/Fonds/fondOptions.jpg"/>
         </Canvas.Background>
         <Button Content="Ok" Width="100" Height="25"
                 HorizontalAlignment="Center" VerticalAlignment="Top"

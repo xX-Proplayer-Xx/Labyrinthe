@@ -70,7 +70,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="/img/Acceuil/Lettre1.png" />
+                <ImageBrush ImageSource="/img/Accueil/lettreMenu.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label
@@ -107,7 +107,7 @@
             Bonne chance dans votre quête...</TextBlock>
 
         <Canvas.Background>
-            <ImageBrush ImageSource="/img/FOND_ECRAN/imageAcceuill.jpg" />
+            <ImageBrush ImageSource="/img/Fonds/fondAccueil.jpg" />
         </Canvas.Background>
     </Canvas>
 </Window>
