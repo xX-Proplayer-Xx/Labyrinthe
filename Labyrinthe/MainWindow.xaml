@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Labyrinthe"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="Labyrinthe"
     KeyDown="Joueur_KeyDown"
     KeyUp="Joueur_KeyUp"
     ResizeMode="NoResize"
@@ -1511,7 +1511,7 @@
             Canvas.Top="40"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Content="Cadeaux déposé :"
+            Content="Cadeaux déposés :"
             FontSize="30"
             Visibility="Hidden" />
         <Label

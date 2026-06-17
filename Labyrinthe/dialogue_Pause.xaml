@@ -30,7 +30,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="buttOption_pause" Content="Option" Canvas.Left="150" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Click="buttOption_pause_Click" Margin="0,160,0,0" Foreground="White" BorderBrush="Red" Background="Black">
+        <Button x:Name="buttOption_pause" Content="Options" Canvas.Left="150" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Click="buttOption_pause_Click" Margin="0,160,0,0" Foreground="White" BorderBrush="Red" Background="Black">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
