@@ -39,9 +39,6 @@ namespace Labyrinthe
         private bool modeIllimite = false;
         private int meilleurScore = 0;
 
-        //Lutin
-        private int nbLutin = 0;
-
         //Musique
         public static MediaPlayer musique;
         //Sons
@@ -50,12 +47,7 @@ namespace Labyrinthe
         private double positionXJoueur = 10;
         private double positionYJoueur = 810;
 
-        //Annimation PAPA NOEL
-        private int tempsPapaNoel = 48;
-        private string repertoirePapaNoel = "AnimationPapaNoel";
-        private string nomImagePapaNoel = "PapaNoel_";
-
-        //Constante deplacement image 
+        //Constante deplacement image
         static readonly int AGNLEHAUT = 0;
         static readonly int AGNLEDROITE = 90;
         static readonly int AGNLEGAUCHE = -90;
@@ -66,7 +58,6 @@ namespace Labyrinthe
         static readonly int AGNLEBASGAUCHE = -135;
 
         //Cadeaux
-        private int nbMaxCadeaux = 10;
         private int nbCadeaux = 0;
         private int cadeauxRamene = 0;
 
@@ -81,7 +72,6 @@ namespace Labyrinthe
 
         //SpawnLuttins
         static readonly int LUTTINX = 800;
-        static readonly int LUTTINY = 300;
         static readonly int CREATION = 200;
         private int tempsCreationLutin = CREATION;
 
@@ -91,7 +81,6 @@ namespace Labyrinthe
 
         //Liste
         private List<Luttin> luttins = new List<Luttin>();
-        private List<Rect> gifles = new List<Rect>();
 
         //VITESSE
         static readonly double VITESSE = 5;
@@ -122,8 +111,6 @@ namespace Labyrinthe
         private int tempsEntreCoup = 0;        // recharge restante (0 = frappe prête)
         private int tempsCoup = 5;
 
-        private int vitesseAnnimation = 1;
-        private bool claque;
         private DispatcherTimer minuterie;
         private DispatcherTimer tempsRestant;
         private int secondesRestantes = TEMPS;
@@ -961,11 +948,16 @@ namespace Labyrinthe
                 {
                     Pause();
                 }
-            if (e.Key == Key.J)
-            {
-
-                cadeauxRamene = nbMaxCadeaux;
-            }
+                if (e.Key == Key.J)
+                {
+                    // triche : victoire instantanée
+                    cadeauxRamene = objectifCadeaux;
+                }
+                if (e.Key == Key.V)
+                {
+                    // triche : super-vitesse
+                    vitesseNormale = 20;
+                }
             }
             private void Pause()
             {
@@ -992,10 +984,6 @@ namespace Labyrinthe
 
             private void Joueur_KeyUp(object sender, KeyEventArgs e)
             {
-                if (e.Key == Key.Space)
-                {
-                    claque = false;
-                }
                 if (e.Key == Key.Z)
                 {
                     goHaut = false;
