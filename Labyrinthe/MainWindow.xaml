@@ -14,7 +14,7 @@
     mc:Ignorable="d">
     <Canvas x:Name="fondJeu">
         <Canvas.Background>
-            <ImageBrush ImageSource="/imageFondJeu.png" />
+            <ImageBrush ImageSource="/img/FOND_ECRAN/imageFondJeu.png" />
         </Canvas.Background>
 
         <StackPanel
@@ -100,7 +100,7 @@
             Canvas.Left="768"
             Width="64"
             Height="64"
-            Source="P:\SAE 1.01\Labyrinthe\img\Porte\porte-ouverte.png"
+            Source="/img/Porte/porte-ouverte.png"
             Stretch="Fill"
             Visibility="Hidden" />
 
@@ -1488,7 +1488,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="P:\SAE 1.01\Labyrinthe\img\Sapin\Sapin1.png" />
+                <ImageBrush ImageSource="/img/Sapin/Sapin1.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label
@@ -1528,7 +1528,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="/lettreChoix.png" />
+                <ImageBrush ImageSource="/img/Acceuil/lettreChoix.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label

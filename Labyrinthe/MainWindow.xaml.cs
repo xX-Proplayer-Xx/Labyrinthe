@@ -133,7 +133,6 @@ namespace Labyrinthe
             InitMusique();
             InitMinuterie();
             InitTempsRestant();
-            InitMusique();
             InitSon();
             
         }
@@ -142,7 +141,9 @@ namespace Labyrinthe
             if (musique == null) // Vérifier que la musique n'a pas déjà été initialisée
             {
                 musique = new MediaPlayer();
-                musique.Open(new Uri("P:\\SAE 1.01\\Labyrinthe\\Sons\\musique.mp3"));
+                // Chemin relatif : la musique est copiée à côté de l'exe (Sons\musique.mp3)
+                string cheminMusique = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sons", "musique.mp3");
+                musique.Open(new Uri(cheminMusique));
                 musique.MediaEnded += RelanceMusique;
                 musique.Volume = 0.5;
                 musique.Play();
@@ -160,7 +161,7 @@ namespace Labyrinthe
             sonColisionCadeau = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisioncadeau.wav")).Stream);
             sonFrappe = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/frappe.wav")).Stream);
             sonColisionSapin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionsapin.wav")).Stream);
-            sonColisionLutin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionLutin.wav")).Stream);
+            sonColisionLutin = new SoundPlayer(Application.GetResourceStream(new Uri("pack://application:,,,/Sons/colisionlutin.wav")).Stream);
         }
         private void InitTempsRestant()
         {
@@ -452,7 +453,7 @@ namespace Labyrinthe
 
                     ImageBrush murImage = new ImageBrush
                     {
-                        ImageSource = new BitmapImage(new Uri("P:\\SAE 1.01\\Labyrinthe\\img\\Buisson\\BushUpdate2.png"))
+                        ImageSource = new BitmapImage(new Uri("pack://application:,,,/img/Buisson/BushUpdate2.png"))
                     };
                     murImage.Stretch = Stretch.Fill;
                     rect.Fill = murImage;
@@ -517,53 +518,53 @@ namespace Labyrinthe
                     switch (imageActuelle)
                     {
                         case 1:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin2.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin2.png");
                             imageActuelle = 1; // Passe à l'image suivante
                             sonColisionSapin.Play();
                             Console.WriteLine("L'image est bien changé");
                             break;
                         case 2:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin3.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin3.png");
                             imageActuelle = 2;
                             sonColisionSapin.Play();
                             break;
                         case 3:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin4.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin4.png");
                             imageActuelle = 3;
                             sonColisionSapin.Play();
                             break;
                         case 4:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin5.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin5.png");
                             imageActuelle = 4;
                             sonColisionSapin.Play();
                             break;
                         case 5:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin6.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin6.png");
                             imageActuelle = 5;
                             sonColisionSapin.Play();
                             break;
                         case 6:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin7.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin7.png");
                             imageActuelle = 6;
                             sonColisionSapin.Play();
                             break;
                         case 7:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin8.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin8.png");
                             imageActuelle = 7;
                             sonColisionSapin.Play();
                             break;
                         case 8:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin9.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin9.png");
                             imageActuelle = 8;
                             sonColisionSapin.Play();
                             break;
                         case 9:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin10.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin10.png");
                             imageActuelle = 9;
                             sonColisionSapin.Play();
                             break;
                         case 10:
-                            SetImage("P:\\SAE 1.01\\Labyrinthe\\img\\Sapin\\Sapin11.png");
+                            SetImage("pack://application:,,,/img/Sapin/Sapin11.png");
                             imageActuelle = 10;
                             sonColisionSapin.Play();
                             break;

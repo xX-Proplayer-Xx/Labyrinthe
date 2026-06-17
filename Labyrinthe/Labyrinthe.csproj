@@ -9,14 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Buisson.png" />
-    <None Remove="bush.png" />
-    <None Remove="BushUpdate.png" />
-    <None Remove="BushUpdate1.png" />
-    <None Remove="BushUpdate2.png" />
-    <None Remove="g0qsuoib.a0z~" />
-    <None Remove="Gift.png" />
-    <None Remove="imageFondJeu.png" />
+    <None Remove="img\Acceuil\Lettre1.png" />
+    <None Remove="img\Acceuil\lettreChoix.png" />
+    <None Remove="img\FOND_ECRAN\imageFondJeu.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_1.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_2.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_3.png" />
@@ -26,9 +21,7 @@
     <None Remove="img\AnnimationPapaNoel\PapaNoel_7.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_8.png" />
     <None Remove="img\AnnimationPapaNoel\PapaNoel_9.png" />
-    <None Remove="img\Buisson\Buisson.png" />
     <None Remove="img\Buisson\BushUpdate2.png" />
-    <None Remove="img\Cadeaux\Gift.gif" />
     <None Remove="img\Cadeaux\Gift.png" />
     <None Remove="img\FOND_ECRAN\imageAcceuill.jpg" />
     <None Remove="img\FOND_ECRAN\imgOption.jpg" />
@@ -45,11 +38,9 @@
     <None Remove="img\LUTTIN\LUTTIN-7.png" />
     <None Remove="img\LUTTIN\LUTTIN-8.png" />
     <None Remove="img\PapaNoel\PapaNoel.gif" />
-    <None Remove="img\PapaNoel\PapaNoel_Haut.png" />
     <None Remove="img\Sapin\Sapin1.png" />
     <None Remove="img\Sapin\Sapin10.png" />
     <None Remove="img\Sapin\Sapin11.png" />
-    <None Remove="img\Sapin\Sapin12.png" />
     <None Remove="img\Sapin\Sapin2.png" />
     <None Remove="img\Sapin\Sapin3.png" />
     <None Remove="img\Sapin\Sapin4.png" />
@@ -58,13 +49,6 @@
     <None Remove="img\Sapin\Sapin7.png" />
     <None Remove="img\Sapin\Sapin8.png" />
     <None Remove="img\Sapin\Sapin9.png" />
-    <None Remove="Lettre.png" />
-    <None Remove="Lettre1.png" />
-    <None Remove="lettreChoix.png" />
-    <None Remove="LUTTIN-1.png" />
-    <None Remove="PapaNoel_Haut.png" />
-    <None Remove="Sapin.png" />
-    <None Remove="Sapin1.png" />
     <None Remove="Sons\colisioncadeau.wav" />
     <None Remove="Sons\colisionlutin.wav" />
     <None Remove="Sons\colisionsapin.wav" />
@@ -74,9 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="BushUpdate2.png" />
-    <Resource Include="Gift.png" />
-    <Resource Include="imageFondJeu.png" />
+    <Resource Include="img\FOND_ECRAN\imageFondJeu.png" />
     <Resource Include="img\AnnimationPapaNoel\PapaNoel_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -104,9 +86,6 @@
     <Resource Include="img\AnnimationPapaNoel\PapaNoel_9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\Buisson\Buisson.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="img\Buisson\BushUpdate2.png" />
     <Resource Include="img\FOND_ECRAN\imgOption.jpg" />
     <Resource Include="img\PapaNoel\PapaNoel.gif">
@@ -115,9 +94,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="img\Cadeaux\Gift.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="img\Cadeaux\Gift.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -158,7 +134,7 @@
     <Resource Include="img\LUTTIN\LUTTIN-8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="img\PapaNoel\PapaNoel_Haut.png">
+    <Resource Include="img\Porte\porte-ouverte.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\Sapin\Sapin1.png">
@@ -168,9 +144,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\Sapin\Sapin11.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="img\Sapin\Sapin12.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\Sapin\Sapin2.png">
@@ -197,9 +170,8 @@
     <Resource Include="img\Sapin\Sapin9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Lettre.png" />
-    <Resource Include="Lettre1.png" />
-    <Resource Include="lettreChoix.png" />
+    <Resource Include="img\Acceuil\Lettre1.png" />
+    <Resource Include="img\Acceuil\lettreChoix.png" />
     <Resource Include="Sons\colisioncadeau.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

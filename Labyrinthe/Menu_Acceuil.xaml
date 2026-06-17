@@ -70,7 +70,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="/Lettre1.png" />
+                <ImageBrush ImageSource="/img/Acceuil/Lettre1.png" />
             </Rectangle.Fill>
         </Rectangle>
         <Label
